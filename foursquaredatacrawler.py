@@ -1,9 +1,17 @@
 # Brian Mann
 # 2/3/2015
 
-import time, datetime, json, requests
+import urllib2, time, datetime, json, requests
 
-searches = 0
+def getMap(mydict):
+	lat = mydict['response']['geocode']['center']['lat']
+	lng = mydict['response']['geocode']['center']['lng']
+	lst = mydict['response']['groups'][0]['items']
+	for lat in lst:
+		print lat
+	url = "http://maps.google.com/maps/api/staticmap?center="+str(lat)+","+str(lng)+"&zoom=14&size=400x400&markers="
+
+	return url
 
 # keys needed for access to url
 CLIENT_ID = "X0JZOBTOXML0SUDIVYWAXZCIBCT4JPKGKSE4U0JZUAH2EOH5"
@@ -35,6 +43,10 @@ r = requests.get(thisurl)
 # store the json text
 data = r.json()
 
+
+mymap = getMap(data)
+exit()
+
 # Write the data to a file
 if r.status_code == 200:
 	#use current time to name the file
@@ -47,3 +59,4 @@ else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)
 	exit()
+
