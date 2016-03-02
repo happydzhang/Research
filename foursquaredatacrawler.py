@@ -57,7 +57,7 @@ data = r.json()
 
 
 mymap = getMap(data)
-webbrowser.open(mymap)
+#webbrowser.open(mymap)
 
 # Write the data to a file
 if r.status_code == 200:
