@@ -56,9 +56,6 @@ r = requests.get(thisurl)
 data = r.json()
 
 
-mymap = getMap(data)
-#webbrowser.open(mymap)
-
 # Write the data to a file
 if r.status_code == 200:
 	#use current time to name the file
@@ -67,6 +64,8 @@ if r.status_code == 200:
 	datafile.write(json.dumps(data, indent=4, sort_keys=True))
 	datafile.close()
 	print filename+".json created!"
+	mymap = getMap(data)
+	#webbrowser.open(mymap)
 else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)
