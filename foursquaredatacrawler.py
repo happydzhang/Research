@@ -1,5 +1,5 @@
 # Brian Mann
-# 2/3/2015
+# 3/13/2016
 
 import webbrowser, urllib2, time, datetime, json, requests
 
@@ -24,6 +24,9 @@ def getMap(mydict):
 	url = "http://maps.google.com/maps/api/staticmap?center="+str(lat)+","+str(lng)+"&zoom=14&size=400x400&markers="+markerstr
 
 	return url
+
+def makeHTML(mydict):
+	
 
 # keys needed for access to url
 CLIENT_ID = "X0JZOBTOXML0SUDIVYWAXZCIBCT4JPKGKSE4U0JZUAH2EOH5"
@@ -64,7 +67,7 @@ if r.status_code == 200:
 	datafile.write(json.dumps(data, indent=4, sort_keys=True))
 	datafile.close()
 	print filename+".json created!"
-	mymap = getMap(data)
+	#mymap = getMap(data)
 	#webbrowser.open(mymap)
 else:
 	print r
