@@ -26,7 +26,50 @@ def getMap(mydict):
 	return url
 
 def makeHTML(mydict):
-	
+	f = open('my-map.html', 'w')
+
+	message = """
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html, body, #map {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script>
+      var map;
+
+      function initialize() {
+        var myLatLng = {lat: 41.68338, lng: -86.25001}
+        var mapOptions = {
+          zoom: 12,
+          maxZoom: 15,
+          center: myLatLng,
+          mapTypeId: google.maps.MapTypeId.HYBRID
+        };
+        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Location Name'
+        });
+      }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+  </script>
+  </head>
+  <body>
+    <div id="map"></div>
+  </body>
+</html>"""
+
+	f.write(message)
+	f.close()	
 
 # keys needed for access to url
 CLIENT_ID = "X0JZOBTOXML0SUDIVYWAXZCIBCT4JPKGKSE4U0JZUAH2EOH5"
@@ -69,6 +112,7 @@ if r.status_code == 200:
 	print filename+".json created!"
 	#mymap = getMap(data)
 	#webbrowser.open(mymap)
+	makeHTML(data)
 else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)
