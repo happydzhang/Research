@@ -1,5 +1,5 @@
 # Brian Mann
-# 3/13/2016
+# 3/15/2016
 
 import webbrowser, urllib2, time, datetime, json, requests
 
@@ -27,7 +27,16 @@ def getMap(mydict):
 
 def makeHTML(mydict):
 	f = open('my-map.html', 'w')
-
+	lat = mydict['response']['geocode']['center']['lat']
+	lng = mydict['response']['geocode']['center']['lng']
+	lst = mydict['response']['groups'][0]['items']
+	markers = []
+	for i in lst:
+		temp = {}
+		temp['lat'] = i['venue']['location']['lat']
+		temp['lng'] = i['venue']['location']['lng']
+		#temp['name'] = i['venue']['name']
+		markers.append(temp)
 	message = """
 <!DOCTYPE html>
 <html>
@@ -43,23 +52,37 @@ def makeHTML(mydict):
     <script>
       var map;
 
+      var markers = """+str(markers)+"""
+
+      function display(){
+        for (var i = 0; i < markers.length; i++){
+          var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+          var marker = new google.maps.Marker({
+            map: map,
+            position: latlng,
+          });
+        }
+      }
+
       function initialize() {
-        var myLatLng = {lat: 41.68338, lng: -86.25001}
+        var myLatLng = {lat: """+str(lat)+""", lng: """+str(lng)+"""}
         var mapOptions = {
-          zoom: 12,
-          maxZoom: 15,
+          zoom: 13,
+          maxZoom: 16,
           center: myLatLng,
           mapTypeId: google.maps.MapTypeId.HYBRID
         };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Location Name'
+        infoWindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener(map, 'click', function() {
+          infoWindow.close();
         });
+
+        display();
       }
 
-google.maps.event.addDomListener(window, 'load', initialize);
+      google.maps.event.addDomListener(window, 'load', initialize);
 
   </script>
   </head>
@@ -85,7 +108,7 @@ if mode == 'y':
 	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near=South Bend, IN&section=topPicks"
 # custom search
 elif mode == 'n':
-# allow user to specify location, radius, etc.
+#allow user to specify location, radius, etc.
 	location = raw_input("Enter a city: ")
 	radius = raw_input("Enter a range: ")
 	section = raw_input("One of food, drinks, coffee, shops, arts, outdoors, sights, trending, or specials, nextVenues, or topPicks: ")
@@ -113,6 +136,7 @@ if r.status_code == 200:
 	#mymap = getMap(data)
 	#webbrowser.open(mymap)
 	makeHTML(data)
+	webbrowser.open('my-map.html')
 else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)
