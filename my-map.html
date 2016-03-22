@@ -2,6 +2,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
     <style>
       html, body, #map {
         margin: 0;
@@ -13,18 +15,8 @@
     <script>
       var map;
 
-      var markers = [{'lat': 41.69265728725174, 'lng': -86.23573534829409}, {'lat': 41.695963, 'lng': -86.216174}, {'lat': 41.67517550643066, 'lng': -86.2434840616005}, {'lat': 41.69221641140137, 'lng': -86.23507551213295}, {'lat': 41.69839483032745, 'lng': -86.21622936100471}, {'lat': 41.67930344051045, 'lng': -86.24458029506737}, {'lat': 41.44378215176575, 'lng': -86.01989752415324}, {'lat': 41.697124627948426, 'lng': -86.22160405366364}, {'lat': 41.698983955842145, 'lng': -86.22526626160578}, {'lat': 41.69148192835254, 'lng': -86.23546744592257}, {'lat': 41.698479196847195, 'lng': -86.21862173080444}, {'lat': 41.68181184645669, 'lng': -86.25520906104572}]
-
-      function display(){
-        for (var i = 0; i < markers.length; i++){
-          var latlng = {lat: markers[i].lat, lng: markers[i].lng};
-          var marker = new google.maps.Marker({
-            map: map,
-            position: latlng,
-          });
-        }
-      }
-
+      var markers = [{'lat': 41.665822856729285, 'lng': -86.23416760327213}, {'lat': 41.676355808698226, 'lng': -86.25072570905417}, {'lat': 41.67136774217978, 'lng': -86.2624787882755}, {'lat': 41.6841842965649, 'lng': -85.97146415725182}, {'lat': 41.67512488391152, 'lng': -86.25011070512925}, {'lat': 41.676410795664616, 'lng': -86.25124647268512}, {'lat': 41.675299875795545, 'lng': -86.24094428055952}, {'lat': 41.675350310438574, 'lng': -86.25076538647109}, {'lat': 41.675815, 'lng': -86.250194}, {'lat': 41.691955, 'lng': -86.235503}, {'lat': 41.627510664303244, 'lng': -86.23711452705835}, {'lat': 41.6992594, 'lng': -86.218751}, {'lat': 41.67517550643066, 'lng': -86.2434840616005}, {'lat': 41.68181184645669, 'lng': -86.25520906104572}, {'lat': 41.729381003301164, 'lng': -86.29148781456733}]
+      var infowindow = null;
       function initialize() {
         var myLatLng = {lat: 41.68338, lng: -86.25001}
         var mapOptions = {
@@ -34,13 +26,30 @@
           mapTypeId: google.maps.MapTypeId.HYBRID
         };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        infoWindow = new google.maps.InfoWindow();
 
-        google.maps.event.addListener(map, 'click', function() {
-          infoWindow.close();
+        var contentString = '<div id="content">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h1 id="firstHeading" class="firstHeading">Info</h1>'+
+          '<div id="bodyContent">'+
+          '<p>This is where some information about the location goes!</p>'
+          '</div>'+
+          '</div>';
+
+        infowindow = new google.maps.InfoWindow({
+          content: contentString
         });
 
-        display();
+        for (var i = 0; i < markers.length; i++){
+          var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+          var marker = new google.maps.Marker({
+            map: map,
+            position: latlng,
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, this);
+          });
+        }
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);

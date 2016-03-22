@@ -41,6 +41,8 @@ def makeHTML(mydict):
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
     <style>
       html, body, #map {
         margin: 0;
@@ -53,17 +55,7 @@ def makeHTML(mydict):
       var map;
 
       var markers = """+str(markers)+"""
-
-      function display(){
-        for (var i = 0; i < markers.length; i++){
-          var latlng = {lat: markers[i].lat, lng: markers[i].lng};
-          var marker = new google.maps.Marker({
-            map: map,
-            position: latlng,
-          });
-        }
-      }
-
+      var infowindow = null;
       function initialize() {
         var myLatLng = {lat: """+str(lat)+""", lng: """+str(lng)+"""}
         var mapOptions = {
@@ -73,13 +65,30 @@ def makeHTML(mydict):
           mapTypeId: google.maps.MapTypeId.HYBRID
         };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
-        infoWindow = new google.maps.InfoWindow();
 
-        google.maps.event.addListener(map, 'click', function() {
-          infoWindow.close();
+        var contentString = '<div id="content">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h1 id="firstHeading" class="firstHeading">Info</h1>'+
+          '<div id="bodyContent">'+
+          '<p>This is where some information about the location goes!</p>'
+          '</div>'+
+          '</div>';
+
+        infowindow = new google.maps.InfoWindow({
+          content: contentString
         });
 
-        display();
+        for (var i = 0; i < markers.length; i++){
+          var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+          var marker = new google.maps.Marker({
+            map: map,
+            position: latlng,
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, this);
+          });
+        }
       }
 
       google.maps.event.addDomListener(window, 'load', initialize);
