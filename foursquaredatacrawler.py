@@ -1,5 +1,5 @@
 # Brian Mann
-# 3/15/2016
+# 3/23/2016
 
 import webbrowser, urllib2, time, datetime, json, requests
 
@@ -31,12 +31,14 @@ def makeHTML(mydict):
 	lng = mydict['response']['geocode']['center']['lng']
 	lst = mydict['response']['groups'][0]['items']
 	markers = []
+	names = []
 	for i in lst:
-		temp = {}
-		temp['lat'] = i['venue']['location']['lat']
-		temp['lng'] = i['venue']['location']['lng']
-		#temp['name'] = i['venue']['name']
-		markers.append(temp)
+		tempgeo = {}
+		tempgeo['lat'] = i['venue']['location']['lat']
+		tempgeo['lng'] = i['venue']['location']['lng']
+		names.append(i['venue']['name'])
+		markers.append(tempgeo)
+
 	message = """
 <!DOCTYPE html>
 <html>
@@ -55,6 +57,7 @@ def makeHTML(mydict):
       var map;
 
       var markers = """+str(markers)+"""
+      var names = ['Chicory Cafe', 'The View', 'Starbucks']
       var infowindow = null;
       function initialize() {
         var myLatLng = {lat: """+str(lat)+""", lng: """+str(lng)+"""}
@@ -69,7 +72,7 @@ def makeHTML(mydict):
         var contentString = '<div id="content">'+
           '<div id="siteNotice">'+
           '</div>'+
-          '<h1 id="firstHeading" class="firstHeading">Info</h1>'+
+          '<h1 id="firstHeading" class="firstHeading">"""+names[0]+"""</h1>'+
           '<div id="bodyContent">'+
           '<p>This is where some information about the location goes!</p>'
           '</div>'+
@@ -132,7 +135,6 @@ r = requests.get(thisurl)
 
 # store the json text
 data = r.json()
-
 
 # Write the data to a file
 if r.status_code == 200:
