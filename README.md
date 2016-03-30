@@ -3,6 +3,7 @@ My Undergraduate Research with Professor Dong Wang
 Notes for 3/30/2016
 - Markers' info box now correctly displays venues Name
 - Must implement method to include important information regarding venue in the body of the info box
+- Explore how to use gitignore to store things like API Keys
 
 Notes for 3/23/2016
 - Markers are displayed with an info box
