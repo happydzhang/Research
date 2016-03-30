@@ -54,7 +54,7 @@ def makeHTML(mydict):
         height: 100%;
       }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5vINbNGus-8N1eH5HMH9YxhUwHrevDwQ"></script>
     <script>
       var map;
 
