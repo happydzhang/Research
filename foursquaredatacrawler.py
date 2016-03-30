@@ -32,13 +32,15 @@ def makeHTML(mydict):
 	lst = mydict['response']['groups'][0]['items']
 	markers = []
 	names = []
+	temp = []
 	for i in lst:
 		tempgeo = {}
 		tempgeo['lat'] = i['venue']['location']['lat']
 		tempgeo['lng'] = i['venue']['location']['lng']
-		names.append(i['venue']['name'])
+		temp.append(i['venue']['name'])
 		markers.append(tempgeo)
 
+	names = json.dumps(temp);
 	message = """
 <!DOCTYPE html>
 <html>
@@ -57,7 +59,7 @@ def makeHTML(mydict):
       var map;
 
       var markers = """+str(markers)+"""
-      var names = ['Chicory Cafe', 'The View', 'Starbucks']
+      var names = """+str(names)+"""
       var infowindow = null;
       function initialize() {
         var myLatLng = {lat: """+str(lat)+""", lng: """+str(lng)+"""}
@@ -69,14 +71,18 @@ def makeHTML(mydict):
         };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-        var contentString = '<div id="content">'+
-          '<div id="siteNotice">'+
-          '</div>'+
-          '<h1 id="firstHeading" class="firstHeading">"""+names[0]+"""</h1>'+
-          '<div id="bodyContent">'+
-          '<p>This is where some information about the location goes!</p>'
-          '</div>'+
-          '</div>';
+        var contentString;
+
+        for (var i = 0; i < names.length; i++){
+          contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+            '<div id="bodyContent">'+
+            '<p>This is where some information about the location goes!</p>'
+            '</div>'+
+            '</div>';
+        }
 
         infowindow = new google.maps.InfoWindow({
           content: contentString

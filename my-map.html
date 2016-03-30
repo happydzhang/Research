@@ -15,8 +15,8 @@
     <script>
       var map;
 
-      var markers = [{'lat': 41.67512488391152, 'lng': -86.25011070512925}, {'lat': 41.66428023614403, 'lng': -86.2359407544136}, {'lat': 41.6992594, 'lng': -86.218751}, {'lat': 41.67517550643066, 'lng': -86.2434840616005}, {'lat': 41.67818843161941, 'lng': -86.25054716029457}, {'lat': 41.76020709982502, 'lng': -86.25134111847728}, {'lat': 41.691955, 'lng': -86.235503}, {'lat': 41.675350310438574, 'lng': -86.25076538647109}, {'lat': 41.676410795664616, 'lng': -86.25124647268512}, {'lat': 41.70008933705676, 'lng': -86.23065948486328}, {'lat': 41.70076221952846, 'lng': -86.21804237365723}, {'lat': 41.67143123260004, 'lng': -86.2522185505122}, {'lat': 41.6841842965649, 'lng': -85.97146415725182}, {'lat': 41.675815, 'lng': -86.250194}, {'lat': 41.62984658093229, 'lng': -86.21615409851074}]
-      var names = ['Chicory Cafe', 'The View', 'Starbucks']
+      var markers = [{'lat': 41.676355808698226, 'lng': -86.25072570905417}, {'lat': 41.683145, 'lng': -86.241598}, {'lat': 41.627510664303244, 'lng': -86.23711452705835}, {'lat': 41.68181184645669, 'lng': -86.25520906104572}, {'lat': 41.67818843161941, 'lng': -86.25054716029457}, {'lat': 41.67517550643066, 'lng': -86.2434840616005}, {'lat': 41.70008933705676, 'lng': -86.23065948486328}, {'lat': 41.676410795664616, 'lng': -86.25124647268512}, {'lat': 41.67728679717112, 'lng': -86.25215407653846}, {'lat': 41.70076221952846, 'lng': -86.21804237365723}, {'lat': 41.695963, 'lng': -86.216174}, {'lat': 41.63330687378029, 'lng': -86.2546387450969}, {'lat': 41.69839483032745, 'lng': -86.21622936100471}, {'lat': 41.69148192835254, 'lng': -86.23546744592257}, {'lat': 41.62984658093229, 'lng': -86.21615409851074}]
+      var names = ["Cafe Navarre", "Rocco's Pizza", "Martin's Supermarket", "Frank's Place", "Morris Performing Arts Center", "The View", "Rolf's Sports Recreation Center", "Woochi Japanese Fusion and Bar", "Fiddler's Hearth", "Martin's Super Markets", "Mitch's Corner Sports Bar", "AMC Showplace South Bend 16", "Nick's Patio", "Brother's Bar And Grill", "Wings Etc. South Bend"]
       var infowindow = null;
       function initialize() {
         var myLatLng = {lat: 41.68338, lng: -86.25001}
@@ -28,14 +28,18 @@
         };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-        var contentString = '<div id="content">'+
-          '<div id="siteNotice">'+
-          '</div>'+
-          '<h1 id="firstHeading" class="firstHeading">Chicory Cafe</h1>'+
-          '<div id="bodyContent">'+
-          '<p>This is where some information about the location goes!</p>'
-          '</div>'+
-          '</div>';
+        var contentString;
+
+        for (var i = 0; i < names.length; i++){
+          contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+            '<div id="bodyContent">'+
+            '<p>This is where some information about the location goes!</p>'
+            '</div>'+
+            '</div>';
+        }
 
         infowindow = new google.maps.InfoWindow({
           content: contentString
