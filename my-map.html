@@ -15,35 +15,19 @@
     <script>
       var map;
 
-      var markers = [{'lat': 41.676355808698226, 'lng': -86.25072570905417}, {'lat': 41.683145, 'lng': -86.241598}, {'lat': 41.627510664303244, 'lng': -86.23711452705835}, {'lat': 41.68181184645669, 'lng': -86.25520906104572}, {'lat': 41.67818843161941, 'lng': -86.25054716029457}, {'lat': 41.67517550643066, 'lng': -86.2434840616005}, {'lat': 41.70008933705676, 'lng': -86.23065948486328}, {'lat': 41.676410795664616, 'lng': -86.25124647268512}, {'lat': 41.67728679717112, 'lng': -86.25215407653846}, {'lat': 41.70076221952846, 'lng': -86.21804237365723}, {'lat': 41.695963, 'lng': -86.216174}, {'lat': 41.63330687378029, 'lng': -86.2546387450969}, {'lat': 41.69839483032745, 'lng': -86.21622936100471}, {'lat': 41.69148192835254, 'lng': -86.23546744592257}, {'lat': 41.62984658093229, 'lng': -86.21615409851074}]
-      var names = ["Cafe Navarre", "Rocco's Pizza", "Martin's Supermarket", "Frank's Place", "Morris Performing Arts Center", "The View", "Rolf's Sports Recreation Center", "Woochi Japanese Fusion and Bar", "Fiddler's Hearth", "Martin's Super Markets", "Mitch's Corner Sports Bar", "AMC Showplace South Bend 16", "Nick's Patio", "Brother's Bar And Grill", "Wings Etc. South Bend"]
-      var infowindow = null;
+      var markers = [{'lat': 41.70008933705676, 'lng': -86.23065948486328}, {'lat': 41.695963, 'lng': -86.216174}, {'lat': 41.68181184645669, 'lng': -86.25520906104572}, {'lat': 41.67728679717112, 'lng': -86.25215407653846}, {'lat': 41.69839483032745, 'lng': -86.21622936100471}, {'lat': 41.67517550643066, 'lng': -86.2434840616005}, {'lat': 41.70076221952846, 'lng': -86.21804237365723}, {'lat': 41.676355808698226, 'lng': -86.25072570905417}, {'lat': 41.665287061812265, 'lng': -86.25305174527173}, {'lat': 41.63330687378029, 'lng': -86.2546387450969}, {'lat': 41.69265728725174, 'lng': -86.23573534829409}, {'lat': 41.69221641140137, 'lng': -86.23507551213295}, {'lat': 41.62763897414179, 'lng': -86.2341924097405}, {'lat': 41.67930344051045, 'lng': -86.24458029506737}, {'lat': 41.627510664303244, 'lng': -86.23711452705835}]
+      var names = ["Rolf's Sports Recreation Center", "Mitch's Corner Sports Bar", "Frank's Place", "Fiddler's Hearth", "Nick's Patio", "The View", "Martin's Super Markets", "Cafe Navarre", "The Drop Comedy Club", "AMC Showplace South Bend 16", "O'Rourke's Public House", "Blaze Pizza", "Hacienda Mexican Restaurant", "Corby's", "Martin's Supermarket"]
       function initialize() {
         var myLatLng = {lat: 41.68338, lng: -86.25001}
         var mapOptions = {
           zoom: 13,
-          maxZoom: 16,
+          maxZoom: 17,
           center: myLatLng,
           mapTypeId: google.maps.MapTypeId.HYBRID
         };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-        var contentString;
-
-        for (var i = 0; i < names.length; i++){
-          contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-            '<div id="bodyContent">'+
-            '<p>This is where some information about the location goes!</p>'
-            '</div>'+
-            '</div>';
-        }
-
-        infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+        infowindow = new google.maps.InfoWindow();
 
         for (var i = 0; i < markers.length; i++){
           var latlng = {lat: markers[i].lat, lng: markers[i].lng};
@@ -51,7 +35,18 @@
             map: map,
             position: latlng,
           });
+
+          marker.contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+            '<div id="bodyContent">'+
+            '<p>This is where some information about the location goes!</p>'
+            '</div>'+
+            '</div>';
+
           google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(this.contentString);
             infowindow.open(map, this);
           });
         }

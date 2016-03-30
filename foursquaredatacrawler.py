@@ -1,5 +1,5 @@
 # Brian Mann
-# 3/23/2016
+# 3/29/2016
 
 import webbrowser, urllib2, time, datetime, json, requests
 
@@ -60,33 +60,17 @@ def makeHTML(mydict):
 
       var markers = """+str(markers)+"""
       var names = """+str(names)+"""
-      var infowindow = null;
       function initialize() {
         var myLatLng = {lat: """+str(lat)+""", lng: """+str(lng)+"""}
         var mapOptions = {
           zoom: 13,
-          maxZoom: 16,
+          maxZoom: 17,
           center: myLatLng,
           mapTypeId: google.maps.MapTypeId.HYBRID
         };
         map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-        var contentString;
-
-        for (var i = 0; i < names.length; i++){
-          contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-            '<div id="bodyContent">'+
-            '<p>This is where some information about the location goes!</p>'
-            '</div>'+
-            '</div>';
-        }
-
-        infowindow = new google.maps.InfoWindow({
-          content: contentString
-        });
+        infowindow = new google.maps.InfoWindow();
 
         for (var i = 0; i < markers.length; i++){
           var latlng = {lat: markers[i].lat, lng: markers[i].lng};
@@ -94,7 +78,18 @@ def makeHTML(mydict):
             map: map,
             position: latlng,
           });
+
+          marker.contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+            '<div id="bodyContent">'+
+            '<p>This is where some information about the location goes!</p>'
+            '</div>'+
+            '</div>';
+
           google.maps.event.addListener(marker, 'click', function() {
+            infowindow.setContent(this.contentString);
             infowindow.open(map, this);
           });
         }
