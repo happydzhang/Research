@@ -1,0 +1,1690 @@
+{
+    "meta": {
+        "code": 200, 
+        "requestId": "56f2d9b3498ee61b4d114a35"
+    }, 
+    "response": {
+        "geocode": {
+            "cc": "US", 
+            "center": {
+                "lat": 41.68338, 
+                "lng": -86.25001
+            }, 
+            "displayString": "South Bend, IN, United States", 
+            "geometry": {
+                "bounds": {
+                    "ne": {
+                        "lat": 41.760253999999996, 
+                        "lng": -86.19128599999999
+                    }, 
+                    "sw": {
+                        "lat": 41.597342999999995, 
+                        "lng": -86.360483
+                    }
+                }
+            }, 
+            "longId": "72057594042854499", 
+            "slug": "south-bend-indiana", 
+            "what": "", 
+            "where": "south bend in"
+        }, 
+        "groups": [
+            {
+                "items": [
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4b76ea0bf964a520fa692ee3-0", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/516d7e76e4b0f8c888bb922b", 
+                                "createdAt": 1366130294, 
+                                "id": "516d7e76e4b0f8c888bb922b", 
+                                "likes": {
+                                    "count": 5, 
+                                    "groups": [], 
+                                    "summary": "5 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "Phil, the new owner, is a great guy and really doing some neat stuff here. The new food offerings are wonderful, especially the Cajun crawfish mac and cheese.", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Jason", 
+                                    "gender": "male", 
+                                    "id": "6529782", 
+                                    "lastName": "Barr", 
+                                    "photo": {
+                                        "prefix": "https://irs1.4sqi.net/img/user/", 
+                                        "suffix": "/PGPH153EDTY2R2II.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/cajun_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d17a941735", 
+                                    "name": "Cajun / Creole Restaurant", 
+                                    "pluralName": "Cajun / Creole Restaurants", 
+                                    "primary": true, 
+                                    "shortName": "Cajun / Creole"
+                                }
+                            ], 
+                            "contact": {
+                                "facebook": "184069361623916", 
+                                "facebookName": "Chicory Cafe", 
+                                "facebookUsername": "thechicorycafe", 
+                                "formattedPhone": "(574) 234-1141", 
+                                "phone": "5742341141", 
+                                "twitter": "chicorycafe1"
+                            }, 
+                            "delivery": {
+                                "id": "283940", 
+                                "provider": {
+                                    "name": "grubhub"
+                                }, 
+                                "url": "http://www.grubhub.com/order_redir.jsp?custId=283940&affId=1131"
+                            }, 
+                            "hasMenu": true, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Open until 10:00 PM"
+                            }, 
+                            "id": "4b76ea0bf964a520fa692ee3", 
+                            "location": {
+                                "address": "105 E Jefferson Blvd", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "105 E Jefferson Blvd", 
+                                    "South Bend, IN 46601", 
+                                    "United States"
+                                ], 
+                                "lat": 41.67512488391152, 
+                                "lng": -86.25011070512925, 
+                                "postalCode": "46601", 
+                                "state": "IN"
+                            }, 
+                            "menu": {
+                                "anchor": "View Menu", 
+                                "label": "Menu", 
+                                "mobileUrl": "https://foursquare.com/v/4b76ea0bf964a520fa692ee3/device_menu", 
+                                "type": "Menu", 
+                                "url": "https://foursquare.com/v/chicory-cafe/4b76ea0bf964a520fa692ee3/menu"
+                            }, 
+                            "name": "Chicory Cafe", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Moderate", 
+                                "tier": 2
+                            }, 
+                            "rating": 8.9, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 84, 
+                            "stats": {
+                                "checkinsCount": 1733, 
+                                "tipCount": 27, 
+                                "usersCount": 469
+                            }, 
+                            "url": "http://chicorycafe.net/", 
+                            "venuePage": {
+                                "id": "56358151"
+                            }, 
+                            "verified": true
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-5573595b498ef7e23f250e5e-1", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/5603d380498e60dcf3c93e28", 
+                                "createdAt": 1443091328, 
+                                "id": "5603d380498e60dcf3c93e28", 
+                                "logView": true, 
+                                "text": "Brisket is wonderful", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Sandy", 
+                                    "gender": "female", 
+                                    "id": "7215744", 
+                                    "lastName": "Piehl", 
+                                    "photo": {
+                                        "prefix": "https://irs2.4sqi.net/img/user/", 
+                                        "suffix": "/JACH4P00S3GSGPTB.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/brewery_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "50327c8591d4c4b30a586d5d", 
+                                    "name": "Brewery", 
+                                    "pluralName": "Breweries", 
+                                    "primary": true, 
+                                    "shortName": "Brewery"
+                                }
+                            ], 
+                            "contact": {}, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "id": "5573595b498ef7e23f250e5e", 
+                            "location": {
+                                "address": "1047 Lincoln Way E", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "1047 Lincoln Way E", 
+                                    "South Bend, IN 46601", 
+                                    "United States"
+                                ], 
+                                "lat": 41.66428023614403, 
+                                "lng": -86.2359407544136, 
+                                "postalCode": "46601", 
+                                "state": "IN"
+                            }, 
+                            "name": "Crooked Ewe Brewery and Ale House", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Moderate", 
+                                "tier": 2
+                            }, 
+                            "rating": 8.5, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 43, 
+                            "stats": {
+                                "checkinsCount": 235, 
+                                "tipCount": 4, 
+                                "usersCount": 121
+                            }, 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4d2b15ee068e8cfaeba6df4c-2", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4d8f9e52d4ec8cfa1a579089", 
+                                "createdAt": 1301257810, 
+                                "id": "4d8f9e52d4ec8cfa1a579089", 
+                                "likes": {
+                                    "count": 4, 
+                                    "groups": [], 
+                                    "summary": "4 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "Not bad, but it's a rip-off", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Ben", 
+                                    "gender": "male", 
+                                    "id": "4982121", 
+                                    "lastName": "Rosenberg", 
+                                    "photo": {
+                                        "prefix": "https://irs1.4sqi.net/img/user/", 
+                                        "suffix": "/0NKLT3S03YXUFZNP.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/coffeeshop_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d1e0931735", 
+                                    "name": "Coffee Shop", 
+                                    "pluralName": "Coffee Shops", 
+                                    "primary": true, 
+                                    "shortName": "Coffee Shop"
+                                }
+                            ], 
+                            "contact": {
+                                "formattedPhone": "(574) 272-2622", 
+                                "phone": "5742722622", 
+                                "twitter": "einsteinbros"
+                            }, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Open until 6:00 PM"
+                            }, 
+                            "id": "4d2b15ee068e8cfaeba6df4c", 
+                            "location": {
+                                "address": "2019 S Bend Ave", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "2019 S Bend Ave", 
+                                    "South Bend, IN 46637", 
+                                    "United States"
+                                ], 
+                                "lat": 41.6992594, 
+                                "lng": -86.218751, 
+                                "postalCode": "46637", 
+                                "state": "IN"
+                            }, 
+                            "name": "Einstein Bros Bagels", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Cheap", 
+                                "tier": 1
+                            }, 
+                            "rating": 7.9, 
+                            "ratingColor": "C5DE35", 
+                            "ratingSignals": 30, 
+                            "stats": {
+                                "checkinsCount": 1130, 
+                                "tipCount": 7, 
+                                "usersCount": 369
+                            }, 
+                            "storeId": "4024", 
+                            "url": "http://www.einsteinbros.com", 
+                            "verified": true
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4cabf7dc97c8a1cd5a0c9da5-3", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/51302de1e4b0f82cde48f789", 
+                                "createdAt": 1362111969, 
+                                "id": "51302de1e4b0f82cde48f789", 
+                                "likes": {
+                                    "count": 1, 
+                                    "groups": [], 
+                                    "summary": "1 like"
+                                }, 
+                                "logView": true, 
+                                "text": "Get a burger!", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Cathy", 
+                                    "gender": "female", 
+                                    "id": "1078021", 
+                                    "lastName": "Dietz", 
+                                    "photo": {
+                                        "prefix": "https://irs2.4sqi.net/img/user/", 
+                                        "suffix": "/0YI4C1CM0PEWTXKP.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/nightlife/pub_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d116941735", 
+                                    "name": "Bar", 
+                                    "pluralName": "Bars", 
+                                    "primary": true, 
+                                    "shortName": "Bar"
+                                }
+                            ], 
+                            "contact": {
+                                "formattedPhone": "(574) 288-8439", 
+                                "phone": "5742888439"
+                            }, 
+                            "hasMenu": true, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "id": "4cabf7dc97c8a1cd5a0c9da5", 
+                            "location": {
+                                "address": "515 E Jefferson Blvd", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "crossStreet": "at Niles Ave", 
+                                "formattedAddress": [
+                                    "515 E Jefferson Blvd (at Niles Ave)", 
+                                    "South Bend, IN 46617", 
+                                    "United States"
+                                ], 
+                                "lat": 41.67517550643066, 
+                                "lng": -86.2434840616005, 
+                                "postalCode": "46617", 
+                                "state": "IN"
+                            }, 
+                            "menu": {
+                                "anchor": "View Menu", 
+                                "label": "Menu", 
+                                "mobileUrl": "https://foursquare.com/v/4cabf7dc97c8a1cd5a0c9da5/device_menu", 
+                                "type": "Menu", 
+                                "url": "https://foursquare.com/v/the-view/4cabf7dc97c8a1cd5a0c9da5/menu"
+                            }, 
+                            "name": "The View", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Moderate", 
+                                "tier": 2
+                            }, 
+                            "rating": 7.9, 
+                            "ratingColor": "C5DE35", 
+                            "ratingSignals": 10, 
+                            "stats": {
+                                "checkinsCount": 210, 
+                                "tipCount": 4, 
+                                "usersCount": 89
+                            }, 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "rawLikesReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4b774b36f964a520918f2ee3-4", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4f3ae4fbe4b0823046897534", 
+                                "createdAt": 1329259771, 
+                                "id": "4f3ae4fbe4b0823046897534", 
+                                "likes": {
+                                    "count": 4, 
+                                    "groups": [], 
+                                    "summary": "4 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "Check morriscenter.org for show updates.", 
+                                "todo": {
+                                    "count": 1
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "denise", 
+                                    "gender": "female", 
+                                    "id": "991826", 
+                                    "lastName": "zigler", 
+                                    "photo": {
+                                        "prefix": "https://irs1.4sqi.net/img/user/", 
+                                        "suffix": "/VFEY0ALYISK1T33B.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/arts_entertainment/performingarts_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d1f2931735", 
+                                    "name": "Performing Arts Venue", 
+                                    "pluralName": "Performing Arts Venues", 
+                                    "primary": true, 
+                                    "shortName": "Performing Arts"
+                                }
+                            ], 
+                            "contact": {
+                                "facebook": "33716899884", 
+                                "facebookName": "Morris Performing Arts Center", 
+                                "facebookUsername": "sbmpac", 
+                                "formattedPhone": "(574) 235-9190", 
+                                "phone": "5742359190", 
+                                "twitter": "MorrisPAC"
+                            }, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Open until 5:00 PM"
+                            }, 
+                            "id": "4b774b36f964a520918f2ee3", 
+                            "location": {
+                                "address": "211 N Michigan St", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "crossStreet": "Colfax Ave.", 
+                                "formattedAddress": [
+                                    "211 N Michigan St (Colfax Ave.)", 
+                                    "South Bend, IN 46601", 
+                                    "United States"
+                                ], 
+                                "lat": 41.67818843161941, 
+                                "lng": -86.25054716029457, 
+                                "postalCode": "46601", 
+                                "state": "IN"
+                            }, 
+                            "name": "Morris Performing Arts Center", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "rating": 8.3, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 76, 
+                            "stats": {
+                                "checkinsCount": 2284, 
+                                "tipCount": 7, 
+                                "usersCount": 1138
+                            }, 
+                            "storeId": "", 
+                            "venuePage": {
+                                "id": "68308606"
+                            }, 
+                            "verified": true
+                        }
+                    }, 
+                    {
+                        "flags": {
+                            "outsideRadius": true
+                        }, 
+                        "reasons": {
+                            "count": 0, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "This spot is popular", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4d29d5486e27a143be822824-5", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4f401797e4b020398c306170", 
+                                "createdAt": 1329600407, 
+                                "id": "4f401797e4b020398c306170", 
+                                "likes": {
+                                    "count": 4, 
+                                    "groups": [], 
+                                    "summary": "4 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "Mike the owner is great! He will order what you like if he doesn't carry it! Gunballhead beer rocks!", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Tracy", 
+                                    "gender": "female", 
+                                    "id": "20616587", 
+                                    "lastName": "Friend", 
+                                    "photo": {
+                                        "prefix": "https://irs3.4sqi.net/img/user/", 
+                                        "suffix": "/0PSDN132CY3ZVHG1.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_liquor_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d186941735", 
+                                    "name": "Liquor Store", 
+                                    "pluralName": "Liquor Stores", 
+                                    "primary": true, 
+                                    "shortName": "Liquor Store"
+                                }
+                            ], 
+                            "contact": {}, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "id": "4d29d5486e27a143be822824", 
+                            "location": {
+                                "address": "50505 IN-933", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "50505 IN-933", 
+                                    "South Bend, IN 46637", 
+                                    "United States"
+                                ], 
+                                "lat": 41.76020709982502, 
+                                "lng": -86.25134111847728, 
+                                "postalCode": "46637", 
+                                "state": "IN"
+                            }, 
+                            "name": "Michiana Mini Mart", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "rating": 8.4, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 10, 
+                            "stats": {
+                                "checkinsCount": 140, 
+                                "tipCount": 4, 
+                                "usersCount": 50
+                            }, 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4b4bbd58f964a520f1a526e3-6", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4cfd781cd8468cfae549006c", 
+                                "createdAt": 1291679772, 
+                                "id": "4cfd781cd8468cfae549006c", 
+                                "likes": {
+                                    "count": 8, 
+                                    "groups": [], 
+                                    "summary": "8 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "Delicious! Best addition", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Crispy", 
+                                    "gender": "male", 
+                                    "id": "3912652", 
+                                    "photo": {
+                                        "prefix": "https://irs3.4sqi.net/img/user/", 
+                                        "suffix": "/J3WBRR1TQHN3IR4D.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/mexican_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d1c1941735", 
+                                    "name": "Mexican Restaurant", 
+                                    "pluralName": "Mexican Restaurants", 
+                                    "primary": true, 
+                                    "shortName": "Mexican"
+                                }
+                            ], 
+                            "contact": {
+                                "formattedPhone": "(574) 251-0175", 
+                                "phone": "5742510175", 
+                                "twitter": "chipotletweets"
+                            }, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Open until 10:00 PM"
+                            }, 
+                            "id": "4b4bbd58f964a520f1a526e3", 
+                            "location": {
+                                "address": "1251 N Eddy St", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "crossStreet": "Eddy Street Commons", 
+                                "formattedAddress": [
+                                    "1251 N Eddy St (Eddy Street Commons)", 
+                                    "South Bend, IN 46617", 
+                                    "United States"
+                                ], 
+                                "lat": 41.691955, 
+                                "lng": -86.235503, 
+                                "postalCode": "46617", 
+                                "state": "IN"
+                            }, 
+                            "name": "Chipotle Mexican Grill", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Cheap", 
+                                "tier": 1
+                            }, 
+                            "rating": 8.3, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 41, 
+                            "stats": {
+                                "checkinsCount": 2555, 
+                                "tipCount": 12, 
+                                "usersCount": 987
+                            }, 
+                            "storeId": "1268", 
+                            "url": "http://www.chipotle.com", 
+                            "verified": true
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4af71235f964a5207b0522e3-7", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4c365a32c44a9521b96a3d52", 
+                                "createdAt": 1278630450, 
+                                "id": "4c365a32c44a9521b96a3d52", 
+                                "logView": true, 
+                                "text": "Sign up a friend and get $$$ off your monthly membership as long as they remain a member.", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Edgar", 
+                                    "gender": "male", 
+                                    "id": "994588", 
+                                    "lastName": "Diaz", 
+                                    "photo": {
+                                        "prefix": "https://irs0.4sqi.net/img/user/", 
+                                        "suffix": "/T25VE2MB1G3KSNML.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/building/gym_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d175941735", 
+                                    "name": "Gym / Fitness Center", 
+                                    "pluralName": "Gyms or Fitness Centers", 
+                                    "primary": true, 
+                                    "shortName": "Gym / Fitness"
+                                }
+                            ], 
+                            "contact": {
+                                "twitter": "livefitnow"
+                            }, 
+                            "hasMenu": true, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Likely open"
+                            }, 
+                            "id": "4af71235f964a5207b0522e3", 
+                            "location": {
+                                "address": "111 W Jefferson Blvd", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "111 W Jefferson Blvd", 
+                                    "South Bend, IN 46601", 
+                                    "United States"
+                                ], 
+                                "lat": 41.675350310438574, 
+                                "lng": -86.25076538647109, 
+                                "postalCode": "46601", 
+                                "state": "IN"
+                            }, 
+                            "menu": {
+                                "anchor": "View Prices", 
+                                "label": "Prices", 
+                                "mobileUrl": "https://foursquare.com/v/4af71235f964a5207b0522e3/device_menu", 
+                                "type": "Prices", 
+                                "url": "https://foursquare.com/v/memorial-health--lifestyle-center/4af71235f964a5207b0522e3/menu"
+                            }, 
+                            "name": "Memorial Health & Lifestyle Center", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "rating": 7.9, 
+                            "ratingColor": "C5DE35", 
+                            "ratingSignals": 14, 
+                            "stats": {
+                                "checkinsCount": 1224, 
+                                "tipCount": 2, 
+                                "usersCount": 119
+                            }, 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-5251d01911d22c57149eaeb3-8", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/546d45a4498ecadf47ded0d7", 
+                                "createdAt": 1416447396, 
+                                "id": "546d45a4498ecadf47ded0d7", 
+                                "likes": {
+                                    "count": 3, 
+                                    "groups": [], 
+                                    "summary": "3 likes"
+                                }, 
+                                "logView": true, 
+                                "photo": {
+                                    "createdAt": 1416447399, 
+                                    "height": 1728, 
+                                    "id": "546d45a7498e1b0621289766", 
+                                    "prefix": "https://irs2.4sqi.net/img/general/", 
+                                    "source": {
+                                        "name": "Foursquare for Windows"
+                                    }, 
+                                    "suffix": "/1629617_ExiqjYglcQ20oGqcB3FHCfxqdHCw3SJVbrjP2b2zKNw.jpg", 
+                                    "width": 3072
+                                }, 
+                                "photourl": "https://irs2.4sqi.net/img/general/original/1629617_ExiqjYglcQ20oGqcB3FHCfxqdHCw3SJVbrjP2b2zKNw.jpg", 
+                                "text": "The beauty and the beast sushi roll is good. The dragon well tea is also pretty good.", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "JD", 
+                                    "gender": "male", 
+                                    "id": "1629617", 
+                                    "lastName": "De Souza", 
+                                    "photo": {
+                                        "prefix": "https://irs0.4sqi.net/img/user/", 
+                                        "suffix": "/1629617-GGOWFYLGB4BTIGUY.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/japanese_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d111941735", 
+                                    "name": "Japanese Restaurant", 
+                                    "pluralName": "Japanese Restaurants", 
+                                    "primary": true, 
+                                    "shortName": "Japanese"
+                                }
+                            ], 
+                            "contact": {}, 
+                            "delivery": {
+                                "id": "283834", 
+                                "provider": {
+                                    "name": "grubhub"
+                                }, 
+                                "url": "http://www.grubhub.com/order_redir.jsp?custId=283834&affId=1131"
+                            }, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Open until 10:00 PM"
+                            }, 
+                            "id": "5251d01911d22c57149eaeb3", 
+                            "location": {
+                                "address": "123 W Washington St", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "123 W Washington St", 
+                                    "South Bend, IN 46601", 
+                                    "United States"
+                                ], 
+                                "lat": 41.676410795664616, 
+                                "lng": -86.25124647268512, 
+                                "postalCode": "46601", 
+                                "state": "IN"
+                            }, 
+                            "name": "Woochi Japanese Fusion and Bar", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Moderate", 
+                                "tier": 2
+                            }, 
+                            "rating": 8.8, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 70, 
+                            "stats": {
+                                "checkinsCount": 575, 
+                                "tipCount": 24, 
+                                "usersCount": 278
+                            }, 
+                            "url": "http://notjustsushi.com", 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "flags": {
+                            "outsideRadius": true
+                        }, 
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4b6e0cdcf964a5207fa62ce3-9", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/503c943de4b0c8dfe641470a", 
+                                "createdAt": 1346147389, 
+                                "id": "503c943de4b0c8dfe641470a", 
+                                "logView": true, 
+                                "text": "Email kbeyerl1[at]nd[dot]edu if you would like to get on a listserv of pickup floor hockey players", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "M", 
+                                    "gender": "male", 
+                                    "id": "736951", 
+                                    "lastName": "B", 
+                                    "photo": {
+                                        "prefix": "https://irs3.4sqi.net/img/user/", 
+                                        "suffix": "/2CXTAFJWQIQIOLH0.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/building/gym_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d176941735", 
+                                    "name": "Gym", 
+                                    "pluralName": "Gyms", 
+                                    "primary": true, 
+                                    "shortName": "Gym"
+                                }
+                            ], 
+                            "contact": {}, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Likely open"
+                            }, 
+                            "id": "4b6e0cdcf964a5207fa62ce3", 
+                            "location": {
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "South Bend, IN 46637", 
+                                    "United States"
+                                ], 
+                                "lat": 41.70008933705676, 
+                                "lng": -86.23065948486328, 
+                                "postalCode": "46637", 
+                                "state": "IN"
+                            }, 
+                            "name": "Rolf's Sports Recreation Center", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "rating": 7.7, 
+                            "ratingColor": "C5DE35", 
+                            "ratingSignals": 33, 
+                            "stats": {
+                                "checkinsCount": 3423, 
+                                "tipCount": 6, 
+                                "usersCount": 306
+                            }, 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "rawLikesReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4b6dfebbf964a520eda12ce3-10", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4e6a896e62e1cd1d54bf1221", 
+                                "createdAt": 1315604846, 
+                                "id": "4e6a896e62e1cd1d54bf1221", 
+                                "likes": {
+                                    "count": 14, 
+                                    "groups": [], 
+                                    "summary": "14 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "I highly recommend putting food in your cart that you intend to purchase, and then taking it to the registers to purchase.", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Marc", 
+                                    "gender": "male", 
+                                    "id": "7070599", 
+                                    "lastName": "Rosa", 
+                                    "photo": {
+                                        "prefix": "https://irs1.4sqi.net/img/user/", 
+                                        "suffix": "/LOLQ55GJ31PDQIL5.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/shops/food_grocery_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "52f2ab2ebcbc57f1066b8b46", 
+                                    "name": "Supermarket", 
+                                    "pluralName": "Supermarkets", 
+                                    "primary": true, 
+                                    "shortName": "Supermarket"
+                                }
+                            ], 
+                            "contact": {
+                                "formattedPhone": "(574) 272-6922", 
+                                "phone": "5742726922"
+                            }, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Likely open"
+                            }, 
+                            "id": "4b6dfebbf964a520eda12ce3", 
+                            "location": {
+                                "address": "2081 S Bend Ave", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "2081 S Bend Ave", 
+                                    "South Bend, IN 46637", 
+                                    "United States"
+                                ], 
+                                "lat": 41.70076221952846, 
+                                "lng": -86.21804237365723, 
+                                "postalCode": "46637", 
+                                "state": "IN"
+                            }, 
+                            "name": "Martin's Super Markets", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "rating": 7.7, 
+                            "ratingColor": "C5DE35", 
+                            "ratingSignals": 61, 
+                            "stats": {
+                                "checkinsCount": 5687, 
+                                "tipCount": 12, 
+                                "usersCount": 1020
+                            }, 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4bc37826b492d13aaacca860-11", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4dd6ba53d4c05d5096d802fc", 
+                                "createdAt": 1305918035, 
+                                "id": "4dd6ba53d4c05d5096d802fc", 
+                                "likes": {
+                                    "count": 2, 
+                                    "groups": [], 
+                                    "summary": "2 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "You will not be sorry you ate here! It's just Fresh, flavorful and a great price! Can't beat it!!!", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Tiffany", 
+                                    "gender": "female", 
+                                    "id": "8885495", 
+                                    "lastName": "Phillips", 
+                                    "photo": {
+                                        "prefix": "https://irs2.4sqi.net/img/user/", 
+                                        "suffix": "/GQ2VJCJLAK0JNSTM.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/mexican_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d1c1941735", 
+                                    "name": "Mexican Restaurant", 
+                                    "pluralName": "Mexican Restaurants", 
+                                    "primary": true, 
+                                    "shortName": "Mexican"
+                                }
+                            ], 
+                            "contact": {
+                                "formattedPhone": "(574) 234-1546", 
+                                "phone": "5742341546"
+                            }, 
+                            "hereNow": {
+                                "count": 1, 
+                                "groups": [
+                                    {
+                                        "count": 1, 
+                                        "items": [], 
+                                        "name": "Other people here", 
+                                        "type": "others"
+                                    }
+                                ], 
+                                "summary": "One other person is here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Open until 9:00 PM"
+                            }, 
+                            "id": "4bc37826b492d13aaacca860", 
+                            "location": {
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "South Bend, IN 46601", 
+                                    "United States"
+                                ], 
+                                "lat": 41.67143123260004, 
+                                "lng": -86.2522185505122, 
+                                "postalCode": "46601", 
+                                "state": "IN"
+                            }, 
+                            "name": "Flamingo's Grocery & Restaurant", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Cheap", 
+                                "tier": 1
+                            }, 
+                            "rating": 7.9, 
+                            "ratingColor": "C5DE35", 
+                            "ratingSignals": 28, 
+                            "stats": {
+                                "checkinsCount": 867, 
+                                "tipCount": 9, 
+                                "usersCount": 267
+                            }, 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "flags": {
+                            "outsideRadius": true
+                        }, 
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "rawLikesReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4d4aa50fbebd2d43b84ba830-12", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4e42ae1e922ec89fd0bd7b5f", 
+                                "createdAt": 1312992798, 
+                                "entities": [
+                                    {
+                                        "indices": [
+                                            60, 
+                                            87
+                                        ], 
+                                        "object": {
+                                            "url": "http://www.premierarts.org/"
+                                        }, 
+                                        "type": "url"
+                                    }
+                                ], 
+                                "id": "4e42ae1e922ec89fd0bd7b5f", 
+                                "likes": {
+                                    "count": 3, 
+                                    "groups": [], 
+                                    "summary": "3 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "Make sure to catch a production by Premier Arts.  Check out http://www.premierarts.org/ for upcoming shows.", 
+                                "todo": {
+                                    "count": 1
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Geoff", 
+                                    "gender": "male", 
+                                    "id": "2924603", 
+                                    "photo": {
+                                        "prefix": "https://irs2.4sqi.net/img/user/", 
+                                        "suffix": "/551SDKRI3M0G3VKJ.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/arts_entertainment/performingarts_theater_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d137941735", 
+                                    "name": "Theater", 
+                                    "pluralName": "Theaters", 
+                                    "primary": true, 
+                                    "shortName": "Theater"
+                                }
+                            ], 
+                            "contact": {
+                                "formattedPhone": "(574) 293-4469", 
+                                "phone": "5742934469"
+                            }, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Likely open"
+                            }, 
+                            "id": "4d4aa50fbebd2d43b84ba830", 
+                            "location": {
+                                "address": "410 S Main St", 
+                                "cc": "US", 
+                                "city": "Elkhart", 
+                                "country": "United States", 
+                                "crossStreet": "at Franklin St.", 
+                                "formattedAddress": [
+                                    "410 S Main St (at Franklin St.)", 
+                                    "Elkhart, IN 46516", 
+                                    "United States"
+                                ], 
+                                "lat": 41.6841842965649, 
+                                "lng": -85.97146415725182, 
+                                "postalCode": "46516", 
+                                "state": "IN"
+                            }, 
+                            "name": "The Lerner", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "rating": 8.2, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 49, 
+                            "stats": {
+                                "checkinsCount": 1204, 
+                                "tipCount": 15, 
+                                "usersCount": 469
+                            }, 
+                            "verified": true
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4b47cb87f964a520063f26e3-13", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4cacc979965c9c748f40ccfa", 
+                                "createdAt": 1286392185, 
+                                "id": "4cacc979965c9c748f40ccfa", 
+                                "likes": {
+                                    "count": 9, 
+                                    "groups": [], 
+                                    "summary": "9 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "The playcafe is a great kid-friendly cold weather activity!", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Nicole", 
+                                    "gender": "female", 
+                                    "id": "3378495", 
+                                    "lastName": "Lawler", 
+                                    "photo": {
+                                        "prefix": "https://irs3.4sqi.net/img/user/", 
+                                        "suffix": "/ELDP03Z5505VB3JN.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/cafe_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d16d941735", 
+                                    "name": "Caf\u00e9", 
+                                    "pluralName": "Caf\u00e9s", 
+                                    "primary": true, 
+                                    "shortName": "Caf\u00e9"
+                                }
+                            ], 
+                            "contact": {
+                                "formattedPhone": "(800) 301-4961", 
+                                "phone": "8003014961"
+                            }, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Likely open"
+                            }, 
+                            "id": "4b47cb87f964a520063f26e3", 
+                            "location": {
+                                "address": "122 S Michigan St", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "crossStreet": "at Washington St", 
+                                "formattedAddress": [
+                                    "122 S Michigan St (at Washington St)", 
+                                    "South Bend, IN 46601", 
+                                    "United States"
+                                ], 
+                                "lat": 41.675815, 
+                                "lng": -86.250194, 
+                                "postalCode": "46601", 
+                                "state": "IN"
+                            }, 
+                            "name": "South Bend Chocolate Caf\u00e9", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Moderate", 
+                                "tier": 2
+                            }, 
+                            "rating": 8.4, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 114, 
+                            "stats": {
+                                "checkinsCount": 2914, 
+                                "tipCount": 34, 
+                                "usersCount": 1383
+                            }, 
+                            "url": "http://sbchocolate.com", 
+                            "verified": false
+                        }
+                    }, 
+                    {
+                        "reasons": {
+                            "count": 1, 
+                            "items": [
+                                {
+                                    "reasonName": "globalInteractionReason", 
+                                    "summary": "Lots of people like this place", 
+                                    "type": "general"
+                                }
+                            ]
+                        }, 
+                        "referralId": "e-1-4b631836f964a52090622ae3-14", 
+                        "tips": [
+                            {
+                                "canonicalUrl": "https://foursquare.com/item/4ddffe406365004003b0f461", 
+                                "createdAt": 1306525248, 
+                                "id": "4ddffe406365004003b0f461", 
+                                "likes": {
+                                    "count": 5, 
+                                    "groups": [], 
+                                    "summary": "5 likes"
+                                }, 
+                                "logView": true, 
+                                "text": "Voted \"Best Wings\" in the South Bend area (our home market) for 17 straight years. Dude--get the wings...", 
+                                "todo": {
+                                    "count": 0
+                                }, 
+                                "type": "user", 
+                                "user": {
+                                    "firstName": "Wings Etc", 
+                                    "gender": "male", 
+                                    "id": "6583201", 
+                                    "lastName": "Corporate", 
+                                    "photo": {
+                                        "prefix": "https://irs2.4sqi.net/img/user/", 
+                                        "suffix": "/O3U0TLCARLZTH5RO.jpg"
+                                    }
+                                }
+                            }
+                        ], 
+                        "venue": {
+                            "allowMenuUrlEdit": true, 
+                            "categories": [
+                                {
+                                    "icon": {
+                                        "prefix": "https://ss3.4sqi.net/img/categories_v2/food/wings_", 
+                                        "suffix": ".png"
+                                    }, 
+                                    "id": "4bf58dd8d48988d14c941735", 
+                                    "name": "Wings Joint", 
+                                    "pluralName": "Wings Joints", 
+                                    "primary": true, 
+                                    "shortName": "Wings"
+                                }
+                            ], 
+                            "contact": {
+                                "facebook": "111151928907732", 
+                                "facebookName": "Wings Etc. Grill & Pub", 
+                                "facebookUsername": "WingsEtc", 
+                                "formattedPhone": "(574) 291-0077", 
+                                "phone": "5742910077", 
+                                "twitter": "wingsetcbuzz"
+                            }, 
+                            "hereNow": {
+                                "count": 0, 
+                                "groups": [], 
+                                "summary": "Nobody here"
+                            }, 
+                            "hours": {
+                                "isLocalHoliday": false, 
+                                "isOpen": true, 
+                                "status": "Open until 11:00 PM"
+                            }, 
+                            "id": "4b631836f964a52090622ae3", 
+                            "location": {
+                                "address": "2051 E Ireland Rd", 
+                                "cc": "US", 
+                                "city": "South Bend", 
+                                "country": "United States", 
+                                "formattedAddress": [
+                                    "2051 E Ireland Rd", 
+                                    "South Bend, IN 46614", 
+                                    "United States"
+                                ], 
+                                "lat": 41.62984658093229, 
+                                "lng": -86.21615409851074, 
+                                "postalCode": "46614", 
+                                "state": "IN"
+                            }, 
+                            "name": "Wings Etc. South Bend", 
+                            "photos": {
+                                "count": 0, 
+                                "groups": []
+                            }, 
+                            "price": {
+                                "currency": "$", 
+                                "message": "Cheap", 
+                                "tier": 1
+                            }, 
+                            "rating": 8.5, 
+                            "ratingColor": "73CF42", 
+                            "ratingSignals": 57, 
+                            "stats": {
+                                "checkinsCount": 2468, 
+                                "tipCount": 18, 
+                                "usersCount": 630
+                            }, 
+                            "storeId": "", 
+                            "url": "http://www.wingsetc.com", 
+                            "verified": true
+                        }
+                    }
+                ], 
+                "name": "recommended", 
+                "type": "Recommended Places"
+            }
+        ], 
+        "headerFullLocation": "South Bend", 
+        "headerLocation": "South Bend", 
+        "headerLocationGranularity": "city", 
+        "suggestedBounds": {
+            "ne": {
+                "lat": 41.76672512576965, 
+                "lng": -85.9574264375888
+            }, 
+            "sw": {
+                "lat": 41.62332855498765, 
+                "lng": -86.2662562701752
+            }
+        }, 
+        "suggestedFilters": {
+            "filters": [
+                {
+                    "key": "price", 
+                    "name": "$-$$$$"
+                }, 
+                {
+                    "key": "openNow", 
+                    "name": "Open now"
+                }
+            ], 
+            "header": "Tap to show:"
+        }, 
+        "totalResults": 57
+    }
+}
