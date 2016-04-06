@@ -32,15 +32,19 @@ def makeHTML(mydict, api):
 	lst = mydict['response']['groups'][0]['items']
 	markers = []
 	names = []
-	temp = []
+	tempnames = []
+	addresses = []
+	tempaddresses = []
 	for i in lst:
 		tempgeo = {}
 		tempgeo['lat'] = i['venue']['location']['lat']
 		tempgeo['lng'] = i['venue']['location']['lng']
-		temp.append(i['venue']['name'])
+		tempnames.append(i['venue']['name'])
+		tempaddresses.append(i['venue']['location']['formattedAddress'])
 		markers.append(tempgeo)
 
-	names = json.dumps(temp);
+	names = json.dumps(tempnames)
+	addresses = json.dumps(tempaddresses)
 	message = """
 <!DOCTYPE html>
 <html>
@@ -60,6 +64,7 @@ def makeHTML(mydict, api):
 
       var markers = """+str(markers)+"""
       var names = """+str(names)+"""
+      var addresses = """+str(addresses)+"""
       function initialize() {
         var myLatLng = {lat: """+str(lat)+""", lng: """+str(lng)+"""}
         var mapOptions = {
@@ -84,7 +89,7 @@ def makeHTML(mydict, api):
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
             '<div id="bodyContent">'+
-            '<p>This is where some information about the location goes!</p>'
+            '<p>'+addresses[i]+'</p>'
             '</div>'+
             '</div>';
 
