@@ -139,10 +139,12 @@ elif mode == 'n':
 	location = raw_input("Enter a city: ")
 	radius = raw_input("Enter a range: ")
 	section = raw_input("One of food, drinks, coffee, shops, arts, outdoors, sights, trending, or specials, nextVenues, or topPicks: ")
+	if section == "":
+		query = raw_input("Kind of food place: ")
 	limit = raw_input("Maximum number of venues: ")
 
 	# Obtain the data
-	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&radius="+str(radius)+"&limit="+str(limit)
+	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&query="+query+"&radius="+str(radius)+"&limit="+str(limit)
 # wrong input
 else:
 	print "Incorrect input\n"
