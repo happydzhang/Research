@@ -3,27 +3,27 @@
 
 import webbrowser, urllib2, time, datetime, json, requests
 
-def getMap(mydict):
-	lat = mydict['response']['geocode']['center']['lat']
-	lng = mydict['response']['geocode']['center']['lng']
-	lst = mydict['response']['groups'][0]['items']
-	lstlat = []
-	lstlng = []
-	markerstr = ""
-	for lats in lst:
-		lstlat.append(str(lats['venue']['location']['lat']))
-	for lngs in lst:
-		lstlng.append(str(lngs['venue']['location']['lng']))
-	n = len(lstlat)
-	for i in range(n):
-		if i != n-1:
-			markerstr += lstlat[i]+","+lstlng[i]+"|"
-		else:
-			markerstr += lstlat[i]+","+lstlng[i]
-			
-	url = "http://maps.google.com/maps/api/staticmap?center="+str(lat)+","+str(lng)+"&zoom=14&size=400x400&markers="+markerstr
+#def getMap(mydict):
+#	lat = mydict['response']['geocode']['center']['lat']
+#	lng = mydict['response']['geocode']['center']['lng']
+#	lst = mydict['response']['groups'][0]['items']
+#	lstlat = []
+#	lstlng = []
+#	markerstr = ""
+#	for lats in lst:
+#		lstlat.append(str(lats['venue']['location']['lat']))
+#	for lngs in lst:
+#		lstlng.append(str(lngs['venue']['location']['lng']))
+#	n = len(lstlat)
+#	for i in range(n):
+#		if i != n-1:
+#			markerstr += lstlat[i]+","+lstlng[i]+"|"
+#		else:
+#			markerstr += lstlat[i]+","+lstlng[i]
+#			
+#	url = "http://maps.google.com/maps/api/staticmap?center="+str(lat)+","+str(lng)+"&zoom=14&size=400x400&markers="+markerstr
 
-	return url
+#	return url
 
 def makeHTML(mydict, api):
 	f = open('my-map.html', 'w')
