@@ -1,5 +1,5 @@
 # Brian Mann
-# 4/5/2016
+# 4/6/2016
 
 import webbrowser, urllib2, time, datetime, json, requests
 
@@ -35,16 +35,20 @@ def makeHTML(mydict, api):
 	tempnames = []
 	addresses = []
 	tempaddresses = []
+	ratings = []
+	tempratings = []
 	for i in lst:
 		tempgeo = {}
 		tempgeo['lat'] = i['venue']['location']['lat']
 		tempgeo['lng'] = i['venue']['location']['lng']
 		tempnames.append(i['venue']['name'])
 		tempaddresses.append(i['venue']['location']['formattedAddress'])
+		tempratings.append(i['venue']['rating'])
 		markers.append(tempgeo)
 
 	names = json.dumps(tempnames)
 	addresses = json.dumps(tempaddresses)
+	ratings = json.dumps(tempratings)
 	message = """
 <!DOCTYPE html>
 <html>
@@ -65,6 +69,7 @@ def makeHTML(mydict, api):
       var markers = """+str(markers)+"""
       var names = """+str(names)+"""
       var addresses = """+str(addresses)+"""
+      var ratings = """+str(ratings)+"""
       function initialize() {
         var myLatLng = {lat: """+str(lat)+""", lng: """+str(lng)+"""}
         var mapOptions = {
@@ -89,7 +94,8 @@ def makeHTML(mydict, api):
             '</div>'+
             '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
             '<div id="bodyContent">'+
-            '<p>'+addresses[i]+'</p>'
+            '<p>'+addresses[i]+'</p>'+
+            '<p>Rating: '+ratings[i]+'</p>'+
             '</div>'+
             '</div>';
 
