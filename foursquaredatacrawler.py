@@ -25,7 +25,7 @@ def getMap(mydict):
 
 	return url
 
-def makeHTML(mydict):
+def makeHTML(mydict, api):
 	f = open('my-map.html', 'w')
 	lat = mydict['response']['geocode']['center']['lat']
 	lng = mydict['response']['geocode']['center']['lng']
@@ -54,7 +54,7 @@ def makeHTML(mydict):
         height: 100%;
       }
     </style>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB5vINbNGus-8N1eH5HMH9YxhUwHrevDwQ"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key="""+str(api)+""""></script>
     <script>
       var map;
 
@@ -108,8 +108,11 @@ def makeHTML(mydict):
 	f.close()	
 
 # keys needed for access to url
-CLIENT_ID = "X0JZOBTOXML0SUDIVYWAXZCIBCT4JPKGKSE4U0JZUAH2EOH5"
-CLIENT_SECRET = "5YQWGTY5SMKA5GA40DFWHKSHHLJ1Y4BB1N4DZOQ2OVHK3UMY"
+f = open('keys.txt', 'r');
+
+CLIENT_ID = f.readline()
+CLIENT_SECRET = f.readline()
+api = f.readline()
 # use current date to obtain version detail
 V_CODE = datetime.date.today().strftime("%Y%m%d")
 
@@ -148,7 +151,7 @@ if r.status_code == 200:
 	print filename+".json created!"
 	#mymap = getMap(data)
 	#webbrowser.open(mymap)
-	makeHTML(data)
+	makeHTML(data, api)
 	webbrowser.open('my-map.html')
 else:
 	print r
