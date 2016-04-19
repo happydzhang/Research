@@ -3,28 +3,6 @@
 
 import webbrowser, urllib2, time, datetime, json, requests
 
-#def getMap(mydict):
-#	lat = mydict['response']['geocode']['center']['lat']
-#	lng = mydict['response']['geocode']['center']['lng']
-#	lst = mydict['response']['groups'][0]['items']
-#	lstlat = []
-#	lstlng = []
-#	markerstr = ""
-#	for lats in lst:
-#		lstlat.append(str(lats['venue']['location']['lat']))
-#	for lngs in lst:
-#		lstlng.append(str(lngs['venue']['location']['lng']))
-#	n = len(lstlat)
-#	for i in range(n):
-#		if i != n-1:
-#			markerstr += lstlat[i]+","+lstlng[i]+"|"
-#		else:
-#			markerstr += lstlat[i]+","+lstlng[i]
-#			
-#	url = "http://maps.google.com/maps/api/staticmap?center="+str(lat)+","+str(lng)+"&zoom=14&size=400x400&markers="+markerstr
-
-#	return url
-
 def makeHTML(mydict, api):
 	f = open('my-map.html', 'w')
 	lat = mydict['response']['geocode']['center']['lat']
@@ -37,18 +15,28 @@ def makeHTML(mydict, api):
 	tempaddresses = []
 	ratings = []
 	tempratings = []
+	urls = []
+	tempurls = []
 	for i in lst:
 		tempgeo = {}
 		tempgeo['lat'] = i['venue']['location']['lat']
 		tempgeo['lng'] = i['venue']['location']['lng']
 		tempnames.append(i['venue']['name'])
 		tempaddresses.append(i['venue']['location']['formattedAddress'])
-		tempratings.append(i['venue']['rating'])
+		try:
+			tempratings.append(i['venue']['rating'])
+		except:
+			tempratings.append("N/A")
+		try:
+			tempurls.append(i['venue']['url'])
+		except:
+			tempurls.append("N/A")
 		markers.append(tempgeo)
 
 	names = json.dumps(tempnames)
 	addresses = json.dumps(tempaddresses)
 	ratings = json.dumps(tempratings)
+	urls = json.dumps(tempurls)
 	message = """
 <!DOCTYPE html>
 <html>
@@ -70,6 +58,7 @@ def makeHTML(mydict, api):
       var names = """+str(names)+"""
       var addresses = """+str(addresses)+"""
       var ratings = """+str(ratings)+"""
+      var urls = """+str(urls)+"""
       function initialize() {
         var myLatLng = {lat: """+str(lat)+""", lng: """+str(lng)+"""}
         var mapOptions = {
@@ -96,6 +85,7 @@ def makeHTML(mydict, api):
             '<div id="bodyContent">'+
             '<p>'+addresses[i]+'</p>'+
             '<p>Rating: '+ratings[i]+'</p>'+
+            '<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
             '</div>'+
             '</div>';
 
@@ -162,8 +152,6 @@ if r.status_code == 200:
 	datafile.write(json.dumps(data, indent=4, sort_keys=True))
 	datafile.close()
 	print filename+".json created!"
-	#mymap = getMap(data)
-	#webbrowser.open(mymap)
 	makeHTML(data, api)
 	webbrowser.open('my-map.html')
 else:

@@ -1,6 +1,14 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 4/18/2016
+- Fell behind in consistently working on the application as I became bogged down by assignments in other courses
+- Successfully added venues' websites to the infowindow, including making them a hyperlink
+- Also began to refine the search process by adding try-except blocks
+- Next step is to continue to improve the range of the search function by revisiting the features of the Foursquare API
+- Also, explore the JSON datasets to determine other pertinent information to go into the infowindows.
+- Long-term, use the Foursquare data to jump to other social media sites for extra data
+
 Notes for 4/6/2016
 - Moved API keys into a text file to prevent access to them on Github
 - Ran into a minor issue getting information about a location, such as likes, because not all venues contain those indices
