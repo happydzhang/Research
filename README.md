@@ -5,6 +5,9 @@ Notes for 4/20/2016
 - Added venues' phone numbers to the infowindow
 - Images provided by Foursquare seem to be bad links
 - Hours of operation are also unreliable on Foursquare
+- *Explore Twitter API, Flickr, and Facebook for additional data*
+- *Add GPS search*
+- GPS Photo-App
 
 Notes for 4/18/2016
 - Fell behind in consistently working on the application as I became bogged down by assignments in other courses
