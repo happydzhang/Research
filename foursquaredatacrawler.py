@@ -17,12 +17,18 @@ def makeHTML(mydict, api):
 	tempratings = []
 	urls = []
 	tempurls = []
+	phones = []
+	tempphones = []
 	for i in lst:
 		tempgeo = {}
 		tempgeo['lat'] = i['venue']['location']['lat']
 		tempgeo['lng'] = i['venue']['location']['lng']
 		tempnames.append(i['venue']['name'])
 		tempaddresses.append(i['venue']['location']['formattedAddress'])
+		try:
+			tempphones.append(i['venue']['contact']['formattedPhone'])
+		except:
+			tempphones.append("N/A")
 		try:
 			tempratings.append(i['venue']['rating'])
 		except:
@@ -35,6 +41,7 @@ def makeHTML(mydict, api):
 
 	names = json.dumps(tempnames)
 	addresses = json.dumps(tempaddresses)
+	phones = json.dumps(tempphones)
 	ratings = json.dumps(tempratings)
 	urls = json.dumps(tempurls)
 	message = """
@@ -57,6 +64,7 @@ def makeHTML(mydict, api):
       var markers = """+str(markers)+"""
       var names = """+str(names)+"""
       var addresses = """+str(addresses)+"""
+      var phones = """+str(phones)+"""
       var ratings = """+str(ratings)+"""
       var urls = """+str(urls)+"""
       function initialize() {
@@ -84,6 +92,7 @@ def makeHTML(mydict, api):
             '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
             '<div id="bodyContent">'+
             '<p>'+addresses[i]+'</p>'+
+            '<p>Phone:'+phones[i]+'</p>'+
             '<p>Rating: '+ratings[i]+'</p>'+
             '<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
             '</div>'+
