@@ -1,6 +1,11 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 4/20/2016
+- Added venues' phone numbers to the infowindow
+- Images provided by Foursquare seem to be bad links
+- Hours of operation are also unreliable on Foursquare
+
 Notes for 4/18/2016
 - Fell behind in consistently working on the application as I became bogged down by assignments in other courses
 - Successfully added venues' websites to the infowindow, including making them a hyperlink
