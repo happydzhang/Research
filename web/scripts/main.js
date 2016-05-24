@@ -58,15 +58,10 @@ var liinput = new Input();
 liinput.createInput("10", "thelInput");
 liinput.addToDocument();
 
-// dummy label
-var dlabel = new Label();
-dlabel.createLabel("", "thedLabel");
-dlabel.addToDocument();
+args = [linput, rinput, sdropdown, qinput, liinput];
+rbutton.addClickEventHandler(refresh, args);
 
-args = [linput, rinput, sdropdown, qinput, liinput, dlabel];
-rbutton.addClickEventHandler(display, args);
-
-function display(args){
+function refresh(args){
 	thelocation = args[0].getValue();
 	range = args[1].getValue();
 	section = args[2].getSelected();
@@ -76,5 +71,4 @@ function display(args){
 		query = "";
 	}
 	limit = args[4].getValue();
-	args[5].setText(thelocation+" "+range+" "+section+" "+query+" "+limit);
 }

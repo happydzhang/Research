@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/24/2016
+- (12:10) Basic webpage has been setup. Next step is changing the Python script to JavaScript
 - Removed URL from venues that do not have one
 - (9:33) Planning on moving from simple Python script to interactive webpage; Python script might need to be turned into JS
 
