@@ -86,17 +86,31 @@ def makeHTML(mydict, api):
             position: latlng,
           });
 
-          marker.contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-            '<div id="bodyContent">'+
-            '<p>'+addresses[i]+'</p>'+
-            '<p>Phone:'+phones[i]+'</p>'+
-            '<p>Rating: '+ratings[i]+'</p>'+
-            '<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
-            '</div>'+
-            '</div>';
+          if (urls[i]=='N/A'){
+            marker.contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+              '<div id="bodyContent">'+
+              '<p>'+addresses[i]+'</p>'+
+              '<p>Phone:'+phones[i]+'</p>'+
+              '<p>Rating: '+ratings[i]+'</p>'+
+              '<p>URL: '+urls[i]+'</p>'+
+              '</div>'+
+              '</div>';
+          }else{
+            marker.contentString = '<div id="content">'+
+              '<div id="siteNotice">'+
+              '</div>'+
+              '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+              '<div id="bodyContent">'+
+              '<p>'+addresses[i]+'</p>'+
+              '<p>Phone:'+phones[i]+'</p>'+
+              '<p>Rating: '+ratings[i]+'</p>'+
+              '<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+              '</div>'+
+              '</div>';
+          }
 
           google.maps.event.addListener(marker, 'click', function() {
             infowindow.setContent(this.contentString);

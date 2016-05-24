@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 5/24/2016
+- Removed URL from venues that do not have one
+- (9:33) Planning on moving from simple Python script to interactive webpage; Python script might need to be turned into JS
+
 Notes for 4/20/2016
 - Added venues' phone numbers to the infowindow
 - Images provided by Foursquare seem to be bad links
