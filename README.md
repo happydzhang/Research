@@ -2,9 +2,11 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/24/2016
+- (5:20) Prior data crawler remains untouched (besides minor quality of life update this morning)
+- (5:15) Began turning Python script into server. Tomorrow will entail continuing that effort by finishing the server's ability to process requests and then send the results back, which the JS will then use to generate the proper map.
 - (12:10) Basic webpage has been setup. Next step is changing the Python script to JavaScript
-- Removed URL from venues that do not have one
 - (9:33) Planning on moving from simple Python script to interactive webpage; Python script might need to be turned into JS
+- Began work around 9:00. Removed URL from venues that do not have one
 
 Notes for 4/20/2016
 - Added venues' phone numbers to the infowindow
