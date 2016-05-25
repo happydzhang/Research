@@ -18,8 +18,6 @@ def start_service():
 	dataController = DataController()
 	optionsController = OptionsController()
 
-	dispatcher.connect('data_get', '/data/', controller=dataController, action = 'GET', conditions=dict(method=['GET']))
-
 	dispatcher.connect('data_post', '/data/', controller=dataController, action = 'POST', conditions=dict(method=['POST']))
 
 	dispatcher.connect('data_option', '/data/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))

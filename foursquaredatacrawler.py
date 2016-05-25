@@ -133,7 +133,7 @@ def makeHTML(mydict, api):
 	f.close()	
 
 # keys needed for access to url
-f = open('keys.txt', 'r');
+f = open('keys.txt', 'r')
 
 CLIENT_ID = f.readline()
 CLIENT_SECRET = f.readline()
