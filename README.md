@@ -2,6 +2,9 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/25/2016
+- (4:46) Found a lengthy tutorial on uploading photos to a server. Will explore in more detail tomorrow
+- (4:39) Standard Camera App on Android devices can already enable location embedding, as it turns out. Previous work on BasicCameraApp is unnecessary, and a new project will be started, which will simply utilize the already existing camera application to take the photos, but send them to an online directory, instead of saving them locally.
+- (3:30) Resumed work on the mobile application
 - *(1:52) Next steps: GPS based search, and move towards data diversification*
 - (1:41) Resolved minor bug of markers not clearing.
 - (12:33) Python server successfully runs the script and sends the desired information to the client. Small issue remains where old markers need to be deleted upon starting a new search. Should be a simple fix
