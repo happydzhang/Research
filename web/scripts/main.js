@@ -3,6 +3,7 @@
 // 5/24/2016
 
 var map;
+var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
 
 function initialize() {
@@ -78,6 +79,10 @@ args = [linput, rinput, sdropdown, qinput, liinput];
 rbutton.addClickEventHandler(refresh, args);
 
 function refresh(args){
+	for (var i = 0;i < mymarkers.length; i++){
+		mymarkers[i].setMap(null)
+	}
+	mymarkers = [];
 	thelocation = args[0].getValue();
 	range = args[1].getValue();
 	section = args[2].getSelected();
@@ -112,6 +117,7 @@ function refresh(args){
 				map: map,
 				position: latlng,
 			});
+			mymarkers.push(marker)
 
 			if (urls[i]=='N/A'){
 				marker.contentString = '<div id="content">'+

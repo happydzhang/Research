@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/25/2016
+- (1:41) Resolved minor bug of markers not clearing.
 - (12:33) Python server successfully runs the script and sends the desired information to the client. Small issue remains where old markers need to be deleted upon starting a new search. Should be a simple fix
 - (10:17) Web page successfully interacts with the Python server. Next step is adding data crawler script to the server
 
