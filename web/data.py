@@ -16,99 +16,98 @@ class DataController(object):
 			params = cherrypy.request.body.read()
 			data = json.loads(params)
 			result = datacrawl(data)
-			if result != 200:
+			if result == "Error":
 				output['result'] = 'error'
-				output['message'] = result
+				output['message'] = "Could not process request"
 			else:
-
+				output = result
+				output['result'] = 'success'
 		except Exception as ex:
 			output['result'] = 'error'
 			output['message'] = str(ex)
 		return json.dumps(output, encoding='latin-1')
 
 def datacrawl(data):
-# keys needed for access to url
-f = open('keys.txt', 'r')
+	# keys needed for access to url
+	f = open('keys.txt', 'r')
 
-CLIENT_ID = f.readline()
-CLIENT_SECRET = f.readline()
-# use current date to obtain version detail
-V_CODE = datetime.date.today().strftime("%Y%m%d")
+	CLIENT_ID = f.readline()
+	CLIENT_SECRET = f.readline()
+	# use current date to obtain version detail
+	V_CODE = datetime.date.today().strftime("%Y%m%d")
 
-# custom search parameters
-location = data['location']
-srange = data['range']
-section = data['section']
-query = data['query']
-limit = data['limit']
+	# custom search parameters
+	location = data['location']
+	srange = data['range']
+	section = data['section']
+	query = data['query']
+	limit = data['limit']
 
-# setup the url
-thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&query="+query+"&radius="+srange+"&limit="+limit
-r = requests.get(thisurl)
+	# setup the url
+	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&query="+query+"&radius="+srange+"&limit="+limit
+	r = requests.get(thisurl)
 
-# store the json
-thedata = r.json()
+	# store the json
+	thedata = r.json()
 
-# get the values for the markers
-if r.status_code == 200:
-	#use current time to name the file
-        #filename = datetime.datetime.now().strftime("%m%d%Y%H%M%S")
-        #datafile = open("datasets/"+filename+".json", "w")
-        #datafile.write(json.dumps(thedata, indent=4, sort_keys=True))
-        #datafile.close()
-        #print filename+".json created!"
-        makeHTML(thedata)
-else
-	result = r.status_code
+	# get the values for the markers
+	if r.status_code == 200:
+		#use current time to name the file
+		#filename = datetime.datetime.now().strftime("%m%d%Y%H%M%S")
+		#datafile = open("datasets/"+filename+".json", "w")
+		#datafile.write(json.dumps(thedata, indent=4, sort_keys=True))
+		#datafile.close()
+		#print filename+".json created!"
+		result = makeHTML(thedata)
+	else:
+		result = "Error"
 	return result
 
 def makeHTML(mydict):
+	result = {}
 	# obtain center of search
 	lat = mydict['response']['geocode']['center']['lat']
-        lng = mydict['response']['geocode']['center']['lng']
+	lng = mydict['response']['geocode']['center']['lng']
 	# obtain list of venues
-        lst = mydict['response']['groups'][0]['items']
-        markers = []
-        names = []
-        tempnames = []
-        addresses = []
-        tempaddresses = []
-        ratings = []
-        tempratings = []
-        urls = []
-        tempurls = []
-        phones = []
-        tempphones = []
+	lst = mydict['response']['groups'][0]['items']
+	markers = []
+	names = []
+	addresses = []
+	ratings = []
+	urls = []
+	phones = []
 	# loop through each venue
-        for i in lst:
+	for i in lst:
 		# obtain geolocation of venue
-                tempgeo = {}
-                tempgeo['lat'] = i['venue']['location']['lat']
-                tempgeo['lng'] = i['venue']['location']['lng']
+		tempgeo = {}
+		tempgeo['lat'] = i['venue']['location']['lat']
+		tempgeo['lng'] = i['venue']['location']['lng']
 		# obtain name of venue
-                tempnames.append(i['venue']['name'])
+		names.append(i['venue']['name'])
 		# obtain address of venue
-                tempaddresses.append(i['venue']['location']['formattedAddress'])
+		addresses.append(i['venue']['location']['formattedAddress'])
 		# obtain phone number of venue
-                try:
-                        tempphones.append(i['venue']['contact']['formattedPhone'])
-                except:
-                        tempphones.append("N/A")
+		try:
+			phones.append(i['venue']['contact']['formattedPhone'])
+		except:
+			phones.append("N/A")
 		# obtain rating of venue
-                try:
-                        tempratings.append(i['venue']['rating'])
-                except:
-			tempratings.append("N/A")
+		try:
+			ratings.append(i['venue']['rating'])
+		except:
+			ratings.append("N/A")
 		# obtain url of venue
-                try:
-                        tempurls.append(i['venue']['url'])
-                except:
-                        tempurls.append("N/A")
-                markers.append(tempgeo)
+		try:
+			urls.append(i['venue']['url'])
+		except:
+			urls.append("N/A")
+		markers.append(tempgeo)
 
-	# clean up the data
-	names = json.dumps(tempnames)
-        addresses = json.dumps(tempaddresses)
-        phones = json.dumps(tempphones)
-        ratings = json.dumps(tempratings)
-        urls = json.dumps(tempurls)
+	# setup return structure
+	result['markers'] = markers
+	result['names'] = names
+	result['addresses'] = addresses
+	result['phones'] = phones
+	result['ratings'] = ratings
+	result['urls'] = urls
+	return result
