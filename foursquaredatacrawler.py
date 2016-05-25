@@ -94,7 +94,7 @@ def makeHTML(mydict, api):
               '<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
               '<div id="bodyContent">'+
               '<p>'+addresses[i]+'</p>'+
-              '<p>Phone:'+phones[i]+'</p>'+
+              '<p>Phone: '+phones[i]+'</p>'+
               '<p>Rating: '+ratings[i]+'</p>'+
               '<p>URL: '+urls[i]+'</p>'+
               '</div>'+

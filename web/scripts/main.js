@@ -3,7 +3,7 @@
 // 5/24/2016
 
 var map;
-var url = "http://0.0.0.0:8008/"
+var url = "http://0.0.0.0:8008/";
 
 function initialize() {
 	var myLatLng = {lat: 39.8333333, lng: -98.585522};
@@ -89,19 +89,63 @@ function refresh(args){
 	limit = args[4].getValue();
 	var params = "{\"location\": \""+thelocation+"\", \"range\": \""+range+"\", \"section\": \""+section+"\", \"query\": \""+query+"\", \"limit\": \""+limit+"\"}";	
 
-	var latlng = {lat: 41.68338, lng: -86.25001}
-	var marker = new google.maps.Marker({
-		map: map,
-		position: latlng,
-	});
-	map.setCenter(latlng);
-	google.maps.event.addDomListener(window, 'load', initialize);
-	map.setZoom(13);
 
 	var html = new XMLHttpRequest();
 	html.open("POST", url+'data/', true);
 	html.onload = function(e){
 		var j = JSON.parse(html.responseText);
+
+		var mylatlng = {lat: j['lat'], lng: j['lng']}
+		var markers = j['markers']
+		var names = j['names']
+		var addresses = j['addresses']
+		var phones = j['phones']
+		var ratings = j['ratings']
+		var urls = j['urls']
+		map.setCenter(mylatlng);
+
+		infowindow = new google.maps.InfoWindow();
+
+		for (var i = 0; i < markers.length; i++){
+			var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+			var marker = new google.maps.Marker({
+				map: map,
+				position: latlng,
+			});
+
+			if (urls[i]=='N/A'){
+				marker.contentString = '<div id="content">'+
+					'<div id="siteNotice">'+
+					'</div>'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<div id="bodyContent">'+
+					'<p>'+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>URL: '+urls[i]+'</p>'+
+					'</div>'+
+					'</div>';
+			}else{
+				marker.contentString = '<div id="content">'+
+					'<div id="siteNotice">'+
+					'</div>'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<div id="bodyContent">'+
+					'<p>'+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+					'</div>'+
+					'</div>';
+			}
+
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.setContent(this.contentString);
+				infowindow.open(map, this);
+			});
+		}
+
+		map.setZoom(13);
 	}
 	html.onerror = function(e) {console.log(html.statusText);}
 	html.send(params);

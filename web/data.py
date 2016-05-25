@@ -44,7 +44,11 @@ def datacrawl(data):
 	limit = data['limit']
 
 	# setup the url
-	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&query="+query+"&radius="+srange+"&limit="+limit
+	if section != 'None':
+		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&radius="+srange+"&limit="+limit
+	elif query != '':
+		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+srange+"&limit="+limit
+		
 	r = requests.get(thisurl)
 
 	# store the json
@@ -104,6 +108,8 @@ def makeHTML(mydict):
 		markers.append(tempgeo)
 
 	# setup return structure
+	result['lat'] = lat
+	result['lng'] = lng
 	result['markers'] = markers
 	result['names'] = names
 	result['addresses'] = addresses
