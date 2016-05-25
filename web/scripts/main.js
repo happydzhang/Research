@@ -10,7 +10,7 @@ function initialize() {
 	var myLatLng = {lat: 39.8333333, lng: -98.585522};
 	var mapOptions = {
 		zoom: 3,
-		maxZoom: 17,
+		maxZoom: 18,
 		center: myLatLng,
 		mapTypeId: google.maps.MapTypeId.HYBRID
 	};

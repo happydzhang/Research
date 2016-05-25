@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/25/2016
+- *(1:52) Next steps: GPS based search, and move towards data diversification*
 - (1:41) Resolved minor bug of markers not clearing.
 - (12:33) Python server successfully runs the script and sends the desired information to the client. Small issue remains where old markers need to be deleted upon starting a new search. Should be a simple fix
 - (10:17) Web page successfully interacts with the Python server. Next step is adding data crawler script to the server
@@ -17,8 +18,8 @@ Notes for 4/20/2016
 - Added venues' phone numbers to the infowindow
 - Images provided by Foursquare seem to be bad links
 - Hours of operation are also unreliable on Foursquare
-- *Explore Twitter API, Flickr, and Facebook for additional data*
-- *Add GPS search*
+- Explore Twitter API, Flickr, and Facebook for additional data
+- Add GPS search
 - GPS Photo-App
 
 Notes for 4/18/2016
