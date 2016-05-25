@@ -3,12 +3,12 @@
 // 5/24/2016
 
 var map;
-var url = "0.0.0.0"
+var url = "http://0.0.0.0:8008/"
 
 function initialize() {
-	var myLatLng = {lat: 41.68338, lng: -86.25001}
+	var myLatLng = {lat: 39.8333333, lng: -98.585522};
 	var mapOptions = {
-		zoom: 13,
+		zoom: 3,
 		maxZoom: 17,
 		center: myLatLng,
 		mapTypeId: google.maps.MapTypeId.HYBRID
@@ -89,17 +89,19 @@ function refresh(args){
 	limit = args[4].getValue();
 	var params = "{\"location\": \""+thelocation+"\", \"range\": \""+range+"\", \"section\": \""+section+"\", \"query\": \""+query+"\", \"limit\": \""+limit+"\"}";	
 
+	var latlng = {lat: 41.68338, lng: -86.25001}
 	var marker = new google.maps.Marker({
 		map: map,
-		position: {lat: 41.68338, lng: -86.25001},
+		position: latlng,
 	});
+	map.setCenter(latlng);
 	google.maps.event.addDomListener(window, 'load', initialize);
+	map.setZoom(13);
 
 	var html = new XMLHttpRequest();
-	html.open("POST", url, true);
+	html.open("POST", url+'data/', true);
 	html.onload = function(e){
 		var j = JSON.parse(html.responseText);
-		
 	}
 	html.onerror = function(e) {console.log(html.statusText);}
 	html.send(params);

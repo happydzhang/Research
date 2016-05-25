@@ -2,7 +2,7 @@
 # 5/24/2016
 
 import cherrypy
-import webbrowser, urllib2, time, datetime, json, requests
+from data import DataController
 
 class OptionsController:
         def OPTIONS(self, *args, **kwargs):
@@ -15,11 +15,19 @@ def CORS():
 
 def start_service():
         dispatcher = cherrypy.dispatch.RoutesDispatcher()
+	dataController = DataController()
 	optionsController = OptionsController()
+
+	dispatcher.connect('data_get', '/data/', controller=dataController, action = 'GET', conditions=dict(method=['GET']))
+
+	dispatcher.connect('data_post', '/data/', controller=dataController, action = 'POST', conditions=dict(method=['POST']))
+
+	dispatcher.connect('data_option', '/data/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
 	conf = {
                 'global': {
-                        'server.socket_host': '0.0.0.0'
+                        'server.socket_host': '0.0.0.0',
+			'server.socket_port': 8008
                 },
                 '/': {
                         'request.dispatch': dispatcher,
