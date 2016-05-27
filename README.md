@@ -1,6 +1,12 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 5/27/2016
+- (4:20) Tentatively will claim that the application successfully geotags photos that do not have that feature enabled. I need to ensure that the EXIF data is permanently modified through SetAttribute(), which the documentation seems to indicate. Nevertheless, a very basic Geotagging Photo Application is complete, in that the application requires the user to enable Location Services, and, if the user uses the built-in geotagging features, simply displays the photo and its EXIF data, otherwise, it manually sets the photos EXIF Latitude and Longitude
+- (2:57) Successfully obtaining the latitude and longitude of the device
+- (10:48) Successfully obtaining the EXIF data when the user takes a photo
+- (9:13) Opting to remove the ability for the user to select an old photo, as there's no way for the app to generate an accurate geotag should it not have one already. Further, Camera intent should work fine, the phone's geolocation need only be obtained as the picture is taken, at which point the app will then modify the EXIF data.
+
 Notes for 5/26/2016
 - (4:57) For tomorrow:
 	- Determine a photo's filename
