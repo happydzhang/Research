@@ -1,4 +1,8 @@
 # HTML Files #
 *.html
+# API keys #
 keys.txt
+# Datasets #
 *.json
+# Twitter #
+/twitter

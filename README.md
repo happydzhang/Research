@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 5/30/2016
+- (12:24) Successfully completed Tasks 1 and 2 of Assignment 1 from Dr. Wang's Social Sensing course. Task 3 might not be as necessary to become familiar with, as that's what the Foursquare Data Crawler does: explore a given area. I suppose an additional stream of data could be useful in addition to the data Foursquare obtains; that stream of data would be in addition to the map that Foursquare generates.
+- (9:09) Began exploring the Twitter API in order to begin data diversification
+
 Notes for 5/27/2016
 - (4:20) Tentatively will claim that the application successfully geotags photos that do not have that feature enabled. I need to ensure that the EXIF data is permanently modified through SetAttribute(), which the documentation seems to indicate. Nevertheless, a very basic Geotagging Photo Application is complete, in that the application requires the user to enable Location Services, and, if the user uses the built-in geotagging features, simply displays the photo and its EXIF data, otherwise, it manually sets the photos EXIF Latitude and Longitude
 - (2:57) Successfully obtaining the latitude and longitude of the device
