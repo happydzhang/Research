@@ -1,10 +1,33 @@
-# Brian Mann
-# 5/24/2016
+#!/usr/local/python
 
-import webbrowser, urllib2, time, datetime, json, requests
+# Brian Mann
+# 5/30/2016
+
+import webbrowser, urllib2, time, datetime, json, requests, tweepy
+
+class MyStreamListener(tweepy.StreamListener):
+
+	def __init__(self, api=None):
+		super(MyStreamListener, self).__init__()
+
+	def on_status(self, status):
+		print status.text
+		return True
+
+	def on_data(self, data):
+		decoded = json.loads(data)
+		try:
+			print '@%s: %s\n' %(decoded['user']['screen_name'], decoded['text'].encode('ascii', 'ignore'))
+		except Exception as e:
+			print e
+
+	def on_error(self, status_code):
+		print sys.stderr, 'Encountered error with status code: ', status_code
+		return True
 
 def makeHTML(mydict, api):
 	f = open('my-map.html', 'w')
+
 	lat = mydict['response']['geocode']['center']['lat']
 	lng = mydict['response']['geocode']['center']['lng']
 	lst = mydict['response']['groups'][0]['items']
@@ -134,10 +157,24 @@ def makeHTML(mydict, api):
 
 # keys needed for access to url
 f = open('keys.txt', 'r')
+for line in f:
+	line = line.rstrip()
+	components = line.split("::")
+	if components[0] == 'Client_ID':
+		CLIENT_ID = components[1]
+	elif components[0] == 'Client_Secret':
+		CLIENT_SECRET = components[1]
+	elif components[0] == 'API':
+		api = components[1]
+	elif components[0] == 'Consumer_Key':
+		consumer_key = components[1]
+	elif components[0] == 'Consumer_Secret':
+		consumer_secret = components[1]
+	elif components[0] == 'Access_Token':
+		access_token = components[1]
+	elif components[0] == 'Access_Token_Secret':
+		access_token_secret = components[1]
 
-CLIENT_ID = f.readline()
-CLIENT_SECRET = f.readline()
-api = f.readline()
 # use current date to obtain version detail
 V_CODE = datetime.date.today().strftime("%Y%m%d")
 
@@ -172,12 +209,18 @@ data = r.json()
 if r.status_code == 200:
 	#use current time to name the file
 	filename = datetime.datetime.now().strftime("%H%M%S%Y%m%d")
-	datafile = open(filename+".json", "w")
-	datafile.write(json.dumps(data, indent=4, sort_keys=True))
-	datafile.close()
-	print filename+".json created!"
+	#datafile = open(filename+".json", "w")
+	#datafile.write(json.dumps(data, indent=4, sort_keys=True))
+	#datafile.close()
+	#print filename+".json created!"
 	makeHTML(data, api)
 	webbrowser.open('my-map.html')
+	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+	auth.set_access_token(access_token, access_token_secret)
+	apiT = tweepy.API(auth)
+
+	myStream = tweepy.Stream(apiT.auth, MyStreamListener())
+	myStream.filter(locations=[-86.33, 41.63, -86.20, 41.74])
 else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)

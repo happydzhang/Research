@@ -2,6 +2,8 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/30/2016
+- (5:10) Currently have a very basic version of a Twitter stream that relates to the location of the Foursquare search
+- (3:04) Successfully completed Task 3 of Assignment 1. Will now begin attempting to integrate the Foursquare Data Crawler and a basic Twitter Data Crawler
 - (12:24) Successfully completed Tasks 1 and 2 of Assignment 1 from Dr. Wang's Social Sensing course. Task 3 might not be as necessary to become familiar with, as that's what the Foursquare Data Crawler does: explore a given area. I suppose an additional stream of data could be useful in addition to the data Foursquare obtains; that stream of data would be in addition to the map that Foursquare generates.
 - (9:09) Began exploring the Twitter API in order to begin data diversification
 

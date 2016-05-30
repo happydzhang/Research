@@ -6,3 +6,4 @@ keys.txt
 *.json
 # Twitter #
 /twitter
+fusion.py
