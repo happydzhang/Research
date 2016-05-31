@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 5/31/2016
+- (12:33) Kept running into errors; determined I was hitting rate limits. Planning on exploring ways to avoid hitting rate limits. Also will continue to improve upon the Tweets that are collected
+- (9:05) Continuing work on the Twitter Stream
+
 Notes for 5/30/2016
 - (5:10) Currently have a very basic version of a Twitter stream that relates to the location of the Foursquare search
 - (3:04) Successfully completed Task 3 of Assignment 1. Will now begin attempting to integrate the Foursquare Data Crawler and a basic Twitter Data Crawler
