@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/31/2016
+- (4:33) There does not seem to be an easy way to go from a venue's Foursquare profile to its Twitter profile. The first solution I can think of is to use Foursquare to find the venue's website and check it for a link to its Twitter; mildly tedious, but it seems to be the "best" option at this point
 - (4:10) Next step is to attempt to find Twitter accounts for the venues captured by Foursquare data crawler; current use of Twitter is a live feed of Tweets in the area
 - (3:55) Fixed the issue of Tweets being compared in lower case against strings that have varied case
 - (3:10) Tweets are now accepted if they contain something matching the section or query aspect of the Foursquare search
