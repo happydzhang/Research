@@ -183,7 +183,7 @@ def makeTwitterStream(mydict, search, consumer_key, consumer_secret, access_toke
 
 	myStream = tweepy.Stream(apiT.auth, MyStreamListener(mydict, search))
 	myStream.filter(locations=[llng, llat, rlng, rlat], async=True)
-
+# main script
 # keys needed for access to url
 f = open('keys.txt', 'r')
 for line in f:
