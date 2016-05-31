@@ -1,7 +1,7 @@
 #!/usr/local/python
 
 # Brian Mann
-# 5/30/2016
+# 5/31/2016
 
 import webbrowser, urllib2, time, datetime, json, requests, tweepy
 
@@ -13,21 +13,25 @@ class MyStreamListener(tweepy.StreamListener):
 		self.search = search
 		self.lst = mydict['response']['groups'][0]['items']
 		self.numtweets = 0
-		self.maxtweets = 100
+		self.maxtweets = 15
 
 	def on_status(self, status):
 		self.numtweets += 1
 		for i in self.lst:
-			if i['venue']['name'] in status.text.lower():
+			if i['venue']['name'].lower() in status.text.lower():
 				print "Tweet #" + str(self.numtweets) + ": " + status.text
-			elif i['venue']['categories'][0]['shortName'] in status.text.lower():
+				break
+			elif i['venue']['categories'][0]['shortName'].lower() in status.text.lower():
 				print "Tweet #" + str(self.numtweets) + ": " + status.text
-		if self.search in status.text.lower():
-			print "Tweet #" + str(self.numtweets) + ": " + status.text
+				break
+			elif i['venue']['location']['city'].lower() in status.text.lower():	
+				print "Tweet #" + str(self.numtweets) + ": " + status.text
+				break
+			elif self.search in status.text.lower():
+				print "Tweet #" + str(self.numtweets) + ": " + status.text
+				break
 		if self.numtweets == self.maxtweets:
-			print self.numtweets
 			return False
-		print self.numtweets
 		return True
 
 	def on_error(self, status_code):
@@ -208,7 +212,8 @@ mode = raw_input("Would you like to run on the default settings (y/n): ")
 
 # default search
 if mode == 'y':
-	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near=South Bend, IN&section=topPicks"
+	section = 'topPicks'
+	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near=South Bend, IN&section="+section
 # custom search
 elif mode == 'n':
 #allow user to specify location, radius, etc.
@@ -243,7 +248,7 @@ if r.status_code == 200:
 	#datafile.close()
 	#print filename+".json created!"
 	makeHTML(data, api)
-	#webbrowser.open('my-map.html')
+	webbrowser.open('my-map.html')
 	if section == "":
 		makeTwitterStream(data, query, consumer_key, consumer_secret, access_token, access_token_secret)
 	else:
