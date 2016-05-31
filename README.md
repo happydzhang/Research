@@ -2,6 +2,8 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/31/2016
+- (2:40) Tweets are now accepted as relevant if they contain a venue's name or a venue's category. The next step is to include the search parameters of the Foursquare data crawl, such as food, outdoors, coffee, etc.
+- (1:45) Began constraining the Tweets that are accepted to those that contain the names of the venues obtained by the Foursquare Data Crawler
 - (12:33) Kept running into errors; determined I was hitting rate limits. Planning on exploring ways to avoid hitting rate limits. Also will continue to improve upon the Tweets that are collected
 - (9:05) Continuing work on the Twitter Stream
 

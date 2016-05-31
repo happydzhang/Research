@@ -7,17 +7,27 @@ import webbrowser, urllib2, time, datetime, json, requests, tweepy
 
 class MyStreamListener(tweepy.StreamListener):
 
-	def __init__(self, api=None):
+	def __init__(self, mydict, search, api=None):
 		super(MyStreamListener, self).__init__()
+		self.mydict = mydict
+		self.search = search
+		self.lst = mydict['response']['groups'][0]['items']
 		self.numtweets = 0
 		self.maxtweets = 100
 
 	def on_status(self, status):
 		self.numtweets += 1
-		print status.text
-		if self.numtweets > self.maxtweets:
+		for i in self.lst:
+			if i['venue']['name'] in status.text.lower():
+				print "Tweet #" + str(self.numtweets) + ": " + status.text
+			elif i['venue']['categories'][0]['shortName'] in status.text.lower():
+				print "Tweet #" + str(self.numtweets) + ": " + status.text
+		if self.search in status.text.lower():
+			print "Tweet #" + str(self.numtweets) + ": " + status.text
+		if self.numtweets == self.maxtweets:
 			print self.numtweets
 			return False
+		print self.numtweets
 		return True
 
 	def on_error(self, status_code):
@@ -156,7 +166,7 @@ def makeHTML(mydict, api):
 	f.write(message)
 	f.close()	
 
-def makeTwitterStream(mydict, consumer_key, consumer_secret, access_token, access_token_secret):
+def makeTwitterStream(mydict, search, consumer_key, consumer_secret, access_token, access_token_secret):
 
 	llng = mydict['response']['geocode']['geometry']['bounds']['sw']['lng']
 	llat = mydict['response']['geocode']['geometry']['bounds']['sw']['lat']
@@ -167,7 +177,7 @@ def makeTwitterStream(mydict, consumer_key, consumer_secret, access_token, acces
 	auth.set_access_token(access_token, access_token_secret)
 	apiT = tweepy.API(auth)
 
-	myStream = tweepy.Stream(apiT.auth, MyStreamListener())
+	myStream = tweepy.Stream(apiT.auth, MyStreamListener(mydict, search))
 	myStream.filter(locations=[llng, llat, rlng, rlat], async=True)
 
 # keys needed for access to url
@@ -206,11 +216,15 @@ elif mode == 'n':
 	radius = raw_input("Enter a range: ")
 	section = raw_input("One of food, drinks, coffee, shops, arts, outdoors, sights, trending, or specials, nextVenues, or topPicks: ")
 	if section == "":
-		query = raw_input("Kind of food place: ")
+		query = raw_input("Specific kind of venue: ")
 	limit = raw_input("Maximum number of venues: ")
 
 	# Obtain the data
-	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&query="+query+"&radius="+str(radius)+"&limit="+str(limit)
+	if section == "":
+		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+str(radius)+"&limit="+str(limit)
+	else:
+		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&radius="+str(radius)+"&limit="+str(limit)
+	
 # wrong input
 else:
 	print "Incorrect input\n"
@@ -230,7 +244,10 @@ if r.status_code == 200:
 	#print filename+".json created!"
 	makeHTML(data, api)
 	#webbrowser.open('my-map.html')
-	makeTwitterStream(data, consumer_key, consumer_secret, access_token, access_token_secret)
+	if section == "":
+		makeTwitterStream(data, query, consumer_key, consumer_secret, access_token, access_token_secret)
+	else:
+		makeTwitterStream(data, section, consumer_key, consumer_secret, access_token, access_token_secret)
 else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)
