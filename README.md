@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 5/31/2016
+- (4:10) Next step is to attempt to find Twitter accounts for the venues captured by Foursquare data crawler; current use of Twitter is a live feed of Tweets in the area
 - (3:55) Fixed the issue of Tweets being compared in lower case against strings that have varied case
 - (3:10) Tweets are now accepted if they contain something matching the section or query aspect of the Foursquare search
 - (2:40) Tweets are now accepted as relevant if they contain a venue's name or a venue's category. The next step is to include the search parameters of the Foursquare data crawl, such as food, outdoors, coffee, etc.
