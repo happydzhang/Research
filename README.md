@@ -2,6 +2,8 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/1/2016
+- (4:31) Other goals for the next week are to add an upload button the mobile app to allow for greater testing, as well as the added ability for users to view already taken photos
+- (4:00) Currently looking into the best approach to integrating the new basic data crawler with the webpage version. Issue of formatting the data sent back by the python script as well as what HTML element to use. Will investigate in greater depth on Thursday and Friday.
 - (12:27) Datacrawler now gets a list of venues through Foursquare, uses the websites provided to find a Twitter account, and then displays information related to each venue's Twitter
 - (11:05) Successfully crawling a venue's website, should it have one, and obtaining the venue's Twitter account, should it have one
 - (9:11) Began looking into ways to pull urls from a webpage. BeautifulSoup appears to be a common and efficient way of parsing a webpage for desired information

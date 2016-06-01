@@ -31,8 +31,24 @@ def datacrawl(data):
 	# keys needed for access to url
 	f = open('keys.txt', 'r')
 
-	CLIENT_ID = f.readline()
-	CLIENT_SECRET = f.readline()
+	for line in f:
+		line = line.rstrip()
+		components = line.split("::")
+		if components[0] == 'Client_ID':
+			CLIENT_ID = str(components[1])
+		elif components[0] == 'Client_Secret':
+			CLIENT_SECRET = str(components[1])
+		elif components[0] == 'API':
+			api = str(components[1])
+		elif components[0] == 'Consumer_Key':
+			consumer_key = str(components[1])
+		elif components[0] == 'Consumer_Secret':
+			consumer_secret = str(components[1])
+		elif components[0] == 'Access_Token':
+			access_token = str(components[1])
+		elif components[0] == 'Access_Token_Secret':
+			access_token_secret = str(components[1])
+
 	# use current date to obtain version detail
 	V_CODE = datetime.date.today().strftime("%Y%m%d")
 
@@ -48,7 +64,8 @@ def datacrawl(data):
 		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&radius="+srange+"&limit="+limit
 	elif query != '':
 		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+srange+"&limit="+limit
-		
+	else:
+		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section=topPicks&radius="+srange+"&limit="+limit
 	r = requests.get(thisurl)
 
 	# store the json

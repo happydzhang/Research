@@ -14,7 +14,7 @@ class MyStreamListener(tweepy.StreamListener):
 		self.search = search
 		self.lst = mydict['response']['groups'][0]['items']
 		self.numtweets = 0
-		self.maxtweets = 15
+		self.maxtweets = 25
 
 	def on_status(self, status):
 		self.numtweets += 1
