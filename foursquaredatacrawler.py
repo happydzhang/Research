@@ -240,6 +240,7 @@ def webCrawl(mydict, ck, cs, at, ats):
 		checked = False
 		try:
 			response = requests.get(i['venue']['url'])
+			print i['venue']['name']
 			# parse html
 			page = str(BeautifulSoup(response.content, "html.parser"))
 			while True:
@@ -251,12 +252,12 @@ def webCrawl(mydict, ck, cs, at, ats):
 							if url == urls[j]:
 								checked = True
 						if not checked:
-							print i['venue']['name']
 							getTwitter(url, ck, cs, at, ats)
 							print "\n"
 							urls.append(url)
 							break
 				else:
+					print "\n"
 					break
 		except:
 			pass
