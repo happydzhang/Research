@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/1/2016
+- (11:05) Successfully crawling a venue's website, should it have one, and obtaining the venue's Twitter account, should it have one
+- (9:11) Began looking into ways to pull urls from a webpage. BeautifulSoup appears to be a common and efficient way of parsing a webpage for desired information
+
 Notes for 5/31/2016
 - (4:33) There does not seem to be an easy way to go from a venue's Foursquare profile to its Twitter profile. The first solution I can think of is to use Foursquare to find the venue's website and check it for a link to its Twitter; mildly tedious, but it seems to be the "best" option at this point
 - (4:10) Next step is to attempt to find Twitter accounts for the venues captured by Foursquare data crawler; current use of Twitter is a live feed of Tweets in the area

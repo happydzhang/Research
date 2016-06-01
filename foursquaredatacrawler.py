@@ -4,6 +4,7 @@
 # 5/31/2016
 
 import webbrowser, urllib2, time, datetime, json, requests, tweepy
+from bs4 import BeautifulSoup
 
 class MyStreamListener(tweepy.StreamListener):
 
@@ -183,6 +184,79 @@ def makeTwitterStream(mydict, search, consumer_key, consumer_secret, access_toke
 
 	myStream = tweepy.Stream(apiT.auth, MyStreamListener(mydict, search))
 	myStream.filter(locations=[llng, llat, rlng, rlat], async=True)
+
+def getURL(page):
+
+	start_link = page.find("a href")
+	if start_link == -1:
+		return None, 0
+	start_quote = page.find('"', start_link)
+	end_quote = page.find('"', start_quote + 1)
+	url = page[start_quote + 1: end_quote]
+	return url, end_quote
+
+def getTwitter(tURL, consumer_key, consumer_secret, access_token, access_token_secret):
+
+	line = tURL.rstrip()
+	components = line.split("/")
+	userid = components[-1]
+
+	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+	auth.set_access_token(access_token, access_token_secret)
+
+	api = tweepy.API(auth)
+
+	user = api.get_user(userid)
+	screenname = user.screen_name
+	name = user.name
+	location = user.location
+	description = user.description
+	followers = str(user.followers_count)
+	friends = str(user.friends_count)
+	statuses = str(user.statuses_count)
+	if (user.url == None):
+		url = 'N/A'
+	else:
+		url = user.url
+
+	print "Screen Name: " + screenname
+	print "User Name: " + name
+	print "User Location: " + location
+	print "User Description: " + description
+	print "The Number of Followers: " + followers
+	print "The Number of Friends: " + friends
+	print "The Number of Statuses: " + statuses
+	print "User URL: " + url + "\n"
+
+def webCrawl(mydict, ck, cs, at, ats):
+
+	lst = mydict['response']['groups'][0]['items']
+	urls = []
+
+	for i in lst:
+		checked = False
+		try:
+			response = requests.get(i['venue']['url'])
+		except:
+			pass
+		# parse html
+		page = str(BeautifulSoup(response.content, "html.parser"))
+
+		while True:
+			url, n = getURL(page)
+			page = page[n:]
+			if url:
+				if 'twitter' in url:
+					for i in range(0, len(urls)):
+						if url == urls[i]:
+							checked = True
+					if not checked:
+						getTwitter(url, ck, cs, at, ats)
+						urls.append(url)
+						break
+			else:
+				break
+
 # main script
 # keys needed for access to url
 f = open('keys.txt', 'r')
@@ -248,11 +322,12 @@ if r.status_code == 200:
 	#datafile.close()
 	#print filename+".json created!"
 	makeHTML(data, api)
-	webbrowser.open('my-map.html')
-	if section == "":
-		makeTwitterStream(data, query, consumer_key, consumer_secret, access_token, access_token_secret)
-	else:
-		makeTwitterStream(data, section, consumer_key, consumer_secret, access_token, access_token_secret)
+	#webbrowser.open('my-map.html')
+	webCrawl(data, consumer_key, consumer_secret, access_token, access_token_secret)
+	#if section == "":
+	#	makeTwitterStream(data, query, consumer_key, consumer_secret, access_token, access_token_secret)
+	#else:
+	#	makeTwitterStream(data, section, consumer_key, consumer_secret, access_token, access_token_secret)
 else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)
