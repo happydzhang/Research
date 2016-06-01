@@ -1,7 +1,7 @@
 #!/usr/local/python
 
 # Brian Mann
-# 5/31/2016
+# 6/1/2016
 
 import webbrowser, urllib2, time, datetime, json, requests, tweepy
 from bs4 import BeautifulSoup
@@ -227,6 +227,9 @@ def getTwitter(tURL, consumer_key, consumer_secret, access_token, access_token_s
 	print "The Number of Friends: " + friends
 	print "The Number of Statuses: " + statuses
 	print "User URL: " + url + "\n"
+	tweet = api.user_timeline(screenname)
+	for status in tweet:
+		print status.text
 
 def webCrawl(mydict, ck, cs, at, ats):
 
@@ -237,25 +240,26 @@ def webCrawl(mydict, ck, cs, at, ats):
 		checked = False
 		try:
 			response = requests.get(i['venue']['url'])
+			# parse html
+			page = str(BeautifulSoup(response.content, "html.parser"))
+			while True:
+				url, n = getURL(page)
+				page = page[n:]
+				if url:
+					if 'twitter' in url:
+						for j in range(0, len(urls)):
+							if url == urls[j]:
+								checked = True
+						if not checked:
+							print i['venue']['name']
+							getTwitter(url, ck, cs, at, ats)
+							print "\n"
+							urls.append(url)
+							break
+				else:
+					break
 		except:
 			pass
-		# parse html
-		page = str(BeautifulSoup(response.content, "html.parser"))
-
-		while True:
-			url, n = getURL(page)
-			page = page[n:]
-			if url:
-				if 'twitter' in url:
-					for i in range(0, len(urls)):
-						if url == urls[i]:
-							checked = True
-					if not checked:
-						getTwitter(url, ck, cs, at, ats)
-						urls.append(url)
-						break
-			else:
-				break
 
 # main script
 # keys needed for access to url
@@ -322,12 +326,12 @@ if r.status_code == 200:
 	#datafile.close()
 	#print filename+".json created!"
 	makeHTML(data, api)
-	#webbrowser.open('my-map.html')
+	webbrowser.open('my-map.html')
 	webCrawl(data, consumer_key, consumer_secret, access_token, access_token_secret)
-	#if section == "":
-	#	makeTwitterStream(data, query, consumer_key, consumer_secret, access_token, access_token_secret)
-	#else:
-	#	makeTwitterStream(data, section, consumer_key, consumer_secret, access_token, access_token_secret)
+	if section == "":
+		makeTwitterStream(data, query, consumer_key, consumer_secret, access_token, access_token_secret)
+	else:
+		makeTwitterStream(data, section, consumer_key, consumer_secret, access_token, access_token_secret)
 else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)
