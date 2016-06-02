@@ -131,7 +131,7 @@ def makeHTML(mydict, ck, cs, at, ats):
 	result['phones'] = phones
 	result['ratings'] = ratings
 	result['urls'] = urls
-	result['tweets'] = webCrawl(lst, ck, cs, at, ats)
+	result['twitters'] = webCrawl(lst, ck, cs, at, ats)
 	return result
 
 def webCrawl(lst, ck, cs, at, ats):
@@ -187,8 +187,8 @@ def getTwitter(userid, ck, cs, at, ats):
 	else:
 		output['url'] = user.url
 
-	#tweet = api.user_timeline(user.screen_name)
-	#for status in tweet:
-	#	tweets.append(status)
-	#output['tweets'] = tweets
+	tweet = api.user_timeline(user.screen_name)
+	for status in tweet:
+		tweets.append(status.text)
+	output['tweets'] = tweets
 	return output
