@@ -4,7 +4,8 @@
 
 import cherrypy, requests
 import re, json
-import webbrowser, urllib2, time, datetime
+import webbrowser, urllib2, time, datetime, tweepy
+from bs4 import BeautifulSoup
 
 class DataController(object):
 	def __init__(self):
@@ -76,12 +77,12 @@ def datacrawl(data):
 		#datafile.write(json.dumps(thedata, indent=4, sort_keys=True))
 		#datafile.close()
 		#print filename+".json created!"
-		result = makeHTML(thedata)
+		result = makeHTML(thedata, consumer_key, consumer_secret, access_token, access_token_secret)
 	else:
 		result = "Error"
 	return result
 
-def makeHTML(mydict):
+def makeHTML(mydict, ck, cs, at, ats):
 	result = {}
 	# obtain center of search
 	lat = mydict['response']['geocode']['center']['lat']
@@ -130,4 +131,64 @@ def makeHTML(mydict):
 	result['phones'] = phones
 	result['ratings'] = ratings
 	result['urls'] = urls
+	result['tweets'] = webCrawl(lst, ck, cs, at, ats)
 	return result
+
+def webCrawl(lst, ck, cs, at, ats):
+
+	userids = []
+	output = {}
+
+	for i in lst:
+		checked = False
+		try:
+			response = requests.get(i['venue']['url'])
+			# parse html
+			page = BeautifulSoup(response.content, "html.parser")
+			for link in page.find_all('a'):
+				if 'twitter' in link.get('href'):
+					url = link.get('href')
+					line = url.rstrip()
+					components = line.split("/")
+					userid = components[-1]
+					if '?' in userid:
+						components = userid.split("?")
+						userid = components[0]
+					for j in range(0, len(userids)):
+						if userid == userids[j]:
+							checked = True
+					if not checked:
+						output[i['venue']['name']] = getTwitter(userid, ck, cs, at, ats)
+						userids.append(userid)
+		except Exception as e:
+			pass
+	return output
+
+def getTwitter(userid, ck, cs, at, ats):
+
+	output = {}
+	tweets = []
+
+	auth = tweepy.OAuthHandler(ck, cs)
+	auth.set_access_token(at, ats)
+
+	api = tweepy.API(auth)
+
+	user = api.get_user(userid)
+	output['screenname'] = user.screen_name
+	output['name'] = user.name
+	output['location'] = user.location
+	output['description'] = user.description
+	output['followers'] = str(user.followers_count)
+	output['friends'] = str(user.friends_count)
+	output['statuses'] = str(user.statuses_count)
+	if (user.url == None):
+		output['url'] = 'N/A'
+	else:
+		output['url'] = user.url
+
+	tweet = api.user_timeline(screenname)
+	for status in tweet:
+		tweets.append(status)
+	output['tweets'] = tweets
+	return output

@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/2/2016
+- (3:56) Client-server version now works much more quickly. Working on the best approach to sending the Twitter data back to the web page
 - (2:57) Bad Twitter link bug solved - hopefully
 - (2:52) Successfully only searching for Twitter urls on the home page; currently working on a bug where a Twitter link cannot be cleanly separated in order to obtain the user name
 - (1:40) Removed the 'Section' parameter from the basic Foursquare data crawler and began looking into faster web crawling methods
