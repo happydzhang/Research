@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/2/2016
+- (12:04) When I attempted to add the Twitter crawler to the client-server version, response times increased greatly depending on what kind of search was made. Through testing, I've determined that the 'Section' parameter for Foursquare often returns the same results, even if a different category is chosen. Further, some of the venues' websites are bad links, causing the web crawler to wait for a timeout, or the websites have many nested pages, meaning I need to limit how many pages the web crawler will search for a Twitter link. Truthfully, a venue will most likely have a link to its Twitter account on the mainpage, so I will explore this further. I plan to git reset this directory because I want a fresh start following lunch.
+- (9:05) Resumed work on adding Twitter data to the client-server version
+
 Notes for 6/1/2016
 - (4:31) Other goals for the next week are to add an upload button the mobile app to allow for greater testing, as well as the added ability for users to view already taken photos
 - (4:00) Currently looking into the best approach to integrating the new basic data crawler with the webpage version. Issue of formatting the data sent back by the python script as well as what HTML element to use. Will investigate in greater depth on Thursday and Friday.
