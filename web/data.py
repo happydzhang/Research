@@ -55,14 +55,11 @@ def datacrawl(data):
 	# custom search parameters
 	location = data['location']
 	srange = data['range']
-	section = data['section']
 	query = data['query']
 	limit = data['limit']
 
 	# setup the url
-	if section != 'None':
-		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&radius="+srange+"&limit="+limit
-	elif query != '':
+	if query != '':
 		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+srange+"&limit="+limit
 	else:
 		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section=topPicks&radius="+srange+"&limit="+limit

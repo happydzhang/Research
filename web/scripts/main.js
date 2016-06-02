@@ -44,20 +44,9 @@ var rinput = new Input();
 rinput.createInput("250", "therInput");
 rinput.addToDocument();
 
-// section label
-var slabel = new Label();
-slabel.createLabel("Section", "thesLabel");
-slabel.addToDocument();
-
-// section dropdown
-var sdropdown = new Dropdown();
-dict = ["None", "food", "drinks", "coffee", "shops", "arts", "outdoors", "sights", "trending", "specials", "nextVenues", "topPicks"];
-sdropdown.createDropdown(dict, "thesDropdown", 0);
-sdropdown.addToDocument();
-
 // query label
 var qlabel = new Label();
-qlabel.createLabel("Query", "theqLabel");
+qlabel.createLabel("What are you looking for?", "theqLabel");
 qlabel.addToDocument();
 
 // query box
@@ -75,7 +64,7 @@ var liinput = new Input();
 liinput.createInput("10", "thelInput");
 liinput.addToDocument();
 
-args = [linput, rinput, sdropdown, qinput, liinput];
+args = [linput, rinput, qinput, liinput];
 rbutton.addClickEventHandler(refresh, args);
 
 function refresh(args){
@@ -85,14 +74,9 @@ function refresh(args){
 	mymarkers = [];
 	thelocation = args[0].getValue();
 	range = args[1].getValue();
-	section = args[2].getSelected();
-	if(section == "None"){
-		query = args[3].getValue();
-	}else{
-		query = "";
-	}
-	limit = args[4].getValue();
-	var params = "{\"location\": \""+thelocation+"\", \"range\": \""+range+"\", \"section\": \""+section+"\", \"query\": \""+query+"\", \"limit\": \""+limit+"\"}";	
+	query = args[2].getValue();
+	limit = args[3].getValue();
+	var params = "{\"location\": \""+thelocation+"\", \"range\": \""+range+"\", \"query\": \""+query+"\", \"limit\": \""+limit+"\"}";	
 
 
 	var html = new XMLHttpRequest();

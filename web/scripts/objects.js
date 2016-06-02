@@ -34,23 +34,6 @@ function Button() {
 	}
 }
 
-function Dropdown(){
-	this.createDropdown = function(dict, id, selected){
-		this.item = document.createElement("select");
-		this.item.setAttribute("id", id);
-		for (i=0;i<dict.length;i++){
-			option = document.createElement("option");
-			option.setAttribute("value", dict[i]);
-			option.text = dict[i];
-			this.item.add(option);
-		}
-		this.item.selectedIndex = selected; 
-	}
-	this.getSelected = function(){
-		return this.item.value;
-	}
-}
-
 function Input(){
 	this.createInput = function(text, id){
 		this.item = document.createElement("input");
@@ -64,5 +47,4 @@ function Input(){
 
 Label.prototype = Item;
 Button.prototype = Item;
-Dropdown.prototype = Item;
 Input.prototype = Item;
