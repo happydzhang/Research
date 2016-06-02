@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/2/2016
+- (4:41) Began exploring ways to display the Twitter information; considering putting some of it inside the InfoWindows directly on the Googlemap, depending on the availability of "pages" inside InfoWindows. Other options include including putting a text window beside the Googlemap
 - (4:38) Bug fixed. Was grabbing more than just the text in each status, making it not JSON serializable
 - (4:18) Server now successfully sends the account information of each venue's Twitter; there's a bug that is preventing me from sending a list containing a Twitter's recent statuses, and I'm currently looking for a way to still include this information
 - (3:56) Client-server version now works much more quickly. Working on the best approach to sending the Twitter data back to the web page
