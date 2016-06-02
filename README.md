@@ -2,6 +2,9 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/2/2016
+- (2:57) Bad Twitter link bug solved - hopefully
+- (2:52) Successfully only searching for Twitter urls on the home page; currently working on a bug where a Twitter link cannot be cleanly separated in order to obtain the user name
+- (1:40) Removed the 'Section' parameter from the basic Foursquare data crawler and began looking into faster web crawling methods
 - (12:04) When I attempted to add the Twitter crawler to the client-server version, response times increased greatly depending on what kind of search was made. Through testing, I've determined that the 'Section' parameter for Foursquare often returns the same results, even if a different category is chosen. Further, some of the venues' websites are bad links, causing the web crawler to wait for a timeout, or the websites have many nested pages, meaning I need to limit how many pages the web crawler will search for a Twitter link. Truthfully, a venue will most likely have a link to its Twitter account on the mainpage, so I will explore this further. I plan to git reset this directory because I want a fresh start following lunch.
 - (9:05) Resumed work on adding Twitter data to the client-server version
 

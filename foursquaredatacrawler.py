@@ -185,21 +185,8 @@ def makeTwitterStream(mydict, search, consumer_key, consumer_secret, access_toke
 	myStream = tweepy.Stream(apiT.auth, MyStreamListener(mydict, search))
 	myStream.filter(locations=[llng, llat, rlng, rlat], async=True)
 
-def getURL(page):
+def getTwitter(userid, consumer_key, consumer_secret, access_token, access_token_secret):
 
-	start_link = page.find("a href")
-	if start_link == -1:
-		return None, 0
-	start_quote = page.find('"', start_link)
-	end_quote = page.find('"', start_quote + 1)
-	url = page[start_quote + 1: end_quote]
-	return url, end_quote
-
-def getTwitter(tURL, consumer_key, consumer_secret, access_token, access_token_secret):
-
-	line = tURL.rstrip()
-	components = line.split("/")
-	userid = components[-1]
 
 	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 	auth.set_access_token(access_token, access_token_secret)
@@ -234,7 +221,7 @@ def getTwitter(tURL, consumer_key, consumer_secret, access_token, access_token_s
 def webCrawl(mydict, ck, cs, at, ats):
 
 	lst = mydict['response']['groups'][0]['items']
-	urls = []
+	userids = []
 
 	for i in lst:
 		checked = False
@@ -242,24 +229,26 @@ def webCrawl(mydict, ck, cs, at, ats):
 			response = requests.get(i['venue']['url'])
 			print i['venue']['name']
 			# parse html
-			page = str(BeautifulSoup(response.content, "html.parser"))
-			while True:
-				url, n = getURL(page)
-				page = page[n:]
-				if url:
-					if 'twitter' in url:
-						for j in range(0, len(urls)):
-							if url == urls[j]:
-								checked = True
-						if not checked:
-							getTwitter(url, ck, cs, at, ats)
-							print "\n"
-							urls.append(url)
-							break
-				else:
-					print "\n"
-					break
-		except:
+			page = BeautifulSoup(response.content, "html.parser")
+			for link in page.find_all('a'):
+				if 'twitter' in link.get('href'):
+					url = link.get('href')
+					line = url.rstrip()
+					components = line.split("/")
+					userid = components[-1]
+					if '?' in userid:
+						components = userid.split("?")
+						userid = components[0]
+					for j in range(0, len(userids)):
+						if userid == userids[j]:
+							checked = True
+					if not checked:
+						print userid
+						getTwitter(userid, ck, cs, at, ats)
+						print "\n"
+						userids.append(userid)
+		except Exception as e:
+			#print str(e) + ": " + i['venue']['name']
 			pass
 
 # main script
@@ -292,23 +281,18 @@ mode = raw_input("Would you like to run on the default settings (y/n): ")
 # default search
 if mode == 'y':
 	section = 'topPicks'
+	query = section
 	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near=South Bend, IN&section="+section
 # custom search
 elif mode == 'n':
 #allow user to specify location, radius, etc.
 	location = raw_input("Enter a city: ")
 	radius = raw_input("Enter a range: ")
-	section = raw_input("One of food, drinks, coffee, shops, arts, outdoors, sights, trending, or specials, nextVenues, or topPicks: ")
-	if section == "":
-		query = raw_input("Specific kind of venue: ")
+	query = raw_input("What are you looking for: ")
 	limit = raw_input("Maximum number of venues: ")
 
 	# Obtain the data
-	if section == "":
-		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+str(radius)+"&limit="+str(limit)
-	else:
-		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section="+section+"&radius="+str(radius)+"&limit="+str(limit)
-	
+	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+str(radius)+"&limit="+str(limit)
 # wrong input
 else:
 	print "Incorrect input\n"
@@ -327,12 +311,9 @@ if r.status_code == 200:
 	#datafile.close()
 	#print filename+".json created!"
 	makeHTML(data, api)
-	webbrowser.open('my-map.html')
+	#webbrowser.open('my-map.html')
 	webCrawl(data, consumer_key, consumer_secret, access_token, access_token_secret)
-	if section == "":
-		makeTwitterStream(data, query, consumer_key, consumer_secret, access_token, access_token_secret)
-	else:
-		makeTwitterStream(data, section, consumer_key, consumer_secret, access_token, access_token_secret)
+	#makeTwitterStream(data, query, consumer_key, consumer_secret, access_token, access_token_secret)
 else:
 	print r
 	print json.dumps(data, indent=4, sort_keys=True)
