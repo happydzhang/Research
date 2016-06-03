@@ -104,11 +104,11 @@ function refresh(args){
 			mymarkers.push(marker)
 
 			if (urls[i]=='N/A'){
-				marker.contentString = '<div id="InfoText">'+
+				marker.contentString = '<div id="tabs">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<ul>'+
-					'<li><a href="#tab-1"><span>One</span></a></li>'+
-					'<li><a href="#tab-2"><span>Two</span></a></li>'+
+					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
 					'</ul>'+
 					'<div id="tab-1">'+
 					'<p>'+addresses[i]+'</p>'+
@@ -121,11 +121,11 @@ function refresh(args){
 					'</div>'+
 					'</div>';
 			}else{
-				marker.contentString = '<div id="InfoText">'+
+				marker.contentString = '<div id="tabs">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<ul>'+
-					'<li><a href="#tab-1"><span>One</span></a></li>'+
-					'<li><a href="#tab-2"><span>Two</span></a></li>'+
+					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
 					'<div id="tab-1">'+
 					'<p>'+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
@@ -138,13 +138,14 @@ function refresh(args){
 					'</div>';
 			}
 
+			google.maps.event.addListener(infowindow, 'domready', function(){
+				$('#tabs').tabs();
+			});
+
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.setContent(this.contentString);
 				infowindow.open(map, this);
 
-				google.maps.event.addListener(self.get('infowindow'), 'domready', function(){
-					$("#tabs").tabs();
-				});
 			});
 		}
 

@@ -188,7 +188,7 @@ def getTwitter(userid, ck, cs, at, ats):
 		output['url'] = user.url
 
 	tweet = api.user_timeline(user.screen_name)
-	for status in tweet:
-		tweets.append(status.text)
-	output['tweets'] = tweets
+	#for status in tweet:
+	#	tweets.append(status.text)
+	#output['tweets'] = tweets
 	return output

@@ -2,6 +2,9 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/3/2016
+- (4:45) Finally got a very sloppy, basic version of a tabbed infowindow working. Next step is to put the Twitter related data into the Twitter tap
+- (4:01) It seems to be a versioning or linking issue that's preventing the tabs from behaving properly. Will continue to investigate
+- (3:43) I've continued to experience problems with jQuery, but I am confident this is the best method for including large amounts of information regarding a venue; the infowindows need to be as compact as possible
 - (12:00) Currently attempting to use jQuery to add tabs to the Infowindows; running into some issues, but this seems like the best approach
 - (9:05) Resumed determining best method for displaying Twitter info
 
