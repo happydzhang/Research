@@ -104,27 +104,36 @@ function refresh(args){
 			mymarkers.push(marker)
 
 			if (urls[i]=='N/A'){
-				marker.contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
+				marker.contentString = '<div id="InfoText">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<div id="bodyContent">'+
-					'<p>'+addresses[i]+'</p>'+
-					'<p>Phone: '+phones[i]+'</p>'+
-					'<p>Rating: '+ratings[i]+'</p>'+
-					'<p>URL: '+urls[i]+'</p>'+
-					'</div>'+
-					'</div>';
-			}else{
-				marker.contentString = '<div id="content">'+
-					'<div id="siteNotice">'+
-					'</div>'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<div id="bodyContent">'+
+					'<ul>'+
+					'<li><a href="#tab-1"><span>One</span></a></li>'+
+					'<li><a href="#tab-2"><span>Two</span></a></li>'+
+					'</ul>'+
+					'<div id="tab-1">'+
 					'<p>'+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
 					'<p>Rating: '+ratings[i]+'</p>'+
 					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+					'</div>'+
+					'<div id="tab-2">'+
+					'<p><center>This is where the Twitter stuff goes</center></p>'+
+					'</div>'+
+					'</div>';
+			}else{
+				marker.contentString = '<div id="InfoText">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<ul>'+
+					'<li><a href="#tab-1"><span>One</span></a></li>'+
+					'<li><a href="#tab-2"><span>Two</span></a></li>'+
+					'<div id="tab-1">'+
+					'<p>'+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+					'</div>'+
+					'<div id="tab-2">'+
+					'<p><center>This is where the Twitter stuff goes</center></p>'+
 					'</div>'+
 					'</div>';
 			}
@@ -132,6 +141,10 @@ function refresh(args){
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.setContent(this.contentString);
 				infowindow.open(map, this);
+
+				google.maps.event.addListener(self.get('infowindow'), 'domready', function(){
+					$("#tabs").tabs();
+				});
 			});
 		}
 

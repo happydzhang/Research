@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/3/2016
+- (12:00) Currently attempting to use jQuery to add tabs to the Infowindows; running into some issues, but this seems like the best approach
+- (9:05) Resumed determining best method for displaying Twitter info
+
 Notes for 6/2/2016
 - (4:41) Began exploring ways to display the Twitter information; considering putting some of it inside the InfoWindows directly on the Googlemap, depending on the availability of "pages" inside InfoWindows. Other options include including putting a text window beside the Googlemap
 - (4:38) Bug fixed. Was grabbing more than just the text in each status, making it not JSON serializable
