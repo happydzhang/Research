@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/6/2016
+- (4:08) Began exploring the Instagram API options as the next social media site to integrate into the application
 - (3:37) Very basic version of multi-tabbed info windows is now working
 - (2:32) Continuing to explore different ways to present the Twitter information
 - (12:15) Opted to removed displaying account information, as the user probably cares more about what people are saying about venue than how many followers, etc. a venue has
