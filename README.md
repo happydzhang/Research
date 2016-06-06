@@ -2,6 +2,8 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/6/2016
+- (3:37) Very basic version of multi-tabbed info windows is now working
+- (2:32) Continuing to explore different ways to present the Twitter information
 - (12:15) Opted to removed displaying account information, as the user probably cares more about what people are saying about venue than how many followers, etc. a venue has
 - (10:42) The venues' Twitter accounts, if available, are now presented in the info window. Currently looking into ways to show recent tweets
 - (9:05) Resumed work on cleaning up the tabbed infowindow

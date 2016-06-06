@@ -115,29 +115,55 @@ function refresh(args){
 					'<p>Address: '+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
 					'<p>Rating: '+ratings[i]+'</p>'+
-					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+					'<p>URL: '+urls[i]+'</p>'+
 					'</div>'+
 					'<div id="tab-2">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Screenname: '+twitters[i]['screenname']+'</p>'+
+					'<p>Description: '+twitters[i]['description']+'</p>'+
+					'<p>Followers: '+twitters[i]['followers']+'</p>'+
 					'</div>'+
 					'</div>';
 			}else{
-				marker.contentString = '<div id="tabs">'+
-					'<ul>'+
-					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-					'<div id="tab-1">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Address: '+addresses[i]+'</p>'+
-					'<p>Phone: '+phones[i]+'</p>'+
-					'<p>Rating: '+ratings[i]+'</p>'+
-					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
-					'</div>'+
-					'<div id="tab-2">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>'+twitters[i]['tweets']+'</p>'+
-					'</div>'+
-					'</div>';
+				if (twitters[i]['screenname'] != undefined){
+					marker.contentString = '<div id="tabs">'+
+						'<ul>'+
+						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+						'<div id="tab-1">'+
+						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+						'<p>Address: '+addresses[i]+'</p>'+
+						'<p>Phone: '+phones[i]+'</p>'+
+						'<p>Rating: '+ratings[i]+'</p>'+
+						'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+						'</div>'+
+						'<div id="tab-2">'+
+						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+						'<p>Screenname: <a href="https://twitter.com/'+twitters[i]['screenname']+'">https://twitter.com/'+twitters[i]['screenname']+'</a></p>'+
+						'<p>Description: '+twitters[i]['description']+'</p>'+
+						'<p>Followers: '+twitters[i]['followers']+'</p>'+
+						'</div>'+
+						'</div>';
+				}else{
+					marker.contentString = '<div id="tabs">'+
+						'<ul>'+
+						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+						'<div id="tab-1">'+
+						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+						'<p>Address: '+addresses[i]+'</p>'+
+						'<p>Phone: '+phones[i]+'</p>'+
+						'<p>Rating: '+ratings[i]+'</p>'+
+						'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+						'</div>'+
+						'<div id="tab-2">'+
+						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+						'<p>Screenname: '+twitters[i]['screenname']+'</p>'+
+						'<p>Description: '+twitters[i]['description']+'</p>'+
+						'<p>Followers: '+twitters[i]['followers']+'</p>'+
+						'</div>'+
+						'</div>';
+				}
 			}
 
 			google.maps.event.addListener(infowindow, 'domready', function(){

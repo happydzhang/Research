@@ -173,7 +173,6 @@ def webCrawl(lst, ck, cs, at, ats):
 def getTwitter(userid, ck, cs, at, ats):
 
 	output = {}
-	tweets = []
 
 	auth = tweepy.OAuthHandler(ck, cs)
 	auth.set_access_token(at, ats)
@@ -181,8 +180,7 @@ def getTwitter(userid, ck, cs, at, ats):
 	api = tweepy.API(auth)
 
 	user = api.get_user(userid)
-	tweet = api.user_timeline(user.screen_name)
-	for status in tweet:
-		tweets.append(status.text)
-	output['tweets'] = tweets
+	output['screenname'] = user.screen_name
+	output['description'] = user.description
+	output['followers'] = user.followers_count
 	return output
