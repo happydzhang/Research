@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/6/2016
+- (9:05) Resumed work on cleaning up the tabbed infowindow
+
 Notes for 6/3/2016
 - (4:45) Finally got a very sloppy, basic version of a tabbed infowindow working. Next step is to put the Twitter related data into the Twitter tap
 - (4:01) It seems to be a versioning or linking issue that's preventing the tabs from behaving properly. Will continue to investigate

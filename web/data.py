@@ -137,9 +137,19 @@ def makeHTML(mydict, ck, cs, at, ats):
 def webCrawl(lst, ck, cs, at, ats):
 
 	userids = []
-	output = {}
-
+	output = []
+	placeholder = {}
+	placeholder['screenname'] = 'N/A'
+	placeholder['name'] = 'N/A'
+	placeholder['location'] = 'N/A'
+	placeholder['description'] = 'N/A'
+	placeholder['followers'] = 'N/A'
+	placeholder['friends'] = 'N/A'
+	placeholder['statuses'] = 'N/A'
+	placeholder['url'] = 'N/A'
+	k = 0
 	for i in lst:
+		element = None
 		checked = False
 		try:
 			response = requests.get(i['venue']['url'])
@@ -158,10 +168,14 @@ def webCrawl(lst, ck, cs, at, ats):
 						if userid == userids[j]:
 							checked = True
 					if not checked:
-						output[i['venue']['name']] = getTwitter(userid, ck, cs, at, ats)
+						element = getTwitter(userid, ck, cs, at, ats)
 						userids.append(userid)
-		except Exception as e:
+		except:
 			pass
+		if element != None:
+			output.append(element)
+		else:
+			output.append(placeholder)
 	return output
 
 def getTwitter(userid, ck, cs, at, ats):

@@ -1,6 +1,6 @@
 // Brian Mann
 // main.js
-// 5/24/2016
+// 6/6/2016
 
 var map;
 var mymarkers = [];
@@ -91,6 +91,7 @@ function refresh(args){
 		var phones = j['phones']
 		var ratings = j['ratings']
 		var urls = j['urls']
+		var twitters = j['twitters']
 		map.setCenter(mylatlng);
 
 		infowindow = new google.maps.InfoWindow();
@@ -105,35 +106,51 @@ function refresh(args){
 
 			if (urls[i]=='N/A'){
 				marker.contentString = '<div id="tabs">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
 					'</ul>'+
 					'<div id="tab-1">'+
-					'<p>'+addresses[i]+'</p>'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Address: '+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
 					'<p>Rating: '+ratings[i]+'</p>'+
 					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
 					'</div>'+
 					'<div id="tab-2">'+
-					'<p><center>This is where the Twitter stuff goes</center></p>'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Screenname: '+twitters[i]['screenname']+'</p>'+
+					'<p>Name: '+twitters[i]['name']+'</p>'+
+					'<p>Location: '+twitters[i]['location']+'</p>'+
+					'<p>Description: '+twitters[i]['description']+'</p>'+
+					'<p>Followers: '+twitters[i]['followers']+'</p>'+
+					'<p>Friends: '+twitters[i]['friends']+'</p>'+
+					'<p>Statuses: '+twitters[i]['statuses']+'</p>'+
+					'<p>URL: '+twitters[i]['url']+'</p>'+
 					'</div>'+
 					'</div>';
 			}else{
 				marker.contentString = '<div id="tabs">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
 					'<div id="tab-1">'+
-					'<p>'+addresses[i]+'</p>'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Address: '+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
 					'<p>Rating: '+ratings[i]+'</p>'+
 					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
 					'</div>'+
 					'<div id="tab-2">'+
-					'<p><center>This is where the Twitter stuff goes</center></p>'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Screenname: '+twitters[i]['screenname']+'</p>'+
+					'<p>Name: '+twitters[i]['name']+'</p>'+
+					'<p>Location: '+twitters[i]['location']+'</p>'+
+					'<p>Description: '+twitters[i]['description']+'</p>'+
+					'<p>Followers: '+twitters[i]['followers']+'</p>'+
+					'<p>Friends: '+twitters[i]['friends']+'</p>'+
+					'<p>Statuses: '+twitters[i]['statuses']+'</p>'+
+					'<p>URL: '+twitters[i]['url']+'</p>'+
 					'</div>'+
 					'</div>';
 			}
