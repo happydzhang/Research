@@ -1,6 +1,6 @@
 # Brian Mann
 # data.py
-# 5/25/2016
+# 6/6/2016
 
 import cherrypy, requests
 import re, json
@@ -139,15 +139,7 @@ def webCrawl(lst, ck, cs, at, ats):
 	userids = []
 	output = []
 	placeholder = {}
-	placeholder['screenname'] = 'N/A'
-	placeholder['name'] = 'N/A'
-	placeholder['location'] = 'N/A'
-	placeholder['description'] = 'N/A'
-	placeholder['followers'] = 'N/A'
-	placeholder['friends'] = 'N/A'
-	placeholder['statuses'] = 'N/A'
-	placeholder['url'] = 'N/A'
-	k = 0
+	placeholder['tweets'] = []
 	for i in lst:
 		element = None
 		checked = False
@@ -189,20 +181,8 @@ def getTwitter(userid, ck, cs, at, ats):
 	api = tweepy.API(auth)
 
 	user = api.get_user(userid)
-	output['screenname'] = user.screen_name
-	output['name'] = user.name
-	output['location'] = user.location
-	output['description'] = user.description
-	output['followers'] = str(user.followers_count)
-	output['friends'] = str(user.friends_count)
-	output['statuses'] = str(user.statuses_count)
-	if (user.url == None):
-		output['url'] = 'N/A'
-	else:
-		output['url'] = user.url
-
 	tweet = api.user_timeline(user.screen_name)
-	#for status in tweet:
-	#	tweets.append(status.text)
-	#output['tweets'] = tweets
+	for status in tweet:
+		tweets.append(status.text)
+	output['tweets'] = tweets
 	return output

@@ -2,6 +2,8 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/6/2016
+- (12:15) Opted to removed displaying account information, as the user probably cares more about what people are saying about venue than how many followers, etc. a venue has
+- (10:42) The venues' Twitter accounts, if available, are now presented in the info window. Currently looking into ways to show recent tweets
 - (9:05) Resumed work on cleaning up the tabbed infowindow
 
 Notes for 6/3/2016

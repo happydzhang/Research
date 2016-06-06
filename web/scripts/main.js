@@ -119,14 +119,6 @@ function refresh(args){
 					'</div>'+
 					'<div id="tab-2">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Screenname: '+twitters[i]['screenname']+'</p>'+
-					'<p>Name: '+twitters[i]['name']+'</p>'+
-					'<p>Location: '+twitters[i]['location']+'</p>'+
-					'<p>Description: '+twitters[i]['description']+'</p>'+
-					'<p>Followers: '+twitters[i]['followers']+'</p>'+
-					'<p>Friends: '+twitters[i]['friends']+'</p>'+
-					'<p>Statuses: '+twitters[i]['statuses']+'</p>'+
-					'<p>URL: '+twitters[i]['url']+'</p>'+
 					'</div>'+
 					'</div>';
 			}else{
@@ -143,14 +135,7 @@ function refresh(args){
 					'</div>'+
 					'<div id="tab-2">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Screenname: '+twitters[i]['screenname']+'</p>'+
-					'<p>Name: '+twitters[i]['name']+'</p>'+
-					'<p>Location: '+twitters[i]['location']+'</p>'+
-					'<p>Description: '+twitters[i]['description']+'</p>'+
-					'<p>Followers: '+twitters[i]['followers']+'</p>'+
-					'<p>Friends: '+twitters[i]['friends']+'</p>'+
-					'<p>Statuses: '+twitters[i]['statuses']+'</p>'+
-					'<p>URL: '+twitters[i]['url']+'</p>'+
+					'<p>'+twitters[i]['tweets']+'</p>'+
 					'</div>'+
 					'</div>';
 			}
