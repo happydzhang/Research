@@ -89,11 +89,6 @@ def datacrawl(data):
 	# get the values for the markers
 	if r.status_code == 200:
 		#use current time to name the file
-		#filename = datetime.datetime.now().strftime("%m%d%Y%H%M%S")
-		#datafile = open("datasets/"+filename+".json", "w")
-		#datafile.write(json.dumps(thedata, indent=4, sort_keys=True))
-		#datafile.close()
-		#print filename+".json created!"
 		result = makeHTML(thedata)
 	else:
 		result = "Error"
@@ -196,6 +191,7 @@ def webCrawl(data):
 						if not checked:
 							userids.append(userid)
 							checked = True
+							break
 				if not checked:
 					userids.append('N/A')
 		except Exception as ex:
