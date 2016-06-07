@@ -1,6 +1,12 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/7/2016
+- (3:37) Client-server model with two requests to the server now works, although the Twitter info takes a long time to get, probably due to web crawling. Will continue to explore faster methods of finding Twitter links on a venue's url
+- (2:08) Client currently makes two requests to the server; the first request results in the Foursquare data, which, upon being received, causes the client to request the Twitter data
+- (12:07) Currently debugging the POST request made by the client for the Twitter info; steady progress is being made and this should result in faster responses as the server does not have to make as many nested calls for a single request, meaning that the Foursquare data can be returned and then the client can ask the server for Twitter data
+- (9:07) Began the process of optimiziing current client-server version of data crawler, as there is an undesirable time delay between when the user hits refresh and the new results appear; will attempt to split the script into separate requests from the server
+
 Notes for 6/6/2016
 - (4:08) Began exploring the Instagram API options as the next social media site to integrate into the application
 - (3:37) Very basic version of multi-tabbed info windows is now working

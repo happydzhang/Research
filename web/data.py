@@ -7,7 +7,7 @@ import re, json
 import webbrowser, urllib2, time, datetime, tweepy
 from bs4 import BeautifulSoup
 
-class DataController(object):
+class FoursquareController(object):
 	def __init__(self):
 		pass
 
@@ -23,6 +23,23 @@ class DataController(object):
 			else:
 				output = result
 				output['result'] = 'success'
+		except Exception as ex:
+			output['result'] = 'error'
+			output['message'] = str(ex)
+		return json.dumps(output, encoding='latin-1')
+
+class TwitterController(object):
+	def __init__(self):
+		pass
+
+	def POST(self):
+		output = {'result':'success'}
+		try:
+			params = cherrypy.request.body.read()
+			data = json.loads(params)
+			result = webCrawl(data)
+			output = result
+			output['result'] = 'success'
 		except Exception as ex:
 			output['result'] = 'error'
 			output['message'] = str(ex)
@@ -77,12 +94,12 @@ def datacrawl(data):
 		#datafile.write(json.dumps(thedata, indent=4, sort_keys=True))
 		#datafile.close()
 		#print filename+".json created!"
-		result = makeHTML(thedata, consumer_key, consumer_secret, access_token, access_token_secret)
+		result = makeHTML(thedata)
 	else:
 		result = "Error"
 	return result
 
-def makeHTML(mydict, ck, cs, at, ats):
+def makeHTML(mydict):
 	result = {}
 	# obtain center of search
 	lat = mydict['response']['geocode']['center']['lat']
@@ -131,56 +148,86 @@ def makeHTML(mydict, ck, cs, at, ats):
 	result['phones'] = phones
 	result['ratings'] = ratings
 	result['urls'] = urls
-	result['twitters'] = webCrawl(lst, ck, cs, at, ats)
 	return result
 
-def webCrawl(lst, ck, cs, at, ats):
+def webCrawl(data):
+	# keys needed for access to url
+	f = open('keys.txt', 'r')
 
+	for line in f:
+		line = line.rstrip()
+		components = line.split("::")
+		if components[0] == 'Client_ID':
+			CLIENT_ID = str(components[1])
+		elif components[0] == 'Client_Secret':
+			CLIENT_SECRET = str(components[1])
+		elif components[0] == 'API':
+			api = str(components[1])
+		elif components[0] == 'Consumer_Key':
+			consumer_key = str(components[1])
+		elif components[0] == 'Consumer_Secret':
+			consumer_secret = str(components[1])
+		elif components[0] == 'Access_Token':
+			access_token = str(components[1])
+		elif components[0] == 'Access_Token_Secret':
+			access_token_secret = str(components[1])
+
+	lst = data['urls']
 	userids = []
-	output = []
-	placeholder = {}
-	placeholder['tweets'] = []
+	result = {}
 	for i in lst:
-		element = None
-		checked = False
 		try:
-			response = requests.get(i['venue']['url'])
-			# parse html
-			page = BeautifulSoup(response.content, "html.parser")
-			for link in page.find_all('a'):
-				if 'twitter' in link.get('href'):
-					url = link.get('href')
-					line = url.rstrip()
-					components = line.split("/")
-					userid = components[-1]
-					if '?' in userid:
-						components = userid.split("?")
-						userid = components[0]
-					for j in range(0, len(userids)):
-						if userid == userids[j]:
+			checked = False
+			if i == 'N/A':
+				userids.append('N/A')
+			else:
+				response = requests.get(i)
+				# parse html
+				page = BeautifulSoup(response.content, "html.parser")
+				for link in page.find_all('a'):
+					if 'twitter' in link.get('href'):
+						url = link.get('href')
+						line = url.rstrip()
+						components = line.split("/")
+						userid = components[-1]
+						if '?' in userid:
+							components = userid.split("?")
+							userid = components[0]
+						if not checked:
+							userids.append(userid)
 							checked = True
-					if not checked:
-						element = getTwitter(userid, ck, cs, at, ats)
-						userids.append(userid)
-		except:
-			pass
-		if element != None:
-			output.append(element)
-		else:
-			output.append(placeholder)
-	return output
+				if not checked:
+					userids.append('N/A')
+		except Exception as ex:
+			userids.append('N/A')
+	result = getTwitter(userids, consumer_key, consumer_secret, access_token, access_token_secret)
+	return result
 
-def getTwitter(userid, ck, cs, at, ats):
 
-	output = {}
+def getTwitter(userids, ck, cs, at, ats):
+
+	result = {}
+	screennames = []
+	descriptions = []
+	followers = []
 
 	auth = tweepy.OAuthHandler(ck, cs)
 	auth.set_access_token(at, ats)
 
 	api = tweepy.API(auth)
 
-	user = api.get_user(userid)
-	output['screenname'] = user.screen_name
-	output['description'] = user.description
-	output['followers'] = user.followers_count
-	return output
+	for userid in userids:
+		try:
+			user = api.get_user(userid)
+			screennames.append(user.screen_name)
+			descriptions.append(user.description)
+			followers.append(user.followers_count)
+		except:
+			screennames.append('N/A')
+			descriptions.append('N/A')
+			followers.append('N/A')
+			
+	result['screennames'] = screennames
+	result['descriptions'] = descriptions
+	result['followers'] = followers
+	return result

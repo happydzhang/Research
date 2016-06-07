@@ -2,7 +2,8 @@
 # 5/24/2016
 
 import cherrypy
-from data import DataController
+from data import FoursquareController
+from data import TwitterController
 
 class OptionsController:
 	def OPTIONS(self, *args, **kwargs):
@@ -10,17 +11,22 @@ class OptionsController:
 
 def CORS():
 	cherrypy.response.headers["Access-Control-Allow-Origin"] = "*"
-	cherrypy.response.headers["Access-Control-Allow-Methods"] = "GET, PUT, POST, DELETE, OPTIONS"
+	cherrypy.response.headers["Access-Control-Allow-Methods"] = "POST, OPTIONS"
 	cherrypy.response.headers["Access-Control-Allow-Credentials"] = "true"
 
 def start_service():
 	dispatcher = cherrypy.dispatch.RoutesDispatcher()
-	dataController = DataController()
+	foursquareController = FoursquareController()
+	twitterController = TwitterController()
 	optionsController = OptionsController()
 
-	dispatcher.connect('data_post', '/data/', controller=dataController, action = 'POST', conditions=dict(method=['POST']))
+	dispatcher.connect('foursquare_post', '/foursquare/', controller=foursquareController, action = 'POST', conditions=dict(method=['POST']))
 
-	dispatcher.connect('data_option', '/data/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+	dispatcher.connect('twitter_post', '/twitter/', controller=twitterController, action = 'POST', conditions=dict(method=['POST']))
+
+	dispatcher.connect('foursquare_option', '/foursquare/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+
+	dispatcher.connect('twitter_option', '/twitter/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
 	conf = {
 		'global': {

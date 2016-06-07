@@ -78,70 +78,56 @@ function refresh(args){
 	limit = args[3].getValue();
 	var params = "{\"location\": \""+thelocation+"\", \"range\": \""+range+"\", \"query\": \""+query+"\", \"limit\": \""+limit+"\"}";	
 
-
 	var html = new XMLHttpRequest();
-	html.open("POST", url+'data/', true);
+	html.open("POST", url+'foursquare/', true);
 	html.onload = function(e){
 		var j = JSON.parse(html.responseText);
 
-		var mylatlng = {lat: j['lat'], lng: j['lng']}
-		var markers = j['markers']
-		var names = j['names']
-		var addresses = j['addresses']
-		var phones = j['phones']
-		var ratings = j['ratings']
-		var urls = j['urls']
-		var twitters = j['twitters']
+		var mylatlng = {lat: j['lat'], lng: j['lng']};
+		var markers = j['markers'];
+		var names = j['names'];
+		var addresses = j['addresses'];
+		var phones = j['phones'];
+		var ratings = j['ratings'];
+		var urls = j['urls'];
 		map.setCenter(mylatlng);
 
-		infowindow = new google.maps.InfoWindow();
+		var obj = {};
+		obj['urls'] = urls;
+		var parameters = JSON.stringify(obj);
+		var xml = new XMLHttpRequest();
+		xml.open("POST", url+'twitter/', true);
+		xml.onload = function(e){
+			var l = JSON.parse(xml.responseText);
+			var screennames = l['screennames'];
+			var descriptions = l['descriptions'];
+			var followers = l['followers'];
+			for (var i = 0; i < markers.length; i++){
+				var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+				var marker = new google.maps.Marker({
+					map: map,
+					position: latlng,
+				});
+				mymarkers.push(marker);
 
-		for (var i = 0; i < markers.length; i++){
-			var latlng = {lat: markers[i].lat, lng: markers[i].lng};
-			var marker = new google.maps.Marker({
-				map: map,
-				position: latlng,
-			});
-			mymarkers.push(marker)
-
-			if (urls[i]=='N/A'){
-				marker.contentString = '<div id="tabs">'+
-					'<ul>'+
-					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-					'</ul>'+
-					'<div id="tab-1">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Address: '+addresses[i]+'</p>'+
-					'<p>Phone: '+phones[i]+'</p>'+
-					'<p>Rating: '+ratings[i]+'</p>'+
-					'<p>URL: '+urls[i]+'</p>'+
-					'</div>'+
-					'<div id="tab-2">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Screenname: '+twitters[i]['screenname']+'</p>'+
-					'<p>Description: '+twitters[i]['description']+'</p>'+
-					'<p>Followers: '+twitters[i]['followers']+'</p>'+
-					'</div>'+
-					'</div>';
-			}else{
-				if (twitters[i]['screenname'] != undefined){
+				if (urls[i]=='N/A'){
 					marker.contentString = '<div id="tabs">'+
 						'<ul>'+
 						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+						'</ul>'+
 						'<div id="tab-1">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'<p>Address: '+addresses[i]+'</p>'+
 						'<p>Phone: '+phones[i]+'</p>'+
 						'<p>Rating: '+ratings[i]+'</p>'+
-						'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+						'<p>URL: '+urls[i]+'</p>'+
 						'</div>'+
 						'<div id="tab-2">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Screenname: <a href="https://twitter.com/'+twitters[i]['screenname']+'">https://twitter.com/'+twitters[i]['screenname']+'</a></p>'+
-						'<p>Description: '+twitters[i]['description']+'</p>'+
-						'<p>Followers: '+twitters[i]['followers']+'</p>'+
+						'<p>Screenname: '+screennames[i]+'</p>'+
+						'<p>Description: '+descriptions[i]+'</p>'+
+						'<p>Followers: '+followers[i]+'</p>'+
 						'</div>'+
 						'</div>';
 				}else{
@@ -158,12 +144,76 @@ function refresh(args){
 						'</div>'+
 						'<div id="tab-2">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Screenname: '+twitters[i]['screenname']+'</p>'+
-						'<p>Description: '+twitters[i]['description']+'</p>'+
-						'<p>Followers: '+twitters[i]['followers']+'</p>'+
+						'<p>Screenname: '+screennames[i]+'</p>'+
+						'<p>Description: '+descriptions[i]+'</p>'+
+						'<p>Followers: '+followers[i]+'</p>'+
 						'</div>'+
 						'</div>';
 				}
+
+				google.maps.event.addListener(infowindow, 'domready', function(){
+					$('#tabs').tabs();
+				});
+
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent(this.contentString);
+					infowindow.open(map, this);
+
+				});
+			}
+		}
+		xml.onerror = function(e) {console.log(xml.statusText);}
+		xml.send(parameters);
+
+		infowindow = new google.maps.InfoWindow();
+
+		for (var i = 0; i < markers.length; i++){
+			var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+			var marker = new google.maps.Marker({
+				map: map,
+				position: latlng,
+			});
+			mymarkers.push(marker);
+
+			if (urls[i]=='N/A'){
+				marker.contentString = '<div id="tabs">'+
+					'<ul>'+
+					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+					'</ul>'+
+					'<div id="tab-1">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Address: '+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>URL: '+urls[i]+'</p>'+
+					'</div>'+
+					'<div id="tab-2">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Screenname: Loading...</p>'+
+					'<p>Description: Loading...</p>'+
+					'<p>Followers: Loading...</p>'+
+					'</div>'+
+					'</div>';
+			}else{
+				marker.contentString = '<div id="tabs">'+
+					'<ul>'+
+					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+					'<div id="tab-1">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Address: '+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+					'</div>'+
+					'<div id="tab-2">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Screenname: Loading...</p>'+
+					'<p>Description: Loading...</p>'+
+					'<p>Followers: Loading...</p>'+
+					'</div>'+
+					'</div>';
 			}
 
 			google.maps.event.addListener(infowindow, 'domready', function(){
