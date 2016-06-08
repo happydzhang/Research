@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/8/2016
+- (11:51) Planning on thoroughly commenting my code, as I have fallen behind on that. Also, considering moving the Twitter data crawl into one function, as it currently attempts to find all possible Twitter screennames before getting the Twitter account information, making it loop an additional time, essentially
 - (11:01) No good way to determine if urls provided by Foursquare are bad or not. Will investigate ways to ensure that the response.get does not wait for long periods of time for a bad link. Currently just prohibiting the script from trying to connect to certain sites I have determined are bad
 - (10:15) During testing, determined that certain Foursquare provided urls are broken, but do not get detected by a GET request for quite some time, if at all
 - (9:19) Added the ability to click on the venue's Twitter screenname

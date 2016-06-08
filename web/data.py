@@ -146,6 +146,8 @@ def makeHTML(mydict):
 	return result
 
 def webCrawl(data):
+	#localtime = time.asctime(time.localtime(time.time()))
+	#print localtime
 	# keys needed for access to url
 	f = open('keys.txt', 'r')
 
@@ -171,9 +173,6 @@ def webCrawl(data):
 	userids = []
 	result = {}
 	for i in lst:
-		#print "crawling: "+i
-		#localtime = time.asctime(time.localtime(time.time()))
-		#print localtime
 		try:
 			checked = False
 			if i == 'N/A':
