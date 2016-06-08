@@ -156,6 +156,7 @@ def makeHTML(mydict):
 	return result
 
 def webCrawl(data):
+
 	#localtime = time.asctime(time.localtime(time.time()))
 	#print localtime
 	# keys needed for access to url
@@ -178,24 +179,43 @@ def webCrawl(data):
 			access_token = str(components[1])
 		elif components[0] == 'Access_Token_Secret':
 			access_token_secret = str(components[1])
+
+	# standard tweepy steps
+	auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+	auth.set_access_token(access_token, access_token_secret)
+
+	api = tweepy.API(auth)
 	# prepare list of urls
 	lst = data['urls']
-	userids = []
 	result = {}
+	screennames = []
+	descriptions = []
+	followers = []
+	tweets = []
+
 	# loop through each url and attempt to do a get request
 	for i in lst:
+		utweets = []
 		try:
 			checked = False
 			# simply skip any urls that are not provided
 			if i == 'N/A':
-				userids.append('N/A')
+				screennames.append('N/A')
+				descriptions.append('N/A')
+				followers.append('N/A')
 			# the following are all bad urls
 			elif '7-eleven' in i:
-				userids.append('N/A')
+				screennames.append('N/A')
+				descriptions.append('N/A')
+				followers.append('N/A')
 			elif 'brunospizza' in i:
-				userids.append('N/A')
+				screennames.append('N/A')
+				descriptions.append('N/A')
+				followers.append('N/A')
 			elif 'suxinghouse' in i:
-				userids.append('N/A')
+				screennames.append('N/A')
+				descriptions.append('N/A')
+				followers.append('N/A')
 			# good urls
 			else:
 				response = requests.get(i)
@@ -213,49 +233,28 @@ def webCrawl(data):
 						# found on one example that the screenname had garbage characters after it starting with a '?'
 						if '?' in userid:
 							components = userid.split("?")
-							userid = components[0]
-						# ensure this is the first time grabbing this specific name
-						if not checked:
-							userids.append(userid)
-							checked = True
-							break
-				if not checked:
-					userids.append('N/A')
+						user = api.get_user(userid)
+						tweets = api.user_timeline(screen_name = userid, count = 10)
+						screennames.append(user.screen_name)
+						descriptions.append(user.description)
+						followers.append(user.followers_count)
+						for tweet in tweets:
+							utweets.append(tweet.text)
+						tweets.append(utweets)
+						checked = True
+						break
+				if checked == False:
+					screennames.append('N/A')
+					descriptions.append('N/A')
+					followers.append('N/A')
+					tweets.append(utweets)
 		except Exception as ex:
-			userids.append('N/A')
-	# move through the userids to get the twitter info
-	# this might be changed!!!!!
-	result = getTwitter(userids, consumer_key, consumer_secret, access_token, access_token_secret)
-	return result
-
-
-def getTwitter(userids, ck, cs, at, ats):
-
-	result = {}
-	screennames = []
-	descriptions = []
-	followers = []
-
-	# standard tweepy steps
-	auth = tweepy.OAuthHandler(ck, cs)
-	auth.set_access_token(at, ats)
-
-	api = tweepy.API(auth)
-
-	# loop through the userids
-	for userid in userids:
-		# append the twitter info if possible
-		try:
-			user = api.get_user(userid)
-			screennames.append(user.screen_name)
-			descriptions.append(user.description)
-			followers.append(user.followers_count)
-		except:
 			screennames.append('N/A')
 			descriptions.append('N/A')
 			followers.append('N/A')
-			
+			tweets.append(utweets)
 	result['screennames'] = screennames
 	result['descriptions'] = descriptions
 	result['followers'] = followers
+	#result['tweets'] = tweets
 	return result

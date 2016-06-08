@@ -306,10 +306,10 @@ data = r.json()
 if r.status_code == 200:
 	#use current time to name the file
 	filename = datetime.datetime.now().strftime("%H%M%S%Y%m%d")
-	#datafile = open(filename+".json", "w")
-	#datafile.write(json.dumps(data, indent=4, sort_keys=True))
-	#datafile.close()
-	#print filename+".json created!"
+	datafile = open(filename+".json", "w")
+	datafile.write(json.dumps(data, indent=4, sort_keys=True))
+	datafile.close()
+	print filename+".json created!"
 	makeHTML(data, api)
 	#webbrowser.open('my-map.html')
 	webCrawl(data, consumer_key, consumer_secret, access_token, access_token_secret)

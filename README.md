@@ -2,6 +2,9 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/8/2016
+- (4:23) Plans for tomorrow include beginning to implement another social media dataset into the application. At the very least, work will begin on getting a very basic understanding of another social media's API. Most likely candidates at this point include Instagram and Pinterest, as a venue's actual appearance might be something users would want to know. Also, tomorrow will potentially entail the return of recent tweets by a venue's Twitter account
+- (4:21) Successfully moved the Twitter data crawl to one function and one set of for loops; it appears to have sped up the process, although my recent tests of the network here on campus have shown that the internet speeds are back to their usual, fast speeds, so that possibly played a part in the apparent improvement in speed of the Twitter data crawl. 
+- (3:51) Continuing to work on improving the speed of the Twitter data crawler
 - (11:51) Planning on thoroughly commenting my code, as I have fallen behind on that. Also, considering moving the Twitter data crawl into one function, as it currently attempts to find all possible Twitter screennames before getting the Twitter account information, making it loop an additional time, essentially
 - (11:01) No good way to determine if urls provided by Foursquare are bad or not. Will investigate ways to ensure that the response.get does not wait for long periods of time for a bad link. Currently just prohibiting the script from trying to connect to certain sites I have determined are bad
 - (10:15) During testing, determined that certain Foursquare provided urls are broken, but do not get detected by a GET request for quite some time, if at all
