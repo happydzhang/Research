@@ -14,9 +14,13 @@ class FoursquareController(object):
 	def POST(self):
 		output = {'result':'success'}
 		try:
+			# grab the parameters sent by the web page
 			params = cherrypy.request.body.read()
+			# put the data into a string
 			data = json.loads(params)
+			# run the foursquare data crawl
 			result = datacrawl(data)
+			# check if foursquare data crawl failed
 			if result == "Error":
 				output['result'] = 'error'
 				output['message'] = "Could not process request"
@@ -24,6 +28,7 @@ class FoursquareController(object):
 				output = result
 				output['result'] = 'success'
 		except Exception as ex:
+			# send any exceptions to the web page
 			output['result'] = 'error'
 			output['message'] = str(ex)
 		return json.dumps(output, encoding='latin-1')
@@ -35,12 +40,16 @@ class TwitterController(object):
 	def POST(self):
 		output = {'result':'success'}
 		try:
+			# read the list of urls
 			params = cherrypy.request.body.read()
+			# convert it to a string
 			data = json.loads(params)
+			# run the twitter data crawl
 			result = webCrawl(data)
 			output = result
 			output['result'] = 'success'
 		except Exception as ex:
+			# send any exceptions to the web page
 			output['result'] = 'error'
 			output['message'] = str(ex)
 		return json.dumps(output, encoding='latin-1')
@@ -81,6 +90,7 @@ def datacrawl(data):
 		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+srange+"&limit="+limit
 	else:
 		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section=topPicks&radius="+srange+"&limit="+limit
+	# ping the foursquare api
 	r = requests.get(thisurl)
 
 	# store the json
@@ -168,34 +178,43 @@ def webCrawl(data):
 			access_token = str(components[1])
 		elif components[0] == 'Access_Token_Secret':
 			access_token_secret = str(components[1])
-
+	# prepare list of urls
 	lst = data['urls']
 	userids = []
 	result = {}
+	# loop through each url and attempt to do a get request
 	for i in lst:
 		try:
 			checked = False
+			# simply skip any urls that are not provided
 			if i == 'N/A':
 				userids.append('N/A')
+			# the following are all bad urls
 			elif '7-eleven' in i:
 				userids.append('N/A')
 			elif 'brunospizza' in i:
 				userids.append('N/A')
 			elif 'suxinghouse' in i:
 				userids.append('N/A')
+			# good urls
 			else:
 				response = requests.get(i)
 				# parse html
 				page = BeautifulSoup(response.content, "html.parser")
+				# loop through all of the links on a page
 				for link in page.find_all('a'):
+					# if a twitter link
 					if 'twitter' in link.get('href'):
 						url = link.get('href')
+						# break down the string to grab the screenname
 						line = url.rstrip()
 						components = line.split("/")
 						userid = components[-1]
+						# found on one example that the screenname had garbage characters after it starting with a '?'
 						if '?' in userid:
 							components = userid.split("?")
 							userid = components[0]
+						# ensure this is the first time grabbing this specific name
 						if not checked:
 							userids.append(userid)
 							checked = True
@@ -204,6 +223,8 @@ def webCrawl(data):
 					userids.append('N/A')
 		except Exception as ex:
 			userids.append('N/A')
+	# move through the userids to get the twitter info
+	# this might be changed!!!!!
 	result = getTwitter(userids, consumer_key, consumer_secret, access_token, access_token_secret)
 	return result
 
@@ -215,12 +236,15 @@ def getTwitter(userids, ck, cs, at, ats):
 	descriptions = []
 	followers = []
 
+	# standard tweepy steps
 	auth = tweepy.OAuthHandler(ck, cs)
 	auth.set_access_token(at, ats)
 
 	api = tweepy.API(auth)
 
+	# loop through the userids
 	for userid in userids:
+		# append the twitter info if possible
 		try:
 			user = api.get_user(userid)
 			screennames.append(user.screen_name)

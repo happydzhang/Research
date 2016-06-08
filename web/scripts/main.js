@@ -6,6 +6,7 @@ var map;
 var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
 
+// google map
 function initialize() {
 	var myLatLng = {lat: 39.8333333, lng: -98.585522};
 	var mapOptions = {
@@ -68,21 +69,27 @@ args = [linput, rinput, qinput, liinput];
 rbutton.addClickEventHandler(refresh, args);
 
 function refresh(args){
+	// clear the map of all markers
 	for (var i = 0;i < mymarkers.length; i++){
 		mymarkers[i].setMap(null)
 	}
+	// clear the array of markers
 	mymarkers = [];
+	// grab the parameters for the foursquare search
 	thelocation = args[0].getValue();
 	range = args[1].getValue();
 	query = args[2].getValue();
 	limit = args[3].getValue();
+	// prepare as json
 	var params = "{\"location\": \""+thelocation+"\", \"range\": \""+range+"\", \"query\": \""+query+"\", \"limit\": \""+limit+"\"}";	
 
+	// new XML request
 	var html = new XMLHttpRequest();
 	html.open("POST", url+'foursquare/', true);
 	html.onload = function(e){
 		var j = JSON.parse(html.responseText);
 
+		// assign from the response
 		var mylatlng = {lat: j['lat'], lng: j['lng']};
 		var markers = j['markers'];
 		var names = j['names'];
@@ -92,17 +99,23 @@ function refresh(args){
 		var urls = j['urls'];
 		map.setCenter(mylatlng);
 
+		// prepare the info window
 		infowindow = new google.maps.InfoWindow();
 
+		// loop through each venue
 		for (var i = 0; i < markers.length; i++){
+			// create a new marker at each venue's location
 			var latlng = {lat: markers[i].lat, lng: markers[i].lng};
 			var marker = new google.maps.Marker({
 				map: map,
 				position: latlng,
 			});
+			// add the markers to an array to allow for deletion
 			mymarkers.push(marker);
 
+			// generate the info window's text based on whether or not the venue has a url
 			if (urls[i]=='N/A'){
+				// does not have a url link
 				marker.contentString = '<div id="tabs">'+
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
@@ -123,6 +136,7 @@ function refresh(args){
 					'</div>'+
 					'</div>';
 			}else{
+				// does have a url link
 				marker.contentString = '<div id="tabs">'+
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
@@ -143,10 +157,12 @@ function refresh(args){
 					'</div>';
 			}
 
+			// prepare jQuery tabs
 			google.maps.event.addListener(infowindow, 'domready', function(){
 				$('#tabs').tabs();
 			});
 
+			// add click function
 			google.maps.event.addListener(marker, 'click', function() {
 				infowindow.setContent(this.contentString);
 				infowindow.open(map, this);
@@ -154,11 +170,14 @@ function refresh(args){
 			});
 		}
 
+		// zoom to show a more general view of the search
 		map.setZoom(13);
 
+		// prepare the twitter request
 		var obj = {};
 		obj['urls'] = urls;
 		var parameters = JSON.stringify(obj);
+		// new XML request
 		var xml = new XMLHttpRequest();
 		xml.open("POST", url+'twitter/', true);
 		xml.onload = function(e){
@@ -166,6 +185,7 @@ function refresh(args){
 			var screennames = l['screennames'];
 			var descriptions = l['descriptions'];
 			var followers = l['followers'];
+			// the same as before with the foursquare data, but now with the additional twitter data
 			for (var i = 0; i < markers.length; i++){
 				var latlng = {lat: markers[i].lat, lng: markers[i].lng};
 				var marker = new google.maps.Marker({
@@ -175,6 +195,7 @@ function refresh(args){
 				mymarkers.push(marker);
 
 				if (urls[i]=='N/A'){
+					// content string with no links
 					marker.contentString = '<div id="tabs">'+
 						'<ul>'+
 						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
@@ -196,6 +217,7 @@ function refresh(args){
 						'</div>';
 				}else{
 					if (screennames[i] == 'N/A'){
+						// content string with a link to the url
 						marker.contentString = '<div id="tabs">'+
 							'<ul>'+
 							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
@@ -215,6 +237,7 @@ function refresh(args){
 							'</div>'+
 							'</div>';
 					}else{
+						// content string with a link to the url and the twitter page
 						marker.contentString = '<div id="tabs">'+
 							'<ul>'+
 							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
