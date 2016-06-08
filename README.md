@@ -1,6 +1,11 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/8/2016
+- (11:01) No good way to determine if urls provided by Foursquare are bad or not. Will investigate ways to ensure that the response.get does not wait for long periods of time for a bad link. Currently just prohibiting the script from trying to connect to certain sites I have determined are bad
+- (10:15) During testing, determined that certain Foursquare provided urls are broken, but do not get detected by a GET request for quite some time, if at all
+- (9:19) Added the ability to click on the venue's Twitter screenname
+
 Notes for 6/7/2016
 - (4:12) Continuing to look for ways to expedite the web crawling process
 - (3:37) Client-server model with two requests to the server now works, although the Twitter info takes a long time to get, probably due to web crawling. Will continue to explore faster methods of finding Twitter links on a venue's url

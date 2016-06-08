@@ -171,9 +171,18 @@ def webCrawl(data):
 	userids = []
 	result = {}
 	for i in lst:
+		#print "crawling: "+i
+		#localtime = time.asctime(time.localtime(time.time()))
+		#print localtime
 		try:
 			checked = False
 			if i == 'N/A':
+				userids.append('N/A')
+			elif '7-eleven' in i:
+				userids.append('N/A')
+			elif 'brunospizza' in i:
+				userids.append('N/A')
+			elif 'suxinghouse' in i:
 				userids.append('N/A')
 			else:
 				response = requests.get(i)

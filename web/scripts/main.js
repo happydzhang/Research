@@ -92,79 +92,6 @@ function refresh(args){
 		var urls = j['urls'];
 		map.setCenter(mylatlng);
 
-		var obj = {};
-		obj['urls'] = urls;
-		var parameters = JSON.stringify(obj);
-		var xml = new XMLHttpRequest();
-		xml.open("POST", url+'twitter/', true);
-		xml.onload = function(e){
-			var l = JSON.parse(xml.responseText);
-			var screennames = l['screennames'];
-			var descriptions = l['descriptions'];
-			var followers = l['followers'];
-			for (var i = 0; i < markers.length; i++){
-				var latlng = {lat: markers[i].lat, lng: markers[i].lng};
-				var marker = new google.maps.Marker({
-					map: map,
-					position: latlng,
-				});
-				mymarkers.push(marker);
-
-				if (urls[i]=='N/A'){
-					marker.contentString = '<div id="tabs">'+
-						'<ul>'+
-						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-						'</ul>'+
-						'<div id="tab-1">'+
-						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Address: '+addresses[i]+'</p>'+
-						'<p>Phone: '+phones[i]+'</p>'+
-						'<p>Rating: '+ratings[i]+'</p>'+
-						'<p>URL: '+urls[i]+'</p>'+
-						'</div>'+
-						'<div id="tab-2">'+
-						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Screenname: '+screennames[i]+'</p>'+
-						'<p>Description: '+descriptions[i]+'</p>'+
-						'<p>Followers: '+followers[i]+'</p>'+
-						'</div>'+
-						'</div>';
-				}else{
-					marker.contentString = '<div id="tabs">'+
-						'<ul>'+
-						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-						'<div id="tab-1">'+
-						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Address: '+addresses[i]+'</p>'+
-						'<p>Phone: '+phones[i]+'</p>'+
-						'<p>Rating: '+ratings[i]+'</p>'+
-						'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
-						'</div>'+
-						'<div id="tab-2">'+
-						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Screenname: '+screennames[i]+'</p>'+
-						'<p>Description: '+descriptions[i]+'</p>'+
-						'<p>Followers: '+followers[i]+'</p>'+
-						'</div>'+
-						'</div>';
-				}
-
-				google.maps.event.addListener(infowindow, 'domready', function(){
-					$('#tabs').tabs();
-				});
-
-				google.maps.event.addListener(marker, 'click', function() {
-					infowindow.setContent(this.contentString);
-					infowindow.open(map, this);
-
-				});
-			}
-		}
-		xml.onerror = function(e) {console.log(xml.statusText);}
-		xml.send(parameters);
-
 		infowindow = new google.maps.InfoWindow();
 
 		for (var i = 0; i < markers.length; i++){
@@ -228,6 +155,100 @@ function refresh(args){
 		}
 
 		map.setZoom(13);
+
+		var obj = {};
+		obj['urls'] = urls;
+		var parameters = JSON.stringify(obj);
+		var xml = new XMLHttpRequest();
+		xml.open("POST", url+'twitter/', true);
+		xml.onload = function(e){
+			var l = JSON.parse(xml.responseText);
+			var screennames = l['screennames'];
+			var descriptions = l['descriptions'];
+			var followers = l['followers'];
+			for (var i = 0; i < markers.length; i++){
+				var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+				var marker = new google.maps.Marker({
+					map: map,
+					position: latlng,
+				});
+				mymarkers.push(marker);
+
+				if (urls[i]=='N/A'){
+					marker.contentString = '<div id="tabs">'+
+						'<ul>'+
+						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+						'</ul>'+
+						'<div id="tab-1">'+
+						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+						'<p>Address: '+addresses[i]+'</p>'+
+						'<p>Phone: '+phones[i]+'</p>'+
+						'<p>Rating: '+ratings[i]+'</p>'+
+						'<p>URL: '+urls[i]+'</p>'+
+						'</div>'+
+						'<div id="tab-2">'+
+						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+						'<p>Screenname: '+screennames[i]+'</p>'+
+						'<p>Description: '+descriptions[i]+'</p>'+
+						'<p>Followers: '+followers[i]+'</p>'+
+						'</div>'+
+						'</div>';
+				}else{
+					if (screennames[i] == 'N/A'){
+						marker.contentString = '<div id="tabs">'+
+							'<ul>'+
+							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+							'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+							'<div id="tab-1">'+
+							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+							'<p>Address: '+addresses[i]+'</p>'+
+							'<p>Phone: '+phones[i]+'</p>'+
+							'<p>Rating: '+ratings[i]+'</p>'+
+							'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+							'</div>'+
+							'<div id="tab-2">'+
+							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+							'<p>Screenname: '+screennames[i]+'</p>'+
+							'<p>Description: '+descriptions[i]+'</p>'+
+							'<p>Followers: '+followers[i]+'</p>'+
+							'</div>'+
+							'</div>';
+					}else{
+						marker.contentString = '<div id="tabs">'+
+							'<ul>'+
+							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
+							'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+							'<div id="tab-1">'+
+							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+							'<p>Address: '+addresses[i]+'</p>'+
+							'<p>Phone: '+phones[i]+'</p>'+
+							'<p>Rating: '+ratings[i]+'</p>'+
+							'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+							'</div>'+
+							'<div id="tab-2">'+
+							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+							'<p>Screenname: <a href="https://twitter.com/'+screennames[i]+'">'+screennames[i]+'</a></p>'+
+							'<p>Description: '+descriptions[i]+'</p>'+
+							'<p>Followers: '+followers[i]+'</p>'+
+							'</div>'+
+							'</div>';
+					}
+				}
+
+				google.maps.event.addListener(infowindow, 'domready', function(){
+					$('#tabs').tabs();
+				});
+
+				google.maps.event.addListener(marker, 'click', function() {
+					infowindow.setContent(this.contentString);
+					infowindow.open(map, this);
+
+				});
+			}
+		}
+		xml.onerror = function(e) {console.log(xml.statusText);}
+		xml.send(parameters);
 	}
 	html.onerror = function(e) {console.log(html.statusText);}
 	html.send(params);
