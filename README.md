@@ -2,6 +2,8 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/9/2016
+- (3:16) Successfully enabled adding a newline between each tweet; needed to use html methods, such as adding <br> to the tweet so that the info window string could properly format
+- (1:52) Continuing to have issues getting the tweets to be on their own line
 - (12:25) Seems to be an issue with the way it is processed when using content string, as when I use alerts to check if each Tweet has its own line, they, in fact, do, but when I check the info window, it is one, long, consecutive string
 - (12:05) Recent tweets are easily obtained and sent to the client, but there remains the issue of the tweets not appearing on their own line
 - (9:05) Resumed work on including recent Tweets in the current application

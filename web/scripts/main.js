@@ -190,8 +190,7 @@ function refresh(args){
 			for (var i = 0; i < tweets.length; i++){
 				var tweet = '';
 				for (var j = 0; j < tweets[i].length; j++){
-					tweet += tweets[i][j]+`
-`
+					tweet += tweets[i][j]+"<br><br>";
 				}
 				utweet.push(tweet);
 			}
@@ -264,7 +263,7 @@ function refresh(args){
 							'<p>Screenname: <a href="https://twitter.com/'+screennames[i]+'">'+screennames[i]+'</a></p>'+
 							'<p>Description: '+descriptions[i]+'</p>'+
 							'<p>Followers: '+followers[i]+'</p>'+
-							'<p>'+utweet[i]+'</p>'+
+							'<p>Recent Tweets: <br>'+utweet[i]+'</p>'+
 							'</div>'+
 							'</div>';
 					}
