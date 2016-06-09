@@ -4,6 +4,7 @@
 import cherrypy
 from data import FoursquareController
 from data import TwitterController
+from data import InstagramController
 
 class OptionsController:
 	def OPTIONS(self, *args, **kwargs):
@@ -18,15 +19,20 @@ def start_service():
 	dispatcher = cherrypy.dispatch.RoutesDispatcher()
 	foursquareController = FoursquareController()
 	twitterController = TwitterController()
+	instagramController = InstagramController()
 	optionsController = OptionsController()
 
 	dispatcher.connect('foursquare_post', '/foursquare/', controller=foursquareController, action = 'POST', conditions=dict(method=['POST']))
 
 	dispatcher.connect('twitter_post', '/twitter/', controller=twitterController, action = 'POST', conditions=dict(method=['POST']))
 
+	dispatcher.connect('instagram_post', '/instagram/', controller=instagramController, action = 'POST', conditions=dict(method=['POST']))
+
 	dispatcher.connect('foursquare_option', '/foursquare/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
 	dispatcher.connect('twitter_option', '/twitter/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
+
+	dispatcher.connect('instagram_option', '/instagram/', controller=optionsController, action = 'OPTIONS', conditions=dict(method=['OPTIONS']))
 
 	conf = {
 		'global': {

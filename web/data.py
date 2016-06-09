@@ -45,7 +45,28 @@ class TwitterController(object):
 			# convert it to a string
 			data = json.loads(params)
 			# run the twitter data crawl
-			result = webCrawl(data)
+			result = twitterCrawl(data)
+			output = result
+			output['result'] = 'success'
+		except Exception as ex:
+			# send any exceptions to the web page
+			output['result'] = 'error'
+			output['message'] = str(ex)
+		return json.dumps(output, encoding='latin-1')
+
+class InstagramController(object):
+	def __init__(self):
+		pass
+
+	def POST(self):
+		output = {'result':'success'}
+		try:
+			# read the list of urls
+			params = cherrypy.request.body.read()
+			# convert it to a string
+			data = json.loads(params)
+			# run the twitter data crawl
+			result = instaCrawl(data)
 			output = result
 			output['result'] = 'success'
 		except Exception as ex:
@@ -155,7 +176,7 @@ def makeHTML(mydict):
 	result['urls'] = urls
 	return result
 
-def webCrawl(data):
+def twitterCrawl(data):
 
 	#localtime = time.asctime(time.localtime(time.time()))
 	#print localtime
@@ -257,4 +278,70 @@ def webCrawl(data):
 	result['descriptions'] = descriptions
 	result['followers'] = followers
 	result['tweets'] = tweets
+	return result
+
+def instaCrawl(data):
+
+	#localtime = time.asctime(time.localtime(time.time()))
+	#print localtime
+	# keys needed for access to url
+	f = open('keys.txt', 'r')
+
+	for line in f:
+		line = line.rstrip()
+		components = line.split("::")
+		if components[0] == 'Client_ID':
+			CLIENT_ID = str(components[1])
+		elif components[0] == 'Client_Secret':
+			CLIENT_SECRET = str(components[1])
+		elif components[0] == 'API':
+			api = str(components[1])
+		elif components[0] == 'Consumer_Key':
+			consumer_key = str(components[1])
+		elif components[0] == 'Consumer_Secret':
+			consumer_secret = str(components[1])
+		elif components[0] == 'Access_Token':
+			access_token = str(components[1])
+		elif components[0] == 'Access_Token_Secret':
+			access_token_secret = str(components[1])
+
+	# prepare list of urls
+	lst = data['urls']
+	result = {}
+
+	# loop through each url and attempt to do a get request
+	for i in lst:
+		try:
+			checked = False
+			# simply skip any urls that are not provided
+			if i == 'N/A':
+				pass
+			# the following are all bad urls
+			elif '7-eleven' in i:
+				pass
+			elif 'brunospizza' in i:
+				pass
+			elif 'suxinghouse' in i:
+				pass
+			# good urls
+			else:
+				response = requests.get(i)
+				# parse html
+				page = BeautifulSoup(response.content, "html.parser")
+				# loop through all of the links on a page
+				for link in page.find_all('a'):
+					# if a twitter link
+					if 'instagram' in link.get('href'):
+						url = link.get('href')
+						# break down the string to grab the screenname
+						line = url.rstrip()
+						components = line.split("/")
+						userid = components[-1]
+						# found on one example that the screenname had garbage characters after it starting with a '?'
+						checked = True
+						break
+				if checked == False:
+					pass
+		except Exception as ex:
+			pass
 	return result

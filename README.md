@@ -2,6 +2,8 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/9/2016
+- (4:59) Finished some very basic groundwork for an Instagram data crawlewr. Must explore it more in depth tomorrow to begin effectively using the Instagram info, which is obtained the same way as the Twitter username information
+- (3:37) Added an Instagram tab to the info window
 - (3:16) Successfully enabled adding a newline between each tweet; needed to use html methods, such as adding <br> to the tweet so that the info window string could properly format
 - (1:52) Continuing to have issues getting the tweets to be on their own line
 - (12:25) Seems to be an issue with the way it is processed when using content string, as when I use alerts to check if each Tweet has its own line, they, in fact, do, but when I check the info window, it is one, long, consecutive string

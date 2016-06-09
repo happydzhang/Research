@@ -120,6 +120,7 @@ function refresh(args){
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+					'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
 					'</ul>'+
 					'<div id="tab-1">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -133,6 +134,8 @@ function refresh(args){
 					'<p>Screenname: Loading...</p>'+
 					'<p>Description: Loading...</p>'+
 					'<p>Followers: Loading...</p>'+
+					'<div id="tab-3">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'</div>'+
 					'</div>';
 			}else{
@@ -141,6 +144,7 @@ function refresh(args){
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+					'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
 					'<div id="tab-1">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Address: '+addresses[i]+'</p>'+
@@ -153,6 +157,8 @@ function refresh(args){
 					'<p>Screenname: Loading...</p>'+
 					'<p>Description: Loading...</p>'+
 					'<p>Followers: Loading...</p>'+
+					'<div id="tab-3">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'</div>'+
 					'</div>';
 			}
@@ -177,6 +183,14 @@ function refresh(args){
 		var obj = {};
 		obj['urls'] = urls;
 		var parameters = JSON.stringify(obj);
+		// new XML request
+		var http = new XMLHttpRequest();
+		http.open("POST", url+'instagram/', true);
+		http.onload = function(e){
+			var l = JSON.parse(http.responseText);
+		}
+		http.onerror = function(e) {console.log(http.statusText);}
+		http.send(parameters);
 		// new XML request
 		var xml = new XMLHttpRequest();
 		xml.open("POST", url+'twitter/', true);
@@ -209,6 +223,7 @@ function refresh(args){
 						'<ul>'+
 						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+						'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
 						'</ul>'+
 						'<div id="tab-1">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -222,6 +237,8 @@ function refresh(args){
 						'<p>Screenname: '+screennames[i]+'</p>'+
 						'<p>Description: '+descriptions[i]+'</p>'+
 						'<p>Followers: '+followers[i]+'</p>'+
+						'<div id="tab-3">'+
+						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'</div>'+
 						'</div>';
 				}else{
@@ -231,6 +248,7 @@ function refresh(args){
 							'<ul>'+
 							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 							'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+							'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
 							'<div id="tab-1">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Address: '+addresses[i]+'</p>'+
@@ -243,6 +261,8 @@ function refresh(args){
 							'<p>Screenname: '+screennames[i]+'</p>'+
 							'<p>Description: '+descriptions[i]+'</p>'+
 							'<p>Followers: '+followers[i]+'</p>'+
+							'<div id="tab-3">'+
+							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'</div>'+
 							'</div>';
 					}else{
@@ -251,6 +271,7 @@ function refresh(args){
 							'<ul>'+
 							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 							'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
+							'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
 							'<div id="tab-1">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Address: '+addresses[i]+'</p>'+
@@ -264,6 +285,8 @@ function refresh(args){
 							'<p>Description: '+descriptions[i]+'</p>'+
 							'<p>Followers: '+followers[i]+'</p>'+
 							'<p>Recent Tweets: <br>'+utweet[i]+'</p>'+
+							'<div id="tab-3">'+
+							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'</div>'+
 							'</div>';
 					}
