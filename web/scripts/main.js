@@ -185,6 +185,16 @@ function refresh(args){
 			var screennames = l['screennames'];
 			var descriptions = l['descriptions'];
 			var followers = l['followers'];
+			var tweets = l['tweets'];
+			var utweet = [];
+			for (var i = 0; i < tweets.length; i++){
+				var tweet = '';
+				for (var j = 0; j < tweets[i].length; j++){
+					tweet += tweets[i][j]+`
+`
+				}
+				utweet.push(tweet);
+			}
 			// the same as before with the foursquare data, but now with the additional twitter data
 			for (var i = 0; i < markers.length; i++){
 				var latlng = {lat: markers[i].lat, lng: markers[i].lng};
@@ -254,6 +264,7 @@ function refresh(args){
 							'<p>Screenname: <a href="https://twitter.com/'+screennames[i]+'">'+screennames[i]+'</a></p>'+
 							'<p>Description: '+descriptions[i]+'</p>'+
 							'<p>Followers: '+followers[i]+'</p>'+
+							'<p>'+utweet[i]+'</p>'+
 							'</div>'+
 							'</div>';
 					}

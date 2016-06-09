@@ -1,6 +1,11 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/9/2016
+- (12:25) Seems to be an issue with the way it is processed when using content string, as when I use alerts to check if each Tweet has its own line, they, in fact, do, but when I check the info window, it is one, long, consecutive string
+- (12:05) Recent tweets are easily obtained and sent to the client, but there remains the issue of the tweets not appearing on their own line
+- (9:05) Resumed work on including recent Tweets in the current application
+
 Notes for 6/8/2016
 - (4:23) Plans for tomorrow include beginning to implement another social media dataset into the application. At the very least, work will begin on getting a very basic understanding of another social media's API. Most likely candidates at this point include Instagram and Pinterest, as a venue's actual appearance might be something users would want to know. Also, tomorrow will potentially entail the return of recent tweets by a venue's Twitter account
 - (4:21) Successfully moved the Twitter data crawl to one function and one set of for loops; it appears to have sped up the process, although my recent tests of the network here on campus have shown that the internet speeds are back to their usual, fast speeds, so that possibly played a part in the apparent improvement in speed of the Twitter data crawl. 

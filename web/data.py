@@ -234,11 +234,11 @@ def webCrawl(data):
 						if '?' in userid:
 							components = userid.split("?")
 						user = api.get_user(userid)
-						tweets = api.user_timeline(screen_name = userid, count = 10)
+						statuses = api.user_timeline(screen_name = userid, count = 10)
 						screennames.append(user.screen_name)
 						descriptions.append(user.description)
 						followers.append(user.followers_count)
-						for tweet in tweets:
+						for tweet in statuses:
 							utweets.append(tweet.text)
 						tweets.append(utweets)
 						checked = True
@@ -256,5 +256,5 @@ def webCrawl(data):
 	result['screennames'] = screennames
 	result['descriptions'] = descriptions
 	result['followers'] = followers
-	#result['tweets'] = tweets
+	result['tweets'] = tweets
 	return result
