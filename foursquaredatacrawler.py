@@ -257,20 +257,26 @@ f = open('keys.txt', 'r')
 for line in f:
 	line = line.rstrip()
 	components = line.split("::")
-	if components[0] == 'Client_ID':
-		CLIENT_ID = str(components[1])
-	elif components[0] == 'Client_Secret':
-		CLIENT_SECRET = str(components[1])
-	elif components[0] == 'API':
+	if components[0] == 'fClient_ID':
+		fCLIENT_ID = str(components[1])
+	elif components[0] == 'fClient_Secret':
+		fCLIENT_SECRET = str(components[1])
+	elif components[0] == 'gAPI':
 		api = str(components[1])
-	elif components[0] == 'Consumer_Key':
+	elif components[0] == 'tConsumer_Key':
 		consumer_key = str(components[1])
-	elif components[0] == 'Consumer_Secret':
+	elif components[0] == 'tConsumer_Secret':
 		consumer_secret = str(components[1])
-	elif components[0] == 'Access_Token':
+	elif components[0] == 'tAccess_Token':
 		access_token = str(components[1])
-	elif components[0] == 'Access_Token_Secret':
+	elif components[0] == 'tAccess_Token_Secret':
 		access_token_secret = str(components[1])
+	elif components[0] == 'iClient_ID':
+		iCLIENT_ID = str(components[1])
+	elif components[0] == 'iClient_Secret':
+		iCLIENT_SECRET = str(components[1])
+	elif components[0] == 'iAccess_Token':
+		iaccess_token = str(components[1])
 
 # use current date to obtain version detail
 V_CODE = datetime.date.today().strftime("%Y%m%d")
@@ -282,7 +288,7 @@ mode = raw_input("Would you like to run on the default settings (y/n): ")
 if mode == 'y':
 	section = 'topPicks'
 	query = section
-	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near=South Bend, IN&section="+section
+	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+fCLIENT_ID+"&client_secret="+fCLIENT_SECRET+"&v="+V_CODE+"&near=South Bend, IN&section="+section
 # custom search
 elif mode == 'n':
 #allow user to specify location, radius, etc.
@@ -292,7 +298,7 @@ elif mode == 'n':
 	limit = raw_input("Maximum number of venues: ")
 
 	# Obtain the data
-	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+str(radius)+"&limit="+str(limit)
+	thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+fCLIENT_ID+"&client_secret="+fCLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+str(radius)+"&limit="+str(limit)
 # wrong input
 else:
 	print "Incorrect input\n"

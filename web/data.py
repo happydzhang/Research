@@ -82,19 +82,19 @@ def datacrawl(data):
 	for line in f:
 		line = line.rstrip()
 		components = line.split("::")
-		if components[0] == 'Client_ID':
-			CLIENT_ID = str(components[1])
-		elif components[0] == 'Client_Secret':
-			CLIENT_SECRET = str(components[1])
-		elif components[0] == 'API':
+		if components[0] == 'fClient_ID':
+			fCLIENT_ID = str(components[1])
+		elif components[0] == 'fClient_Secret':
+			fCLIENT_SECRET = str(components[1])
+		elif components[0] == 'gAPI':
 			api = str(components[1])
-		elif components[0] == 'Consumer_Key':
+		elif components[0] == 'tConsumer_Key':
 			consumer_key = str(components[1])
-		elif components[0] == 'Consumer_Secret':
+		elif components[0] == 'tConsumer_Secret':
 			consumer_secret = str(components[1])
-		elif components[0] == 'Access_Token':
+		elif components[0] == 'tAccess_Token':
 			access_token = str(components[1])
-		elif components[0] == 'Access_Token_Secret':
+		elif components[0] == 'tAccess_Token_Secret':
 			access_token_secret = str(components[1])
 
 	# use current date to obtain version detail
@@ -108,9 +108,9 @@ def datacrawl(data):
 
 	# setup the url
 	if query != '':
-		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+srange+"&limit="+limit
+		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+fCLIENT_ID+"&client_secret="+fCLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&query="+query+"&radius="+srange+"&limit="+limit
 	else:
-		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+CLIENT_ID+"&client_secret="+CLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section=topPicks&radius="+srange+"&limit="+limit
+		thisurl = "https://api.foursquare.com/v2/venues/explore?client_id="+fCLIENT_ID+"&client_secret="+fCLIENT_SECRET+"&v="+V_CODE+"&near="+location+"&section=topPicks&radius="+srange+"&limit="+limit
 	# ping the foursquare api
 	r = requests.get(thisurl)
 
@@ -186,19 +186,19 @@ def twitterCrawl(data):
 	for line in f:
 		line = line.rstrip()
 		components = line.split("::")
-		if components[0] == 'Client_ID':
-			CLIENT_ID = str(components[1])
-		elif components[0] == 'Client_Secret':
-			CLIENT_SECRET = str(components[1])
-		elif components[0] == 'API':
+		if components[0] == 'fClient_ID':
+			fCLIENT_ID = str(components[1])
+		elif components[0] == 'fClient_Secret':
+			fCLIENT_SECRET = str(components[1])
+		elif components[0] == 'gAPI':
 			api = str(components[1])
-		elif components[0] == 'Consumer_Key':
+		elif components[0] == 'tConsumer_Key':
 			consumer_key = str(components[1])
-		elif components[0] == 'Consumer_Secret':
+		elif components[0] == 'tConsumer_Secret':
 			consumer_secret = str(components[1])
-		elif components[0] == 'Access_Token':
+		elif components[0] == 'tAccess_Token':
 			access_token = str(components[1])
-		elif components[0] == 'Access_Token_Secret':
+		elif components[0] == 'tAccess_Token_Secret':
 			access_token_secret = str(components[1])
 
 	# standard tweepy steps
@@ -290,19 +290,19 @@ def instaCrawl(data):
 	for line in f:
 		line = line.rstrip()
 		components = line.split("::")
-		if components[0] == 'Client_ID':
-			CLIENT_ID = str(components[1])
-		elif components[0] == 'Client_Secret':
-			CLIENT_SECRET = str(components[1])
-		elif components[0] == 'API':
+		if components[0] == 'fClient_ID':
+			fCLIENT_ID = str(components[1])
+		elif components[0] == 'fClient_Secret':
+			fCLIENT_SECRET = str(components[1])
+		elif components[0] == 'gAPI':
 			api = str(components[1])
-		elif components[0] == 'Consumer_Key':
+		elif components[0] == 'tConsumer_Key':
 			consumer_key = str(components[1])
-		elif components[0] == 'Consumer_Secret':
+		elif components[0] == 'tConsumer_Secret':
 			consumer_secret = str(components[1])
-		elif components[0] == 'Access_Token':
+		elif components[0] == 'tAccess_Token':
 			access_token = str(components[1])
-		elif components[0] == 'Access_Token_Secret':
+		elif components[0] == 'tAccess_Token_Secret':
 			access_token_secret = str(components[1])
 
 	# prepare list of urls
@@ -330,10 +330,10 @@ def instaCrawl(data):
 				page = BeautifulSoup(response.content, "html.parser")
 				# loop through all of the links on a page
 				for link in page.find_all('a'):
-					# if a twitter link
+					# if an instagramlink
 					if 'instagram' in link.get('href'):
 						url = link.get('href')
-						# break down the string to grab the screenname
+						# break down the string to grab the userid
 						line = url.rstrip()
 						components = line.split("/")
 						userid = components[-1]

@@ -1,6 +1,14 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/10/2016
+- (2:57) In order to access more of the data on Instagram, such as users' content other than my own, my application must receive approval from Instagram. The approval process only reviews apps that are final and production version apps, meaning my application will not be considered. Seems counterintuitive to have an API to encourage developers to use, and then to wildly restrict what aspects of the API these new developers can use. How can these new applications ever reach final and production versions if developers cannot properly test their applications? Using Instagram seems to be more trouble than it's worth, and I will begin moving towards using a more open API
+- (2:22) In the meantime, I have manually obtained an access token, but plan on developing a way to programmatically generate one per user request
+- (2:12) There does not seem to be a good way to programmatically obtain an Instagram access token, which feels necessary, as Instagram has pointed out that they can expire (they also failed to provide a timetable for when it would expire)
+- (12:13) Generating an access token for Instagram is proving to be difficult, as it requires user approval for a server-side process; will continue to explore ways to obtain access token
+- (11:39) The authentication process that is required for Instagram is much more involved than simply using the ClientID and ClientSecret. An access token must be generated through the ClientID, and the user must approve the application, thereby generating the token
+- (9:02) Began learning to use Instagram API
+
 Notes for 6/9/2016
 - (4:59) Finished some very basic groundwork for an Instagram data crawlewr. Must explore it more in depth tomorrow to begin effectively using the Instagram info, which is obtained the same way as the Twitter username information
 - (3:37) Added an Instagram tab to the info window
