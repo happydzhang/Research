@@ -330,14 +330,14 @@ def instaCrawl(data):
 				page = BeautifulSoup(response.content, "html.parser")
 				# loop through all of the links on a page
 				for link in page.find_all('a'):
-					# if an instagramlink
-					if 'instagram' in link.get('href'):
+					# if an instagram link
+					if 'instagram.com' in link.get('href'):
 						url = link.get('href')
+						print url
 						# break down the string to grab the userid
 						line = url.rstrip()
 						components = line.split("/")
-						userid = components[-1]
-						# found on one example that the screenname had garbage characters after it starting with a '?'
+						username = components[-1]
 						checked = True
 						break
 				if checked == False:

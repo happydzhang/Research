@@ -2,6 +2,9 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/10/2016
+- (4:14) Instagram is going to have to be implemented due to the need for data diversity in the application
+- (3:58) Going to look into ways that Instagram data can be used, perhaps outside of the API, although that does not seem likely
+- (3:53) Unfortunately, after running many searches in different cities across the United States, most venues only have social media accounts on sites such as Facebook, Twitter, and Instagram; I have yet to find one with a link to Pinterest, whereas I consistently find links to Instagram
 - (2:57) In order to access more of the data on Instagram, such as users' content other than my own, my application must receive approval from Instagram. The approval process only reviews apps that are final and production version apps, meaning my application will not be considered. Seems counterintuitive to have an API to encourage developers to use, and then to wildly restrict what aspects of the API these new developers can use. How can these new applications ever reach final and production versions if developers cannot properly test their applications? Using Instagram seems to be more trouble than it's worth, and I will begin moving towards using a more open API
 - (2:22) In the meantime, I have manually obtained an access token, but plan on developing a way to programmatically generate one per user request
 - (2:12) There does not seem to be a good way to programmatically obtain an Instagram access token, which feels necessary, as Instagram has pointed out that they can expire (they also failed to provide a timetable for when it would expire)
