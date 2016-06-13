@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/13/2016
+- (10:42) Info window now displays number of people currently at a venue, according to Foursquare data, and a recent comment about the venue posted to its Foursquare profile
+- (9:05) Started working on some additional features that can be used from Foursquare, such as number of people currently "checked in" and a recent user comment
+
 Notes for 6/10/2016
 - (4:42) Began a more thorough reading of the Instagram API. It might be possible to utilize the Instagram API, afterall, but it will require a much better understanding of it, other than a cursory reading
 - (4:14) Instagram is going to have to be implemented due to the need for data diversity in the application

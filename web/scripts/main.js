@@ -97,6 +97,8 @@ function refresh(args){
 		var phones = j['phones'];
 		var ratings = j['ratings'];
 		var urls = j['urls'];
+		var here = j['here'];
+		var tips = j['tips'];
 		map.setCenter(mylatlng);
 
 		// prepare the info window
@@ -127,7 +129,9 @@ function refresh(args){
 					'<p>Address: '+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
 					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>Currently here: '+here[i]+'</p>'+
 					'<p>URL: '+urls[i]+'</p>'+
+					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'<div id="tab-2">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -150,7 +154,9 @@ function refresh(args){
 					'<p>Address: '+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
 					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>Currently here: '+here[i]+'</p>'+
 					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'<div id="tab-2">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -230,7 +236,9 @@ function refresh(args){
 						'<p>Address: '+addresses[i]+'</p>'+
 						'<p>Phone: '+phones[i]+'</p>'+
 						'<p>Rating: '+ratings[i]+'</p>'+
+						'<p>Currently here: '+here[i]+'</p>'+
 						'<p>URL: '+urls[i]+'</p>'+
+						'<p>User Comment: '+tips[i]+'</p>'+
 						'</div>'+
 						'<div id="tab-2">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -254,7 +262,9 @@ function refresh(args){
 							'<p>Address: '+addresses[i]+'</p>'+
 							'<p>Phone: '+phones[i]+'</p>'+
 							'<p>Rating: '+ratings[i]+'</p>'+
+							'<p>Currently here: '+here[i]+'</p>'+
 							'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'<div id="tab-2">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -277,7 +287,9 @@ function refresh(args){
 							'<p>Address: '+addresses[i]+'</p>'+
 							'<p>Phone: '+phones[i]+'</p>'+
 							'<p>Rating: '+ratings[i]+'</p>'+
+							'<p>Currently here: '+here[i]+'</p>'+
 							'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'<div id="tab-2">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+

@@ -138,6 +138,8 @@ def makeHTML(mydict):
 	ratings = []
 	urls = []
 	phones = []
+	here = []
+	tips = []
 	# loop through each venue
 	for i in lst:
 		# obtain geolocation of venue
@@ -163,6 +165,11 @@ def makeHTML(mydict):
 			urls.append(i['venue']['url'])
 		except:
 			urls.append("N/A")
+		here.append(i['venue']['hereNow']['count'])
+		try:
+			tips.append(i['tips'][0]['text'])
+		except:
+			tips.append("N/A")
 		markers.append(tempgeo)
 
 	# setup return structure
@@ -174,6 +181,8 @@ def makeHTML(mydict):
 	result['phones'] = phones
 	result['ratings'] = ratings
 	result['urls'] = urls
+	result['here'] = here
+	result['tips'] = tips
 	return result
 
 def twitterCrawl(data):
