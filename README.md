@@ -18,7 +18,7 @@ Notes for 6/10/2016
 - (9:02) Began learning to use Instagram API
 
 Notes for 6/9/2016
-- (4:59) Finished some very basic groundwork for an Instagram data crawlewr. Must explore it more in depth tomorrow to begin effectively using the Instagram info, which is obtained the same way as the Twitter username information
+- (4:59) Finished some very basic groundwork for an Instagram data crawler. Must explore it more in depth tomorrow to begin effectively using the Instagram info, which is obtained the same way as the Twitter username information
 - (3:37) Added an Instagram tab to the info window
 - (3:16) Successfully enabled adding a newline between each tweet; needed to use html methods, such as adding <br> to the tweet so that the info window string could properly format
 - (1:52) Continuing to have issues getting the tweets to be on their own line
