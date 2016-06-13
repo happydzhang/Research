@@ -111,6 +111,7 @@ function refresh(args){
 			var marker = new google.maps.Marker({
 				map: map,
 				position: latlng,
+				icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
 			});
 			// add the markers to an array to allow for deletion
 			mymarkers.push(marker);
@@ -220,6 +221,7 @@ function refresh(args){
 				var marker = new google.maps.Marker({
 					map: map,
 					position: latlng,
+					icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
 				});
 				mymarkers.push(marker);
 
@@ -313,6 +315,9 @@ function refresh(args){
 					infowindow.open(map, this);
 
 				});
+				if (screennames[i] != "N/A"){
+					marker.setIcon('http://maps.google.com/mapfiles/ms/icons/blue-dot.png');
+				}
 			}
 		}
 		xml.onerror = function(e) {console.log(xml.statusText);}
