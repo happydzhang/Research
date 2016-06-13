@@ -2,6 +2,10 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/13/2016
+- (4:58) Began preliminary work on Google Places data crawler; hoping to be finished a very basic version first thing tomorrow
+- (3:52) Looking to incorporate Google Places search into the dataset, as it provides another system of rating in addition to the Foursquare rating
+- (2:59) Was simply missing a '<div>' in the info window's content string. Moved the Foursquare rating and comment to its own tab; looking into ways to obtain a venue's Google and Yelp reviews
+- (1:55) Still running into issues with moving around stuff in the info windows
 - (12:21) Attempting to rearrange the display of the info windows, but it keeps causing errors when I move things, as well as rename them
 - (11:13) Added a feature where, if a venue has a Twitter, the marker will turn blue; otherwise, it will stay red
 - (10:42) Info window now displays number of people currently at a venue, according to Foursquare data, and a recent comment about the venue posted to its Foursquare profile

@@ -45,8 +45,7 @@ class TwitterController(object):
 			# convert it to a string
 			data = json.loads(params)
 			# run the twitter data crawl
-			result = twitterCrawl(data)
-			output = result
+			output = twitterCrawl(data)
 			output['result'] = 'success'
 		except Exception as ex:
 			# send any exceptions to the web page
@@ -66,11 +65,31 @@ class InstagramController(object):
 			# convert it to a string
 			data = json.loads(params)
 			# run the twitter data crawl
-			result = instaCrawl(data)
-			output = result
+			output = instaCrawl(data)
 			output['result'] = 'success'
 		except Exception as ex:
 			# send any exceptions to the web page
+			output['result'] = 'error'
+			output['message'] = str(ex)
+		return json.dumps(output, encoding='latin-1')
+
+class GoogleController(object):
+	def __init__(self):
+		pass
+
+	def POST(self):
+		output = {'result':'success'}
+		try:
+			params = cherrypy.request.body.read()
+			data = json.loads(params)
+			result = googleCrawl(data)
+			if result == "Error":
+				output['result'] = 'error'
+				output['message'] = "Could not process request"
+			else:
+				output = result
+				output['result'] = 'success'
+		except Exception as ex:
 			output['result'] = 'error'
 			output['message'] = str(ex)
 		return json.dumps(output, encoding='latin-1')
@@ -119,7 +138,6 @@ def datacrawl(data):
 
 	# get the values for the markers
 	if r.status_code == 200:
-		#use current time to name the file
 		result = makeHTML(thedata)
 	else:
 		result = "Error"
@@ -353,3 +371,46 @@ def instaCrawl(data):
 		except Exception as ex:
 			pass
 	return result
+
+def googleCrawl(data):
+
+	# keys needed for access to url
+	f = open('keys.txt', 'r')
+
+	for line in f:
+		line = line.rstrip()
+		components = line.split("::")
+		if components[0] == 'fClient_ID':
+			fCLIENT_ID = str(components[1])
+		elif components[0] == 'fClient_Secret':
+			fCLIENT_SECRET = str(components[1])
+		elif components[0] == 'gAPI':
+			api = str(components[1])
+		elif components[0] == 'tConsumer_Key':
+			consumer_key = str(components[1])
+		elif components[0] == 'tConsumer_Secret':
+			consumer_secret = str(components[1])
+		elif components[0] == 'tAccess_Token':
+			access_token = str(components[1])
+		elif components[0] == 'tAccess_Token_Secret':
+			access_token_secret = str(components[1])
+
+	# custom search parameters
+	lat = data['lat']
+	lng = data['lng']
+	srange = data['range']
+	query = data['query']
+
+	thisurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat+","+lng+"&radius="+srange+"&keyword="+query+"&key="+api
+
+	r = requests.get(thisurl)
+	thedata = r.json()
+
+	# get the values for the markers
+	if r.status_code == 200:
+		result = getGoogle(data['names'], thedata)
+	else:
+		result = "Error"
+	return result
+
+def getGoogle(names, thedata):

@@ -123,24 +123,25 @@ function refresh(args){
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-					'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
+					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 					'</ul>'+
 					'<div id="tab-1">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Address: '+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
-					'<p>Rating: '+ratings[i]+'</p>'+
 					'<p>Currently here: '+here[i]+'</p>'+
 					'<p>URL: '+urls[i]+'</p>'+
-					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'<div id="tab-2">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Screenname: Loading...</p>'+
 					'<p>Description: Loading...</p>'+
 					'<p>Followers: Loading...</p>'+
+					'</div>'+
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'</div>';
 			}else{
@@ -149,23 +150,24 @@ function refresh(args){
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-					'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
+					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 					'<div id="tab-1">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Address: '+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
-					'<p>Rating: '+ratings[i]+'</p>'+
 					'<p>Currently here: '+here[i]+'</p>'+
 					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
-					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'<div id="tab-2">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Screenname: Loading...</p>'+
 					'<p>Description: Loading...</p>'+
 					'<p>Followers: Loading...</p>'+
+					'</div>'+
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'</div>';
 			}
@@ -231,24 +233,25 @@ function refresh(args){
 						'<ul>'+
 						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-						'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
+						'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 						'</ul>'+
 						'<div id="tab-1">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'<p>Address: '+addresses[i]+'</p>'+
 						'<p>Phone: '+phones[i]+'</p>'+
-						'<p>Rating: '+ratings[i]+'</p>'+
 						'<p>Currently here: '+here[i]+'</p>'+
 						'<p>URL: '+urls[i]+'</p>'+
-						'<p>User Comment: '+tips[i]+'</p>'+
 						'</div>'+
 						'<div id="tab-2">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'<p>Screenname: '+screennames[i]+'</p>'+
 						'<p>Description: '+descriptions[i]+'</p>'+
 						'<p>Followers: '+followers[i]+'</p>'+
+						'</div>'+
 						'<div id="tab-3">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+						'<p>Rating: '+ratings[i]+'</p>'+
+						'<p>User Comment: '+tips[i]+'</p>'+
 						'</div>'+
 						'</div>';
 				}else{
@@ -258,23 +261,24 @@ function refresh(args){
 							'<ul>'+
 							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 							'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-							'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
+							'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 							'<div id="tab-1">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Address: '+addresses[i]+'</p>'+
 							'<p>Phone: '+phones[i]+'</p>'+
-							'<p>Rating: '+ratings[i]+'</p>'+
 							'<p>Currently here: '+here[i]+'</p>'+
 							'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
-							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'<div id="tab-2">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Screenname: '+screennames[i]+'</p>'+
 							'<p>Description: '+descriptions[i]+'</p>'+
 							'<p>Followers: '+followers[i]+'</p>'+
+							'</div>'+
 							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+							'<p>Rating: '+ratings[i]+'</p>'+
+							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'</div>';
 					}else{
@@ -283,15 +287,13 @@ function refresh(args){
 							'<ul>'+
 							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
 							'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-							'<li><a href="#tab-3"><span>Instagram</span></a></li>'+
+							'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 							'<div id="tab-1">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Address: '+addresses[i]+'</p>'+
 							'<p>Phone: '+phones[i]+'</p>'+
-							'<p>Rating: '+ratings[i]+'</p>'+
 							'<p>Currently here: '+here[i]+'</p>'+
 							'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
-							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'<div id="tab-2">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -299,8 +301,11 @@ function refresh(args){
 							'<p>Description: '+descriptions[i]+'</p>'+
 							'<p>Followers: '+followers[i]+'</p>'+
 							'<p>Recent Tweets: <br>'+utweet[i]+'</p>'+
+							'</div>'+
 							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+							'<p>Rating: '+ratings[i]+'</p>'+
+							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'</div>';
 					}
