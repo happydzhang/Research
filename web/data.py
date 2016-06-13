@@ -342,7 +342,6 @@ def instaCrawl(data):
 					# if an instagram link
 					if 'instagram.com' in link.get('href'):
 						url = link.get('href')
-						print url
 						# break down the string to grab the userid
 						line = url.rstrip()
 						components = line.split("/")

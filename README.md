@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/13/2016
+- (12:21) Attempting to rearrange the display of the info windows, but it keeps causing errors when I move things, as well as rename them
 - (11:13) Added a feature where, if a venue has a Twitter, the marker will turn blue; otherwise, it will stay red
 - (10:42) Info window now displays number of people currently at a venue, according to Foursquare data, and a recent comment about the venue posted to its Foursquare profile
 - (9:05) Started working on some additional features that can be used from Foursquare, such as number of people currently "checked in" and a recent user comment
