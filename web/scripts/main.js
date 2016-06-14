@@ -1,6 +1,6 @@
 // Brian Mann
 // main.js
-// 6/6/2016
+// 6/14/2016
 
 var map;
 var mymarkers = [];
@@ -188,6 +188,20 @@ function refresh(args){
 		// zoom to show a more general view of the search
 		map.setZoom(13);
 
+		var objs = {};
+		objs['names'] = names;
+		objs['location'] = thelocation;
+		objs['range'] = range;
+		objs['query'] = query;
+		var gparams = JSON.stringify(objs);
+		var https = new XMLHttpRequest();
+		https.open("POST", url+'google/', true);
+		https.onload = function(e){
+			var l = JSON.parse(https.responseText);
+		}
+		https.onerror = function(e) {console.log(https.statusText);}
+		https.send(gparams);
+
 		// prepare the twitter request
 		var obj = {};
 		obj['urls'] = urls;
@@ -200,6 +214,7 @@ function refresh(args){
 		}
 		http.onerror = function(e) {console.log(http.statusText);}
 		http.send(parameters);
+
 		// new XML request
 		var xml = new XMLHttpRequest();
 		xml.open("POST", url+'twitter/', true);

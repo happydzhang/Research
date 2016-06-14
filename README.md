@@ -1,6 +1,11 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/14/2016
+- (12:21) Successfully pinging the Google Places API for venue data and checking for matching venue names; however, running into a minor annoyance where Foursquare and Google have slightly different names for the same venue. This issue should be resolved relatively quickly, but has slowed progress for the time being
+- (11:45) Making progress on integrating Google Places data
+- (9:03) Resumed work on Google Places data crawler
+
 Notes for 6/13/2016
 - (4:58) Began preliminary work on Google Places data crawler; hoping to be finished a very basic version first thing tomorrow
 - (3:52) Looking to incorporate Google Places search into the dataset, as it provides another system of rating in addition to the Foursquare rating

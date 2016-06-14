@@ -1,6 +1,6 @@
 # Brian Mann
 # data.py
-# 6/6/2016
+# 6/14/2016
 
 import cherrypy, requests
 import re, json
@@ -396,12 +396,11 @@ def googleCrawl(data):
 			access_token_secret = str(components[1])
 
 	# custom search parameters
-	lat = data['lat']
-	lng = data['lng']
+	location = data['location']
 	srange = data['range']
 	query = data['query']
 
-	thisurl = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat+","+lng+"&radius="+srange+"&keyword="+query+"&key="+api
+	thisurl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+query+"+in+"+location+"&key="+api
 
 	r = requests.get(thisurl)
 	thedata = r.json()
@@ -411,6 +410,12 @@ def googleCrawl(data):
 		result = getGoogle(data['names'], thedata)
 	else:
 		result = "Error"
+		print result
 	return result
 
 def getGoogle(names, thedata):
+	lst = thedata['results']
+	for i in names:
+		for j in lst:
+			pass
+	return {}
