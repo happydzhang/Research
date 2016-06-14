@@ -416,6 +416,10 @@ def googleCrawl(data):
 def getGoogle(names, thedata):
 	lst = thedata['results']
 	for i in names:
+		print "foursquare: " + i
 		for j in lst:
-			pass
+			if i == j['name']:
+				print "matched: " + i
+			else:
+				print "google: " + j['name']
 	return {}
