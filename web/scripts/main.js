@@ -191,8 +191,6 @@ function refresh(args){
 		var objs = {};
 		objs['names'] = names;
 		objs['location'] = thelocation;
-		objs['range'] = range;
-		objs['query'] = query;
 		var gparams = JSON.stringify(objs);
 		var https = new XMLHttpRequest();
 		https.open("POST", url+'google/', true);

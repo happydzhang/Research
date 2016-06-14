@@ -82,13 +82,8 @@ class GoogleController(object):
 		try:
 			params = cherrypy.request.body.read()
 			data = json.loads(params)
-			result = googleCrawl(data)
-			if result == "Error":
-				output['result'] = 'error'
-				output['message'] = "Could not process request"
-			else:
-				output = result
-				output['result'] = 'success'
+			output = googleCrawl(data)
+			output['result'] = 'success'
 		except Exception as ex:
 			output['result'] = 'error'
 			output['message'] = str(ex)
@@ -397,29 +392,21 @@ def googleCrawl(data):
 
 	# custom search parameters
 	location = data['location']
-	srange = data['range']
-	query = data['query']
-
-	thisurl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+query+"+in+"+location+"&key="+api
-
-	r = requests.get(thisurl)
-	thedata = r.json()
-
-	# get the values for the markers
-	if r.status_code == 200:
-		result = getGoogle(data['names'], thedata)
-	else:
-		result = "Error"
-		print result
-	return result
-
-def getGoogle(names, thedata):
-	lst = thedata['results']
+	names = data['names']
+	placeids = []
 	for i in names:
-		print "foursquare: " + i
-		for j in lst:
-			if i == j['name']:
-				print "matched: " + i
-			else:
-				print "google: " + j['name']
+		thisurl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+i+"+in+"+location+"&radius=50000&key="+api
+
+		r = requests.get(thisurl)
+		thedata = r.json()
+		try:
+			placeids.append(thedata['results'][0]['place_id'])
+		except:
+			placeids.append('N/A')
+
+	for pid in placeids:
+		thisurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+pid+"&key="+api
+		r = requests.get(thisurl)
+		thedata = r.json()
+		print thedata['result']['rating']
 	return {}
