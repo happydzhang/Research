@@ -73,22 +73,6 @@ class InstagramController(object):
 			output['message'] = str(ex)
 		return json.dumps(output, encoding='latin-1')
 
-class GoogleController(object):
-	def __init__(self):
-		pass
-
-	def POST(self):
-		output = {'result':'success'}
-		try:
-			params = cherrypy.request.body.read()
-			data = json.loads(params)
-			output = googleCrawl(data)
-			output['result'] = 'success'
-		except Exception as ex:
-			output['result'] = 'error'
-			output['message'] = str(ex)
-		return json.dumps(output, encoding='latin-1')
-
 def datacrawl(data):
 	# keys needed for access to url
 	f = open('keys.txt', 'r')
@@ -367,46 +351,3 @@ def instaCrawl(data):
 			pass
 	return result
 
-def googleCrawl(data):
-
-	# keys needed for access to url
-	f = open('keys.txt', 'r')
-
-	for line in f:
-		line = line.rstrip()
-		components = line.split("::")
-		if components[0] == 'fClient_ID':
-			fCLIENT_ID = str(components[1])
-		elif components[0] == 'fClient_Secret':
-			fCLIENT_SECRET = str(components[1])
-		elif components[0] == 'gAPI':
-			api = str(components[1])
-		elif components[0] == 'tConsumer_Key':
-			consumer_key = str(components[1])
-		elif components[0] == 'tConsumer_Secret':
-			consumer_secret = str(components[1])
-		elif components[0] == 'tAccess_Token':
-			access_token = str(components[1])
-		elif components[0] == 'tAccess_Token_Secret':
-			access_token_secret = str(components[1])
-
-	# custom search parameters
-	location = data['location']
-	names = data['names']
-	placeids = []
-	for i in names:
-		thisurl = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+i+"+in+"+location+"&radius=50000&key="+api
-
-		r = requests.get(thisurl)
-		thedata = r.json()
-		try:
-			placeids.append(thedata['results'][0]['place_id'])
-		except:
-			placeids.append('N/A')
-
-	for pid in placeids:
-		thisurl = "https://maps.googleapis.com/maps/api/place/details/json?placeid="+pid+"&key="+api
-		r = requests.get(thisurl)
-		thedata = r.json()
-		print thedata['result']['rating']
-	return {}

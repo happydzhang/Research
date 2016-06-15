@@ -3,8 +3,19 @@
 // 6/14/2016
 
 var map;
+var service;
+var infowindow;
 var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
+var mylatlng;
+var markers;
+var names;
+var addresses;
+var phones;
+var ratings;
+var urls;
+var here;
+var tips;
 
 // google map
 function initialize() {
@@ -81,7 +92,12 @@ function refresh(args){
 	query = args[2].getValue();
 	limit = args[3].getValue();
 	// prepare as json
-	var params = "{\"location\": \""+thelocation+"\", \"range\": \""+range+"\", \"query\": \""+query+"\", \"limit\": \""+limit+"\"}";	
+	var objs = {}
+	objs['location'] = thelocation;
+	objs['range'] = range;
+	objs['query'] = query;
+	objs['limit'] = limit;
+	var params = JSON.stringify(objs);
 
 	// new XML request
 	var html = new XMLHttpRequest();
@@ -90,15 +106,15 @@ function refresh(args){
 		var j = JSON.parse(html.responseText);
 
 		// assign from the response
-		var mylatlng = {lat: j['lat'], lng: j['lng']};
-		var markers = j['markers'];
-		var names = j['names'];
-		var addresses = j['addresses'];
-		var phones = j['phones'];
-		var ratings = j['ratings'];
-		var urls = j['urls'];
-		var here = j['here'];
-		var tips = j['tips'];
+		mylatlng = {lat: j['lat'], lng: j['lng']};
+		markers = j['markers'];
+		names = j['names'];
+		addresses = j['addresses'];
+		phones = j['phones'];
+		ratings = j['ratings'];
+		urls = j['urls'];
+		here = j['here'];
+		tips = j['tips'];
 		map.setCenter(mylatlng);
 
 		// prepare the info window
@@ -113,6 +129,15 @@ function refresh(args){
 				position: latlng,
 				icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
 			});
+
+			var request = {
+				location: mylatlng,
+				radius: range,
+				query: names[i]
+			};
+
+			service = new google.maps.places.PlacesService(map);
+			service.textSearch(request, callback);
 			// add the markers to an array to allow for deletion
 			mymarkers.push(marker);
 
@@ -140,7 +165,7 @@ function refresh(args){
 					'</div>'+
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>Foursquare Rating: '+ratings[i]+'</p>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'</div>';
@@ -166,7 +191,7 @@ function refresh(args){
 					'</div>'+
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Rating: '+ratings[i]+'</p>'+
+					'<p>Foursquare Rating: '+ratings[i]+'</p>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'</div>';
@@ -188,30 +213,18 @@ function refresh(args){
 		// zoom to show a more general view of the search
 		map.setZoom(13);
 
-		var objs = {};
-		objs['names'] = names;
-		objs['location'] = thelocation;
-		var gparams = JSON.stringify(objs);
-		var https = new XMLHttpRequest();
-		https.open("POST", url+'google/', true);
-		https.onload = function(e){
-			var l = JSON.parse(https.responseText);
-		}
-		https.onerror = function(e) {console.log(https.statusText);}
-		https.send(gparams);
-
 		// prepare the twitter request
 		var obj = {};
 		obj['urls'] = urls;
 		var parameters = JSON.stringify(obj);
 		// new XML request
-		var http = new XMLHttpRequest();
+		/*var http = new XMLHttpRequest();
 		http.open("POST", url+'instagram/', true);
 		http.onload = function(e){
 			var l = JSON.parse(http.responseText);
 		}
 		http.onerror = function(e) {console.log(http.statusText);}
-		http.send(parameters);
+		http.send(parameters);*/
 
 		// new XML request
 		var xml = new XMLHttpRequest();
@@ -263,7 +276,7 @@ function refresh(args){
 						'</div>'+
 						'<div id="tab-3">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Rating: '+ratings[i]+'</p>'+
+						'<p>Foursquare Rating: '+ratings[i]+'</p>'+
 						'<p>User Comment: '+tips[i]+'</p>'+
 						'</div>'+
 						'</div>';
@@ -290,7 +303,7 @@ function refresh(args){
 							'</div>'+
 							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-							'<p>Rating: '+ratings[i]+'</p>'+
+							'<p>Foursquare Rating: '+ratings[i]+'</p>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'</div>';
@@ -317,7 +330,7 @@ function refresh(args){
 							'</div>'+
 							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-							'<p>Rating: '+ratings[i]+'</p>'+
+							'<p>Foursquare Rating: '+ratings[i]+'</p>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'</div>';
@@ -344,3 +357,8 @@ function refresh(args){
 	html.onerror = function(e) {console.log(html.statusText);}
 	html.send(params);
 }
+
+function callback(results, status){
+	
+}
+

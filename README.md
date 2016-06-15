@@ -1,6 +1,13 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/15/2016
+- (12:07) Currently working on getting the Google Places data into the info windows
+- (10:41) Seems like the best plan is to use the Place Library, as the other Google Places Searches cannot reliably find all of the venues from the Foursquare dataset the way Text Search can
+- (10:18) Google Places Text Search, it turns out, is subject to a 10-times multiplier for each request, which is why I used exceed my quota so quickly, as well as why I have already used nearly half of my quota for the day. Continuing to look into ways around this issue
+- (10:13) Google API recommends using the Places Library in the Google Maps JS API, rather than the Google Places API because my application simply searches for places and does not need to add places. Looking into this option
+- (9:14) Resumed work on Google Places integration
+
 Notes for 6/14/2016
 - (4:21) Reached my rate limit for a certain Google Maps API during testing; considering requesting a slightly larger quota in the future, but in the meantime, I have made good progress on implementing Google Reviews into the application tomorrow morning
 - (12:21) Successfully pinging the Google Places API for venue data and checking for matching venue names; however, running into a minor annoyance where Foursquare and Google have slightly different names for the same venue. This issue should be resolved relatively quickly, but has slowed progress for the time being
