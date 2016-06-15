@@ -4,18 +4,9 @@
 
 var map;
 var service;
-var infowindow;
 var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
-var mylatlng;
-var markers;
-var names;
-var addresses;
-var phones;
-var ratings;
-var urls;
-var here;
-var tips;
+var gratings = [];
 
 // google map
 function initialize() {
@@ -106,15 +97,15 @@ function refresh(args){
 		var j = JSON.parse(html.responseText);
 
 		// assign from the response
-		mylatlng = {lat: j['lat'], lng: j['lng']};
-		markers = j['markers'];
-		names = j['names'];
-		addresses = j['addresses'];
-		phones = j['phones'];
-		ratings = j['ratings'];
-		urls = j['urls'];
-		here = j['here'];
-		tips = j['tips'];
+		var mylatlng = {lat: j['lat'], lng: j['lng']};
+		var markers = j['markers'];
+		var names = j['names'];
+		var addresses = j['addresses'];
+		var phones = j['phones'];
+		var ratings = j['ratings'];
+		var urls = j['urls'];
+		var here = j['here'];
+		var tips = j['tips'];
 		map.setCenter(mylatlng);
 
 		// prepare the info window
@@ -165,7 +156,8 @@ function refresh(args){
 					'</div>'+
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Foursquare Rating: '+ratings[i]+'</p>'+
+					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+					'<p>Google Rating: '+gratings[i]+'/5</p>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'</div>';
@@ -191,7 +183,8 @@ function refresh(args){
 					'</div>'+
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Foursquare Rating: '+ratings[i]+'</p>'+
+					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+					'<p>Google Rating: '+gratings[i]+'/5</p>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'</div>';
@@ -276,7 +269,8 @@ function refresh(args){
 						'</div>'+
 						'<div id="tab-3">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Foursquare Rating: '+ratings[i]+'</p>'+
+						'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+						'<p>Google Rating: '+gratings[i]+'/5</p>'+
 						'<p>User Comment: '+tips[i]+'</p>'+
 						'</div>'+
 						'</div>';
@@ -303,7 +297,8 @@ function refresh(args){
 							'</div>'+
 							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-							'<p>Foursquare Rating: '+ratings[i]+'</p>'+
+							'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+							'<p>Google Rating: '+gratings[i]+'/5</p>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'</div>';
@@ -330,7 +325,8 @@ function refresh(args){
 							'</div>'+
 							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-							'<p>Foursquare Rating: '+ratings[i]+'</p>'+
+							'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+							'<p>Google Rating: '+gratings[i]+'/5</p>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'</div>';
@@ -359,6 +355,8 @@ function refresh(args){
 }
 
 function callback(results, status){
-	
+	if (status == 'OK'){
+		gratings.push(results[0]['rating']);
+	}	
 }
 

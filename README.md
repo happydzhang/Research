@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/15/2016
+- (2:01) Google Ratings are now displayed on the info window; some additional quality assurance must be done, such as making sure that the venues found through Google are, in fact, the same location as the ones found on Foursquare. Additionally, I plan to implement recent comments from Google
 - (12:07) Currently working on getting the Google Places data into the info windows
 - (10:41) Seems like the best plan is to use the Place Library, as the other Google Places Searches cannot reliably find all of the venues from the Foursquare dataset the way Text Search can
 - (10:18) Google Places Text Search, it turns out, is subject to a 10-times multiplier for each request, which is why I used exceed my quota so quickly, as well as why I have already used nearly half of my quota for the day. Continuing to look into ways around this issue
