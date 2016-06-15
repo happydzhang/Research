@@ -7,6 +7,7 @@ var service;
 var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
 var gratings = [];
+var pids = [];
 
 // google map
 function initialize() {
@@ -139,6 +140,7 @@ function refresh(args){
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Info</span></a></li>'+
 					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 					'</ul>'+
 					'<div id="tab-1">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -150,6 +152,9 @@ function refresh(args){
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 					'<p>Google Rating: '+gratings[i]+'/5</p>'+
+					'</div>'+
+					'<div id="tab-3">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'</div>';
@@ -159,6 +164,7 @@ function refresh(args){
 					'<ul>'+
 					'<li><a href="#tab-1"><span>Info</span></a></li>'+
 					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 					'<div id="tab-1">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Address: '+addresses[i]+'</p>'+
@@ -170,6 +176,9 @@ function refresh(args){
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 					'<p>Google Rating: '+gratings[i]+'/5</p>'+
+					'</div>'+
+					'<div id="tab-3">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
 					'</div>'+
 					'</div>';
@@ -237,6 +246,7 @@ function refresh(args){
 						'<ul>'+
 						'<li><a href="#tab-1"><span>Info</span></a></li>'+
 						'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+						'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 						'</ul>'+
 						'<div id="tab-1">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
@@ -248,6 +258,9 @@ function refresh(args){
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 						'<p>Google Rating: '+gratings[i]+'/5</p>'+
+						'</div>'+
+						'<div id="tab-3">'+
+						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'<p>User Comment: '+tips[i]+'</p>'+
 						'</div>'+
 						'</div>';
@@ -258,6 +271,7 @@ function refresh(args){
 							'<ul>'+
 							'<li><a href="#tab-1"><span>Info</span></a></li>'+
 							'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+							'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 							'<div id="tab-1">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Address: '+addresses[i]+'</p>'+
@@ -269,6 +283,9 @@ function refresh(args){
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 							'<p>Google Rating: '+gratings[i]+'/5</p>'+
+							'</div>'+
+							'<div id="tab-3">'+
+							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
 							'</div>'+
 							'</div>';
@@ -278,6 +295,7 @@ function refresh(args){
 							'<ul>'+
 							'<li><a href="#tab-1"><span>Info</span></a></li>'+
 							'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+							'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
 							'<div id="tab-1">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Address: '+addresses[i]+'</p>'+
@@ -292,6 +310,9 @@ function refresh(args){
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 							'<p>Google Rating: '+gratings[i]+'/5</p>'+
+							'</div>'+
+							'<div id="tab-3">'+
+							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
 							'<p>Recent Tweets: <br>'+utweet[i]+'</p>'+
 							'</div>'+
@@ -323,6 +344,9 @@ function refresh(args){
 function callback(results, status){
 	if (status == 'OK'){
 		gratings.push(results[0]['rating']);
-	}	
+		pids.push(results[0]['place_id'])
+	}else{
+		gratings.push(0);
+	}
 }
 

@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/15/2016
+- (4:34) Rearranged the info windows into three new tabs: Info, Ratings, and Comments and Reviews; the Info tab contains basic information about a venue, such as its address, telephone, website, and Twitter, with plans to potentially add more; the Ratings tab contains a venue's ratings from Foursquare and Google, with plans to add more, such as Yelp; the Comments and Reviews tab contains a relevant comment as determined by Foursquare, as well as the 10 most recent tweets by that venue's Twitter, with plans to add reviews provided by Google
 - (2:01) Google Ratings are now displayed on the info window; some additional quality assurance must be done, such as making sure that the venues found through Google are, in fact, the same location as the ones found on Foursquare. Additionally, I plan to implement recent comments from Google
 - (12:07) Currently working on getting the Google Places data into the info windows
 - (10:41) Seems like the best plan is to use the Place Library, as the other Google Places Searches cannot reliably find all of the venues from the Foursquare dataset the way Text Search can
