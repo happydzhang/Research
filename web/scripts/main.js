@@ -137,24 +137,16 @@ function refresh(args){
 				// does not have a url link
 				marker.contentString = '<div id="tabs">'+
 					'<ul>'+
-					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+					'<li><a href="#tab-1"><span>Info</span></a></li>'+
+					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
 					'</ul>'+
 					'<div id="tab-1">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Address: '+addresses[i]+'</p>'+
 					'<p>Phone: '+phones[i]+'</p>'+
 					'<p>Currently here: '+here[i]+'</p>'+
-					'<p>URL: '+urls[i]+'</p>'+
 					'</div>'+
 					'<div id="tab-2">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Screenname: Loading...</p>'+
-					'<p>Description: Loading...</p>'+
-					'<p>Followers: Loading...</p>'+
-					'</div>'+
-					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 					'<p>Google Rating: '+gratings[i]+'/5</p>'+
@@ -165,9 +157,8 @@ function refresh(args){
 				// does have a url link
 				marker.contentString = '<div id="tabs">'+
 					'<ul>'+
-					'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-					'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+					'<li><a href="#tab-1"><span>Info</span></a></li>'+
+					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
 					'<div id="tab-1">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Address: '+addresses[i]+'</p>'+
@@ -176,12 +167,6 @@ function refresh(args){
 					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
 					'</div>'+
 					'<div id="tab-2">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Screenname: Loading...</p>'+
-					'<p>Description: Loading...</p>'+
-					'<p>Followers: Loading...</p>'+
-					'</div>'+
-					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 					'<p>Google Rating: '+gratings[i]+'/5</p>'+
@@ -250,24 +235,16 @@ function refresh(args){
 					// content string with no links
 					marker.contentString = '<div id="tabs">'+
 						'<ul>'+
-						'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-						'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-						'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+						'<li><a href="#tab-1"><span>Info</span></a></li>'+
+						'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
 						'</ul>'+
 						'<div id="tab-1">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'<p>Address: '+addresses[i]+'</p>'+
 						'<p>Phone: '+phones[i]+'</p>'+
 						'<p>Currently here: '+here[i]+'</p>'+
-						'<p>URL: '+urls[i]+'</p>'+
 						'</div>'+
 						'<div id="tab-2">'+
-						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-						'<p>Screenname: '+screennames[i]+'</p>'+
-						'<p>Description: '+descriptions[i]+'</p>'+
-						'<p>Followers: '+followers[i]+'</p>'+
-						'</div>'+
-						'<div id="tab-3">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 						'<p>Google Rating: '+gratings[i]+'/5</p>'+
@@ -279,9 +256,8 @@ function refresh(args){
 						// content string with a link to the url
 						marker.contentString = '<div id="tabs">'+
 							'<ul>'+
-							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-							'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-							'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+							'<li><a href="#tab-1"><span>Info</span></a></li>'+
+							'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
 							'<div id="tab-1">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Address: '+addresses[i]+'</p>'+
@@ -290,12 +266,6 @@ function refresh(args){
 							'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
 							'</div>'+
 							'<div id="tab-2">'+
-							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-							'<p>Screenname: '+screennames[i]+'</p>'+
-							'<p>Description: '+descriptions[i]+'</p>'+
-							'<p>Followers: '+followers[i]+'</p>'+
-							'</div>'+
-							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 							'<p>Google Rating: '+gratings[i]+'/5</p>'+
@@ -306,28 +276,24 @@ function refresh(args){
 						// content string with a link to the url and the twitter page
 						marker.contentString = '<div id="tabs">'+
 							'<ul>'+
-							'<li><a href="#tab-1"><span>Foursquare</span></a></li>'+
-							'<li><a href="#tab-2"><span>Twitter</span></a></li>'+
-							'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+							'<li><a href="#tab-1"><span>Info</span></a></li>'+
+							'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
 							'<div id="tab-1">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Address: '+addresses[i]+'</p>'+
 							'<p>Phone: '+phones[i]+'</p>'+
 							'<p>Currently here: '+here[i]+'</p>'+
 							'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
-							'</div>'+
-							'<div id="tab-2">'+
-							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Screenname: <a href="https://twitter.com/'+screennames[i]+'">'+screennames[i]+'</a></p>'+
 							'<p>Description: '+descriptions[i]+'</p>'+
 							'<p>Followers: '+followers[i]+'</p>'+
-							'<p>Recent Tweets: <br>'+utweet[i]+'</p>'+
 							'</div>'+
-							'<div id="tab-3">'+
+							'<div id="tab-2">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
 							'<p>Google Rating: '+gratings[i]+'/5</p>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
+							'<p>Recent Tweets: <br>'+utweet[i]+'</p>'+
 							'</div>'+
 							'</div>';
 					}
