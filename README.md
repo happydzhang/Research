@@ -2,6 +2,10 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/16/2016
+- (5:03) Unsure as to why searching for a Place's details causes an 'OVER-QUERY-LIMIT' and searching for a Place itself does not, but I will read the Google Maps API a little bit more tomorrow to see why this is occurring for one feature, but not the other
+- (4:53) Getting a return status of 'OVER-QUERY-LIMIT' for one reason or another, despite the fact that I should have a much larger quota remaing. Must investigate more closely
+- (3:32) Timing issue bug resolved
+- (2:31) Still having issues with getting the script to wait for the pids to be grabbed
 - (12:10) Fixed the Twitter server bug
 - (12:08) Detected a bug where the Twitter server script does not return the proper amount of arrays for tweets in order to match the number of venues
 - (11:57) Running into an issue where the script doesn't run getDetails on all of the placeids

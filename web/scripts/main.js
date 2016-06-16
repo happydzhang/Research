@@ -7,6 +7,18 @@ var service;
 var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
 var gratings = [];
+var reviews = [];
+var pid;
+var called;
+var mylatlng;
+var markers;
+var names;
+var addresses;
+var phones;
+var ratings;
+var urls;
+var here;
+var tips;
 
 // google map
 function initialize() {
@@ -77,6 +89,7 @@ function refresh(args){
 	}
 	// clear the array of markers
 	mymarkers = [];
+	called = 0;
 	// grab the parameters for the foursquare search
 	thelocation = args[0].getValue();
 	range = args[1].getValue();
@@ -97,29 +110,24 @@ function refresh(args){
 		var j = JSON.parse(html.responseText);
 
 		// assign from the response
-		var mylatlng = {lat: j['lat'], lng: j['lng']};
-		var markers = j['markers'];
-		var names = j['names'];
-		var addresses = j['addresses'];
-		var phones = j['phones'];
-		var ratings = j['ratings'];
-		var urls = j['urls'];
-		var here = j['here'];
-		var tips = j['tips'];
+		mylatlng = {lat: j['lat'], lng: j['lng']};
+		markers = j['markers'];
+		names = j['names'];
+		addresses = j['addresses'];
+		phones = j['phones'];
+		ratings = j['ratings'];
+		urls = j['urls'];
+		here = j['here'];
+		tips = j['tips'];
 		map.setCenter(mylatlng);
+		// zoom to show a more general view of the search
+		map.setZoom(13);
+
 
 		// prepare the info window
 		infowindow = new google.maps.InfoWindow();
 
-		// loop through each venue
 		for (var i = 0; i < markers.length; i++){
-			// create a new marker at each venue's location
-			var latlng = {lat: markers[i].lat, lng: markers[i].lng};
-			var marker = new google.maps.Marker({
-				map: map,
-				position: latlng,
-				icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-			});
 
 			var request = {
 				location: mylatlng,
@@ -129,75 +137,7 @@ function refresh(args){
 
 			service = new google.maps.places.PlacesService(map);
 			service.textSearch(request, callback_search);
-			// add the markers to an array to allow for deletion
-			mymarkers.push(marker);
-
-			// generate the info window's text based on whether or not the venue has a url
-			if (urls[i]=='N/A'){
-				// does not have a url link
-				marker.contentString = '<div id="tabs">'+
-					'<ul>'+
-					'<li><a href="#tab-1"><span>Info</span></a></li>'+
-					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
-					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
-					'</ul>'+
-					'<div id="tab-1">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Address: '+addresses[i]+'</p>'+
-					'<p>Phone: '+phones[i]+'</p>'+
-					'<p>Currently here: '+here[i]+'</p>'+
-					'</div>'+
-					'<div id="tab-2">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
-					'<p>Google Rating: '+gratings[i]+'/5</p>'+
-					'</div>'+
-					'<div id="tab-3">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>User Comment: '+tips[i]+'</p>'+
-					'</div>'+
-					'</div>';
-			}else{
-				// does have a url link
-				marker.contentString = '<div id="tabs">'+
-					'<ul>'+
-					'<li><a href="#tab-1"><span>Info</span></a></li>'+
-					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
-					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
-					'<div id="tab-1">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Address: '+addresses[i]+'</p>'+
-					'<p>Phone: '+phones[i]+'</p>'+
-					'<p>Currently here: '+here[i]+'</p>'+
-					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
-					'</div>'+
-					'<div id="tab-2">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
-					'<p>Google Rating: '+gratings[i]+'/5</p>'+
-					'</div>'+
-					'<div id="tab-3">'+
-					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
-					'<p>User Comment: '+tips[i]+'</p>'+
-					'</div>'+
-					'</div>';
-			}
-
-			// prepare jQuery tabs
-			google.maps.event.addListener(infowindow, 'domready', function(){
-				$('#tabs').tabs();
-			});
-
-			// add click function
-			google.maps.event.addListener(marker, 'click', function() {
-				infowindow.setContent(this.contentString);
-				infowindow.open(map, this);
-
-			});
 		}
-
-		// zoom to show a more general view of the search
-		map.setZoom(13);
 
 		// prepare the twitter request
 		var obj = {};
@@ -340,13 +280,109 @@ function refresh(args){
 	html.send(params);
 }
 
+function callback_details(place, status){
+	review = '';
+	if (status == 'OK'){
+		if (typeof place['reviews'] !== 'undefined'){
+			for (var i = 0; i < place['reviews'].length; i++){
+				review += place['reviews'][i]['text']+"<br><br>";
+			}
+		}
+	}
+	reviews.push(review);
+}
+
 function callback_search(results, status){
+	called += 1;
 	if (status == 'OK'){
 		if (typeof results[0]['rating'] !== 'undefined'){
 			gratings.push(results[0]['rating']);
+			pid = results[0]['place_id'];
 		}else{
 			gratings.push(0);
+			pid = results[0]['place_id'];
 		}
 	}
-}
+	if (called >= markers.length){
+		// loop through each venue
+		for (var i = 0; i < markers.length; i++){
+			// create a new marker at each venue's location
+			var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+			var marker = new google.maps.Marker({
+				map: map,
+				position: latlng,
+				icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+			});
 
+			// add the markers to an array to allow for deletion
+			mymarkers.push(marker);
+
+			// generate the info window's text based on whether or not the venue has a url
+			if (urls[i]=='N/A'){
+				// does not have a url link
+				marker.contentString = '<div id="tabs">'+
+					'<ul>'+
+					'<li><a href="#tab-1"><span>Info</span></a></li>'+
+					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+					'</ul>'+
+					'<div id="tab-1">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Address: '+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Currently here: '+here[i]+'</p>'+
+					'</div>'+
+					'<div id="tab-2">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+					'<p>Google Rating: '+gratings[i]+'/5</p>'+
+					'</div>'+
+					'<div id="tab-3">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>User Comment: '+tips[i]+'</p>'+
+					'</div>'+
+					'</div>';
+			}else{
+				// does have a url link
+				marker.contentString = '<div id="tabs">'+
+					'<ul>'+
+					'<li><a href="#tab-1"><span>Info</span></a></li>'+
+					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+					'<div id="tab-1">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Address: '+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Currently here: '+here[i]+'</p>'+
+					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+					'</div>'+
+					'<div id="tab-2">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+					'<p>Google Rating: '+gratings[i]+'/5</p>'+
+					'</div>'+
+					'<div id="tab-3">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>User Comment: '+tips[i]+'</p>'+
+					'</div>'+
+					'</div>';
+			}
+
+			// prepare jQuery tabs
+			google.maps.event.addListener(infowindow, 'domready', function(){
+				$('#tabs').tabs();
+			});
+
+			// add click function
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.setContent(this.contentString);
+				infowindow.open(map, this);
+
+			});
+		}
+	}
+	var request = {
+		placeId: pid
+	};
+	service.getDetails(request, callback_details);
+}
