@@ -7,7 +7,6 @@ var service;
 var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
 var gratings = [];
-var pids = [];
 
 // google map
 function initialize() {
@@ -129,7 +128,7 @@ function refresh(args){
 			};
 
 			service = new google.maps.places.PlacesService(map);
-			service.textSearch(request, callback);
+			service.textSearch(request, callback_search);
 			// add the markers to an array to allow for deletion
 			mymarkers.push(marker);
 
@@ -341,12 +340,13 @@ function refresh(args){
 	html.send(params);
 }
 
-function callback(results, status){
+function callback_search(results, status){
 	if (status == 'OK'){
-		gratings.push(results[0]['rating']);
-		pids.push(results[0]['place_id'])
-	}else{
-		gratings.push(0);
+		if (typeof results[0]['rating'] !== 'undefined'){
+			gratings.push(results[0]['rating']);
+		}else{
+			gratings.push(0);
+		}
 	}
 }
 

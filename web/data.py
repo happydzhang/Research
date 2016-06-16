@@ -156,7 +156,7 @@ def makeHTML(mydict):
 		try:
 			ratings.append(i['venue']['rating'])
 		except:
-			ratings.append("N/A")
+			ratings.append(0)
 		# obtain url of venue
 		try:
 			urls.append(i['venue']['url'])
