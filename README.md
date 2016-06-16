@@ -2,6 +2,8 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/16/2016
+- (12:10) Fixed the Twitter server bug
+- (12:08) Detected a bug where the Twitter server script does not return the proper amount of arrays for tweets in order to match the number of venues
 - (11:57) Running into an issue where the script doesn't run getDetails on all of the placeids
 - (9:07) Began work on adding Google comments to the info windows
 

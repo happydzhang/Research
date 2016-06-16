@@ -230,19 +230,23 @@ def twitterCrawl(data):
 				screennames.append('N/A')
 				descriptions.append('N/A')
 				followers.append('N/A')
+				tweets.append(utweets)
 			# the following are all bad urls
 			elif '7-eleven' in i:
 				screennames.append('N/A')
 				descriptions.append('N/A')
 				followers.append('N/A')
+				tweets.append(utweets)
 			elif 'brunospizza' in i:
 				screennames.append('N/A')
 				descriptions.append('N/A')
 				followers.append('N/A')
+				tweets.append(utweets)
 			elif 'suxinghouse' in i:
 				screennames.append('N/A')
 				descriptions.append('N/A')
 				followers.append('N/A')
+				tweets.append(utweets)
 			# good urls
 			else:
 				response = requests.get(i)
