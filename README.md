@@ -2,6 +2,10 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/17/2016
+- (4:41) Getting the specifics about a venue through Google appears to be a race condition that will usually lose, but not always. Also, adding it to the onclick function caused the script to crash. Will look into resolving this issue next week
+- (3:48) Going to reconsider adding the getDetails call to each onclick
+- (3:02) Still working on including Google Reviews
+- (2:09) Might be hitting another race condition where the script tries to display the info window text before all variables are available
 - (12:32) Currently working on a method to add Google Reviews to the info window
 - (11:22) Implemented a better solution where getDetails is called in a for loop, where, if it returns with an OVER-QUERY-LIMIT, will decrement the counter and cause the script to attempt to make the request again
 - (10:28) Implemented a band-aid solution, where the script "sleeps" for 500 ms before making each getDetails request; I played around with different times and found that 500 ms consistently returned with an OK status for every request, whereas smaller times would sometimes still return with an OVER-QUERY-LIMIT. Considering not loading Google Reviews unless the user clicks on that specific marker (i.e. add it to the onclick listener function)

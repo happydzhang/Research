@@ -9,7 +9,7 @@ var url = "http://0.0.0.0:8008/";
 var gratings = [];
 var reviews = [];
 var pids = [];
-var called;
+var searchcalled;
 var count;
 var mylatlng;
 var markers;
@@ -90,7 +90,10 @@ function refresh(args){
 	}
 	// clear the array of markers
 	mymarkers = [];
-	called = 0;
+	gratings = [];
+	reviews = [];
+	pids = [];
+	searchcalled = 0;
 	// grab the parameters for the foursquare search
 	thelocation = args[0].getValue();
 	range = args[1].getValue();
@@ -202,6 +205,7 @@ function refresh(args){
 						'<div id="tab-3">'+
 						'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 						'<p>User Comment: '+tips[i]+'</p>'+
+						'<p>Reviews: <br>'+reviews[i]+'</p>'+
 						'</div>'+
 						'</div>';
 				}else{
@@ -291,14 +295,14 @@ function callback_details(place, status){
 				review += place['reviews'][i]['text']+"<br><br>";
 			}
 		}
-		reviews.push(review);
+		reviews[count] = review;
 	}else if (status == 'OVER_QUERY_LIMIT'){
 		count--;
 	}
 }
 
 function callback_search(results, status){
-	called++;
+	searchcalled++;
 	if (status == 'OK'){
 		if (typeof results[0]['rating'] !== 'undefined'){
 			gratings.push(results[0]['rating']);
@@ -308,14 +312,8 @@ function callback_search(results, status){
 			pids.push(results[0]['place_id']);
 		}
 	}
-	if (called >= markers.length){
-		for (count = 0; count < markers.length; count++){
-			var request = {
-				placeId: pids[count]
-			};
-			service.getDetails(request, callback_details);
-		}
-		// loop through each venue
+	if (searchcalled >= markers.length){
+	// loop through each venue
 		for (var i = 0; i < markers.length; i++){
 			// create a new marker at each venue's location
 			var latlng = {lat: markers[i].lat, lng: markers[i].lng};
@@ -351,7 +349,6 @@ function callback_search(results, status){
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
-					'<p>Reviews: <br>'+reviews[i]+'</p>'+
 					'</div>'+
 					'</div>';
 			}else{
@@ -376,7 +373,6 @@ function callback_search(results, status){
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
-					'<p>Reviews: <br>'+reviews[i]+'</p>'+
 					'</div>'+
 					'</div>';
 			}
@@ -393,11 +389,11 @@ function callback_search(results, status){
 
 			});
 		}
-	}
-}
-
-function sleep(miliseconds){
-	var currentTime = new Date().getTime();
-	while (currentTime + miliseconds >= new Date().getTime()){
+		for (count = 0; count < markers.length; count++){
+			var request = {
+				placeId: pids[count]
+			};
+			service.getDetails(request, callback_details);
+		}
 	}
 }
