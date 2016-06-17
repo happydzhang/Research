@@ -8,8 +8,9 @@ var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
 var gratings = [];
 var reviews = [];
-var pid;
+var pids = [];
 var called;
+var count;
 var mylatlng;
 var markers;
 var names;
@@ -288,19 +289,21 @@ function callback_details(place, status){
 				review += place['reviews'][i]['text']+"<br><br>";
 			}
 		}
+	}else if (status == 'OVER_QUERY_LIMIT'){
+		count--;
 	}
 	reviews.push(review);
 }
 
 function callback_search(results, status){
-	called += 1;
+	called++;
 	if (status == 'OK'){
 		if (typeof results[0]['rating'] !== 'undefined'){
 			gratings.push(results[0]['rating']);
-			pid = results[0]['place_id'];
+			pids.push(results[0]['place_id']);
 		}else{
 			gratings.push(0);
-			pid = results[0]['place_id'];
+			pids.push(results[0]['place_id']);
 		}
 	}
 	if (called >= markers.length){
@@ -380,9 +383,17 @@ function callback_search(results, status){
 
 			});
 		}
+		for (count = 0; count < markers.length; count++){
+			var request = {
+				placeId: pids[count]
+			};
+			service.getDetails(request, callback_details);
+		}
 	}
-	var request = {
-		placeId: pid
-	};
-	service.getDetails(request, callback_details);
+}
+
+function sleep(miliseconds){
+	var currentTime = new Date().getTime();
+	while (currentTime + miliseconds >= new Date().getTime()){
+	}
 }
