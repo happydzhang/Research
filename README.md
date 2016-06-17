@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/17/2016
+- (12:32) Currently working on a method to add Google Reviews to the info window
 - (11:22) Implemented a better solution where getDetails is called in a for loop, where, if it returns with an OVER-QUERY-LIMIT, will decrement the counter and cause the script to attempt to make the request again
 - (10:28) Implemented a band-aid solution, where the script "sleeps" for 500 ms before making each getDetails request; I played around with different times and found that 500 ms consistently returned with an OK status for every request, whereas smaller times would sometimes still return with an OVER-QUERY-LIMIT. Considering not loading Google Reviews unless the user clicks on that specific marker (i.e. add it to the onclick listener function)
 - (9:03) After a little investigation, the problem seems to be the speed at which I make the getDetails request; must find a way to slow the rate at which the requests are made

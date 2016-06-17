@@ -227,6 +227,7 @@ function refresh(args){
 							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
+							'<p>Reviews: <br>'+reviews[i]+'</p>'+
 							'</div>'+
 							'</div>';
 					}else{
@@ -254,6 +255,7 @@ function refresh(args){
 							'<div id="tab-3">'+
 							'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 							'<p>User Comment: '+tips[i]+'</p>'+
+							'<p>Reviews: <br>'+reviews[i]+'</p>'+
 							'<p>Recent Tweets: <br>'+utweet[i]+'</p>'+
 							'</div>'+
 							'</div>';
@@ -289,10 +291,10 @@ function callback_details(place, status){
 				review += place['reviews'][i]['text']+"<br><br>";
 			}
 		}
+		reviews.push(review);
 	}else if (status == 'OVER_QUERY_LIMIT'){
 		count--;
 	}
-	reviews.push(review);
 }
 
 function callback_search(results, status){
@@ -307,6 +309,12 @@ function callback_search(results, status){
 		}
 	}
 	if (called >= markers.length){
+		for (count = 0; count < markers.length; count++){
+			var request = {
+				placeId: pids[count]
+			};
+			service.getDetails(request, callback_details);
+		}
 		// loop through each venue
 		for (var i = 0; i < markers.length; i++){
 			// create a new marker at each venue's location
@@ -343,6 +351,7 @@ function callback_search(results, status){
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
+					'<p>Reviews: <br>'+reviews[i]+'</p>'+
 					'</div>'+
 					'</div>';
 			}else{
@@ -367,6 +376,7 @@ function callback_search(results, status){
 					'<div id="tab-3">'+
 					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
 					'<p>User Comment: '+tips[i]+'</p>'+
+					'<p>Reviews: <br>'+reviews[i]+'</p>'+
 					'</div>'+
 					'</div>';
 			}
@@ -382,12 +392,6 @@ function callback_search(results, status){
 				infowindow.open(map, this);
 
 			});
-		}
-		for (count = 0; count < markers.length; count++){
-			var request = {
-				placeId: pids[count]
-			};
-			service.getDetails(request, callback_details);
 		}
 	}
 }
