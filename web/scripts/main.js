@@ -9,8 +9,8 @@ var url = "http://0.0.0.0:8008/";
 var gratings = [];
 var reviews = [];
 var pids = [];
-var searchcalled;
 var count;
+var searchcalled;
 var mylatlng;
 var markers;
 var names;
@@ -295,7 +295,7 @@ function callback_details(place, status){
 				review += place['reviews'][i]['text']+"<br><br>";
 			}
 		}
-		reviews[count] = review;
+		reviews.push(review);
 	}else if (status == 'OVER_QUERY_LIMIT'){
 		count--;
 	}
@@ -389,11 +389,11 @@ function callback_search(results, status){
 
 			});
 		}
-		for (count = 0; count < markers.length; count++){
+		/*for(count=0;count<markers.length;count++){
 			var request = {
 				placeId: pids[count]
 			};
 			service.getDetails(request, callback_details);
-		}
+		}*/
 	}
 }

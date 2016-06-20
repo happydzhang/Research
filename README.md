@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/20/2016
+- (11:50) Still having issues with the getDetails search; considering taking a break from this endeavor and moving to something else, such as Google photos or even back to the mobile application, which I had planned to work on tomorrow
+- (9:14) Resumed work on Google Places implementation
+
 Notes for 6/17/2016
 - (4:41) Getting the specifics about a venue through Google appears to be a race condition that will usually lose, but not always. Also, adding it to the onclick function caused the script to crash. Will look into resolving this issue next week
 - (3:48) Going to reconsider adding the getDetails call to each onclick
