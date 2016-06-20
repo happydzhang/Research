@@ -2,6 +2,9 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/20/2016
+- (4:58) Continuing to have issues with this feature. I plan to put a pin in this and pursue more fruitful endeavors, specifically, I will resume work on the mobile application tomorrow
+- (4:06) Minor progress has been made, I believe. Will continue to pursue current efforts
+- (1:54) Going to attempt to restructure the order in which certain variables are generated in an effort to get the Google Places data integrated
 - (11:50) Still having issues with the getDetails search; considering taking a break from this endeavor and moving to something else, such as Google photos or even back to the mobile application, which I had planned to work on tomorrow
 - (9:14) Resumed work on Google Places implementation
 
