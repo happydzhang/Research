@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/21/2016
+- (3:57) Seems like setAttribute is not actually modifying the EXIF data on the photo
 - (2:49) Currently trying to fix it so that loaded images don't set the GPS location to the current location
 - (2:27) The app now has a basic way to ensure that the selected image is rotated propely
 - (2:08) Images loaded from the gallery are oftentimes in the wrong orientation, so currently working on a way to correctly rotate the image to be displayed properly
