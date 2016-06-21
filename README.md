@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/21/2016
+- (12:19) Added a few small changes to the mobile application: Added the upload button, which currently has no functionality; added the ability to select old images, although this might be pointless, as there's no way to ensure that the image selected will have location enabled. A popup menu could be added asking the user if they know where the image was taken, then use a GPS lookup of some sort to estimate where the image was taken
 - (10:24) Updates finally finished
 - (9:14) Resumed work on the mobile application. Looks like there are a great deal of updates to apply to Android Studio
 
