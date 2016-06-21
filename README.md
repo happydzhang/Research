@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/21/2016
+- (10:24) Updates finally finished
+- (9:14) Resumed work on the mobile application. Looks like there are a great deal of updates to apply to Android Studio
+
 Notes for 6/20/2016
 - (4:58) Continuing to have issues with this feature. I plan to put a pin in this and pursue more fruitful endeavors, specifically, I will resume work on the mobile application tomorrow
 - (4:06) Minor progress has been made, I believe. Will continue to pursue current efforts
