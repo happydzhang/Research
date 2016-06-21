@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/21/2016
+- (4:39) When saving geolocation Exif data, the string must be in degrees, minutes, seconds format, otherwise, the data will not be properly stored. Will begin writing a method to properly convert the data into the proper format; will most likely complete this bug fix tomorrow
 - (3:57) Seems like setAttribute is not actually modifying the EXIF data on the photo
 - (2:49) Currently trying to fix it so that loaded images don't set the GPS location to the current location
 - (2:27) The app now has a basic way to ensure that the selected image is rotated propely
