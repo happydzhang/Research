@@ -323,30 +323,30 @@ function callback(details, thestatus){
 		mymarkers.push(marker);
 		// generate the info window's text based on whether or not the venue has a url
 		if (urls[count]=='N/A'){
-		// does not have a url link
-		marker.contentString = '<div id="tabs">'+
-			'<ul>'+
-			'<li><a href="#tab-1"><span>Info</span></a></li>'+
-			'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
-			'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
-			'</ul>'+
-			'<div id="tab-1">'+
-			'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-			'<p>Address: '+addresses[count]+'</p>'+
-			'<p>Phone: '+phones[count]+'</p>'+
-			'<p>Currently here: '+here[count]+'</p>'+
-			'</div>'+
-			'<div id="tab-2">'+
-			'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-			'<p>Foursquare Rating: '+ratings[count]+'/10</p>'+
-			'<p>Google Rating: '+gratings[count]+'/5</p>'+
-			'</div>'+
-			'<div id="tab-3">'+
-			'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-			'<p>User Comment: '+tips[count]+'</p>'+
-			'<p>Reviews: <br>'+reviews[count]+'</p>'+
-			'</div>'+
-			'</div>';
+			// does not have a url link
+			marker.contentString = '<div id="tabs">'+
+				'<ul>'+
+				'<li><a href="#tab-1"><span>Info</span></a></li>'+
+				'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+				'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+				'</ul>'+
+				'<div id="tab-1">'+
+				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
+				'<p>Address: '+addresses[count]+'</p>'+
+				'<p>Phone: '+phones[count]+'</p>'+
+				'<p>Currently here: '+here[count]+'</p>'+
+				'</div>'+
+				'<div id="tab-2">'+
+				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
+				'<p>Foursquare Rating: '+ratings[count]+'/10</p>'+
+				'<p>Google Rating: '+gratings[count]+'/5</p>'+
+				'</div>'+
+				'<div id="tab-3">'+
+				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
+				'<p>User Comment: '+tips[count]+'</p>'+
+				'<p>Reviews: <br>'+reviews[count]+'</p>'+
+				'</div>'+
+				'</div>';
 		}else{
 			// does have a url link
 			marker.contentString = '<div id="tabs">'+
