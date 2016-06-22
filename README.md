@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/22/2016
+- (9:05) Began work on the upload button functionality
+
 Notes for 6/21/2016
 - (5:03) Successfully fixed the bug, I believe. Will do more testing tomorrow
 - (4:39) When saving geolocation Exif data, the string must be in degrees, minutes, seconds format, otherwise, the data will not be properly stored. Will begin writing a method to properly convert the data into the proper format; will most likely complete this bug fix tomorrow
