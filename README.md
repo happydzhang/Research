@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/22/2016
+- (4:54) Successfully installed Wampserver so that I can do some testing of the mobile application's upload button
 - (4:05) Began researching how to write a server that can receive a file and store it into a directory
 - Things to do: Crowdsensing tab, finish upload button, explore Yelp for crowdsensing data (in addition to Twitter and Google), TripAdvisor, Zagat, more dynamic functionality - refresh without user input
 - (12:15) Need to find a place to upload the photos so that I can properly test if the upload works
