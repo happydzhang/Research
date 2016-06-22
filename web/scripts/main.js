@@ -8,7 +8,9 @@ var mymarkers = [];
 var url = "http://0.0.0.0:8008/";
 var gratings = [];
 var reviews = [];
+var pids = [];
 var count;
+var searchcalled;
 var mylatlng;
 var markers;
 var names;
@@ -90,15 +92,8 @@ function refresh(args){
 	mymarkers = [];
 	gratings = [];
 	reviews = [];
-	markers = [];
-	names = [];
-	addresses = [];
-	phones = [];
-	ratings = [];
-	urls = [];
-	here = [];
-	tips = [];
-	count = 0;
+	pids = [];
+	searchcalled = 0;
 	// grab the parameters for the foursquare search
 	thelocation = args[0].getValue();
 	range = args[1].getValue();
@@ -137,26 +132,15 @@ function refresh(args){
 		infowindow = new google.maps.InfoWindow();
 
 		for (var i = 0; i < markers.length; i++){
+
 			var request = {
 				location: mylatlng,
 				radius: range,
 				query: names[i]
 			};
+
 			service = new google.maps.places.PlacesService(map);
-			service.textSearch(request, function(results, status){
-				if (status == 'OK'){
-					if (typeof results[0]['rating'] !== 'undefined'){
-						gratings.push(results[0]['rating']);
-					}else{
-						gratings.push(0);
-					}
-	
-					var request = {
-						placeId: results[0]['place_id']
-					};
-					service.getDetails(request, callback);
-				}
-			});
+			service.textSearch(request, callback_search);
 		}
 
 		// prepare the twitter request
@@ -173,7 +157,7 @@ function refresh(args){
 		http.send(parameters);*/
 
 		// new XML request
-		/*var xml = new XMLHttpRequest();
+		var xml = new XMLHttpRequest();
 		xml.open("POST", url+'twitter/', true);
 		xml.onload = function(e){
 			var l = JSON.parse(xml.responseText);
@@ -297,92 +281,119 @@ function refresh(args){
 			}
 		}
 		xml.onerror = function(e) {console.log(xml.statusText);}
-		xml.send(parameters);*/
+		xml.send(parameters);
 	}
 	html.onerror = function(e) {console.log(html.statusText);}
 	html.send(params);
 }
-function callback(details, thestatus){
+
+function callback_details(place, status){
 	review = '';
-	if (details == null){
-		i--;
-	}else if (typeof details['reviews'] !== 'undefined'){
-		for (var k = 0; k < details['reviews'].length; k++){
-			review += details['reviews'][k]['text']+"<br><br>";
-		}	
-		reviews[count] = review;
-
-		// create a new marker at each venue's location
-		var latlng = {lat: markers[count].lat, lng: markers[count].lng};
-		var marker = new google.maps.Marker({
-			map: map,
-			position: latlng,
-			icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-		});
-		// add the markers to an array to allow for deletion
-		mymarkers.push(marker);
-		// generate the info window's text based on whether or not the venue has a url
-		if (urls[count]=='N/A'){
-			// does not have a url link
-			marker.contentString = '<div id="tabs">'+
-				'<ul>'+
-				'<li><a href="#tab-1"><span>Info</span></a></li>'+
-				'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
-				'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
-				'</ul>'+
-				'<div id="tab-1">'+
-				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-				'<p>Address: '+addresses[count]+'</p>'+
-				'<p>Phone: '+phones[count]+'</p>'+
-				'<p>Currently here: '+here[count]+'</p>'+
-				'</div>'+
-				'<div id="tab-2">'+
-				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-				'<p>Foursquare Rating: '+ratings[count]+'/10</p>'+
-				'<p>Google Rating: '+gratings[count]+'/5</p>'+
-				'</div>'+
-				'<div id="tab-3">'+
-				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-				'<p>User Comment: '+tips[count]+'</p>'+
-				'<p>Reviews: <br>'+reviews[count]+'</p>'+
-				'</div>'+
-				'</div>';
-		}else{
-			// does have a url link
-			marker.contentString = '<div id="tabs">'+
-				'<ul>'+
-				'<li><a href="#tab-1"><span>Info</span></a></li>'+
-				'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
-				'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
-				'<div id="tab-1">'+
-				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-				'<p>Address: '+addresses[count]+'</p>'+
-				'<p>Phone: '+phones[count]+'</p>'+
-				'<p>Currently here: '+here[count]+'</p>'+
-				'<p>URL: <a href="'+urls[count]+'">'+urls[count]+'</a></p>'+
-				'</div>'+
-				'<div id="tab-2">'+
-				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-				'<p>Foursquare Rating: '+ratings[count]+'/10</p>'+
-				'<p>Google Rating: '+gratings[count]+'/5</p>'+
-				'</div>'+
-				'<div id="tab-3">'+
-				'<h1 id="firstHeading" class="firstHeading">'+names[count]+'</h1>'+
-				'<p>User Comment: '+tips[count]+'</p>'+
-				'<p>Reviews: <br>'+reviews[count]+'</p>'+
-				'</div>'+
-				'</div>';
+	if (status == 'OK'){
+		if (typeof place['reviews'] !== 'undefined'){
+			for (var i = 0; i < place['reviews'].length; i++){
+				review += place['reviews'][i]['text']+"<br><br>";
+			}
 		}
+		reviews.push(review);
+	}else if (status == 'OVER_QUERY_LIMIT'){
+		count--;
+	}
+}
 
-		// prepare jQuery tabs
-		google.maps.event.addListener(infowindow, 'domready', function(){
-			$('#tabs').tabs();
-		});
-		// add click function
-		google.maps.event.addListener(marker, 'click', function() {
-			infowindow.setContent(this.contentString);
-			infowindow.open(map, this);
-		});
-		count++;
+function callback_search(results, status){
+	searchcalled++;
+	if (status == 'OK'){
+		if (typeof results[0]['rating'] !== 'undefined'){
+			gratings.push(results[0]['rating']);
+			pids.push(results[0]['place_id']);
+		}else{
+			gratings.push(0);
+			pids.push(results[0]['place_id']);
+		}
+	}
+	if (searchcalled >= markers.length){
+	// loop through each venue
+		for (var i = 0; i < markers.length; i++){
+			// create a new marker at each venue's location
+			var latlng = {lat: markers[i].lat, lng: markers[i].lng};
+			var marker = new google.maps.Marker({
+				map: map,
+				position: latlng,
+				icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
+			});
+
+			// add the markers to an array to allow for deletion
+			mymarkers.push(marker);
+
+			// generate the info window's text based on whether or not the venue has a url
+			if (urls[i]=='N/A'){
+				// does not have a url link
+				marker.contentString = '<div id="tabs">'+
+					'<ul>'+
+					'<li><a href="#tab-1"><span>Info</span></a></li>'+
+					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+					'</ul>'+
+					'<div id="tab-1">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Address: '+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Currently here: '+here[i]+'</p>'+
+					'</div>'+
+					'<div id="tab-2">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+					'<p>Google Rating: '+gratings[i]+'/5</p>'+
+					'</div>'+
+					'<div id="tab-3">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>User Comment: '+tips[i]+'</p>'+
+					'</div>'+
+					'</div>';
+			}else{
+				// does have a url link
+				marker.contentString = '<div id="tabs">'+
+					'<ul>'+
+					'<li><a href="#tab-1"><span>Info</span></a></li>'+
+					'<li><a href="#tab-2"><span>Ratings</span></a></li>'+
+					'<li><a href="#tab-3"><span>Comments and Reviews</span></a></li>'+
+					'<div id="tab-1">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Address: '+addresses[i]+'</p>'+
+					'<p>Phone: '+phones[i]+'</p>'+
+					'<p>Currently here: '+here[i]+'</p>'+
+					'<p>URL: <a href="'+urls[i]+'">'+urls[i]+'</a></p>'+
+					'</div>'+
+					'<div id="tab-2">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>Foursquare Rating: '+ratings[i]+'/10</p>'+
+					'<p>Google Rating: '+gratings[i]+'/5</p>'+
+					'</div>'+
+					'<div id="tab-3">'+
+					'<h1 id="firstHeading" class="firstHeading">'+names[i]+'</h1>'+
+					'<p>User Comment: '+tips[i]+'</p>'+
+					'</div>'+
+					'</div>';
+			}
+
+			// prepare jQuery tabs
+			google.maps.event.addListener(infowindow, 'domready', function(){
+				$('#tabs').tabs();
+			});
+
+			// add click function
+			google.maps.event.addListener(marker, 'click', function() {
+				infowindow.setContent(this.contentString);
+				infowindow.open(map, this);
+
+			});
+		}
+		/*for(count=0;count<markers.length;count++){
+			var request = {
+				placeId: pids[count]
+			};
+			service.getDetails(request, callback_details);
+		}*/
 	}
 }

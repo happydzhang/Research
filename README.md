@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/22/2016
+- Things to do: Crowdsensing tab, finish upload button, explore Yelp for crowdsensing data (in addition to Twitter and Google), TripAdvisor, Zagat, more dynamic functionality - refresh without user input
 - (12:15) Need to find a place to upload the photos so that I can properly test if the upload works
 - (11:16) Followed an in-depth tutorial on sending a file using URL and HTTP features that are a part of the Android Studio package. Ideally, this tutorial works properly; the next step is to write the server and host it somewhere so that the application can acutally attempt to send the file somewhere
 - (9:05) Began work on the upload button functionality
