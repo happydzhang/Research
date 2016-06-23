@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/23/2016
+- (3:38) Forgot to take notes throughout the day, so a quick recap includes debugging the upload function I had written yesterday, as well as learning to utilize Wamp and PHP to write a functioning server that receives photos from the Android application. Successfully have the phone communicating with the server; will start to explore some of the topics discussed yesterday
+
 Notes for 6/22/2016
 - (4:54) Successfully installed Wampserver so that I can do some testing of the mobile application's upload button
 - (4:05) Began researching how to write a server that can receive a file and store it into a directory
