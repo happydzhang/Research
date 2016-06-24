@@ -1,6 +1,11 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/24/2016
+- (12:23) Having issues navigating the arrays returned by the built-in PHP exif function; must read further documentation to determine how to obtain GPS information, if available
+- (11:04) After a good bit of reading, seems like that PHP, which is what the server uses to accept the photos, has built-in EXIF functions; since the latitude and longitude values will be in degrees, minutes, and seconds, must write a function to convert those values into simply degrees
+- (9:04) Resumed work on mobile application. Began work on making the server have more functionality; specifically, looking into ways to utilize the encoded EXIF data to sort uploaded images
+
 Notes for 6/23/2016
 - (3:38) Forgot to take notes throughout the day, so a quick recap includes debugging the upload function I had written yesterday, as well as learning to utilize Wamp and PHP to write a functioning server that receives photos from the Android application. Successfully have the phone communicating with the server; will start to explore some of the topics discussed yesterday
 
