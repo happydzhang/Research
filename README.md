@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/24/2016
+- (4:52) Will begin work on writing a distance function to compare location of photos to major cities, as mentioned earlier; additionally, I might potentially add another feature to the camera app, where, if the photo selected does not have GPS data, could allow the user to estimate where the photo was taken
 - (4:38) Had to make sure that the values returned by the function had the proper sign, as the EXIF data only returns positive values due to the inclusion of North/South and East/West value; Lat_ref with a value of S switches to negative, and a Lon-ref with a value of W switches to a negative
 - (2:54) Successfully can sort the uploaded images by ones that have location data and those that do not; next step is to sort by distance to major cities, such as New York, Philadelphia, Chicago, etc.
 - (12:23) Having issues navigating the arrays returned by the built-in PHP exif function; must read further documentation to determine how to obtain GPS information, if available
