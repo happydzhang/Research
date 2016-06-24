@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/24/2016
+- (2:54) Successfully can sort the uploaded images by ones that have location data and those that do not; next step is to sort by distance to major cities, such as New York, Philadelphia, Chicago, etc.
 - (12:23) Having issues navigating the arrays returned by the built-in PHP exif function; must read further documentation to determine how to obtain GPS information, if available
 - (11:04) After a good bit of reading, seems like that PHP, which is what the server uses to accept the photos, has built-in EXIF functions; since the latitude and longitude values will be in degrees, minutes, and seconds, must write a function to convert those values into simply degrees
 - (9:04) Resumed work on mobile application. Began work on making the server have more functionality; specifically, looking into ways to utilize the encoded EXIF data to sort uploaded images
