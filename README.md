@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/27/2016
+- (4:24) Android Studio has been continually throwing unspecified errors at me; going to start over attempting to create a new, custom Intent that is called
 - (12:24) Have been working on adding the ability for a user to indicate where a photo was taken should they select one without coordinates
 - (10:05) I could not locate my home directory, nor could I find a page to sign in; decided to postpone setting up the photo receiving server on apollo until later and continue work on the mobile application
 - (9:14) Began trying to setup my directories on the apollo server.
