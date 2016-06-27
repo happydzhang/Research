@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/27/2016
+- (10:05) I could not locate my home directory, nor could I find a page to sign in; decided to postpone setting up the photo receiving server on apollo until later and continue work on the mobile application
+- (9:14) Began trying to setup my directories on the apollo server.
+
 Notes for 6/24/2016
 - (4:52) Will begin work on writing a distance function to compare location of photos to major cities, as mentioned earlier; additionally, I might potentially add another feature to the camera app, where, if the photo selected does not have GPS data, could allow the user to estimate where the photo was taken
 - (4:38) Had to make sure that the values returned by the function had the proper sign, as the EXIF data only returns positive values due to the inclusion of North/South and East/West value; Lat_ref with a value of S switches to negative, and a Lon-ref with a value of W switches to a negative
