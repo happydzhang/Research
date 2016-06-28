@@ -1,6 +1,10 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/28/2016
+- (12:30) Attempted to add multiple elements to the second activity, but they either kept stacking directly on one another, or would move to the very top, exact center, or very bottom of the screen, making the layout have too much white space; opted to just include a single element: the line where the user will enter the city of the location of the image
+- (10:25) Minor fixes to the mobile application
+
 Notes for 6/27/2016
 - (4:46) Successfully setup a second activity to be called by the main activity; not entirely sure why it wasn't working earlier, as I am fairly certain I made the same changes I initially did. Next step is to add the desired features to the second activity, specifically, allow the user to specify where the photo was taken and then, hopefully, be able to determine the GPS coordinates of that city
 - (4:24) Android Studio has been continually throwing unspecified errors at me; going to start over attempting to create a new, custom Intent that is called
