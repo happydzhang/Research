@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/28/2016
+- (4:39) Still working on correctly obtaining the latitude and longitude of the user's input
 - (12:30) Attempted to add multiple elements to the second activity, but they either kept stacking directly on one another, or would move to the very top, exact center, or very bottom of the screen, making the layout have too much white space; opted to just include a single element: the line where the user will enter the city of the location of the image
 - (10:25) Minor fixes to the mobile application
 
