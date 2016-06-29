@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/29/2016
+- (2:02) Tested a variety of scenarios to ensure that the phone and basic server will still functioning as before. Confirmed that location services must be enabled to open the camera within the application, photos with location information are sent to the locations folder and those without are sent to the uploads folder (although I plan to expand the number of folders), and the user can estimate the coordinates of a given photo should it not have location information
 - (11:36) Spent the entire morning working on the location estimation feature of the application; ran a few tests, and it seems that the feature is working correctly
 
 Notes for 6/28/2016
