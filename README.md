@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 6/29/2016
+- (11:36) Spent the entire morning working on the location estimation feature of the application; ran a few tests, and it seems that the feature is working correctly
+
 Notes for 6/28/2016
 - (5:19) App would crash each time I attempted to Geocode a location; will investigate tomorrow
 - (4:39) Still working on correctly obtaining the latitude and longitude of the user's input
