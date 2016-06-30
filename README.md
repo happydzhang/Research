@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/30/2016
+- (11:50) Some more testing revealed that different camera apps encoded the DateTime in different parts of the EXIF object; bug should be fixed and now all photos uploaded should be properly read
 - (10:50) After some debugging, now writing the original, meaning when the image was first created, date-time of the photo to the output file.
 
 Notes for 6/29/2016
