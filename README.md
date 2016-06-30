@@ -2,7 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 6/30/2016
-- (4:04) Went to create a new project in Android Studio in order to begin the restructuring of the application, but now I cannot seem to find the original application. Further development is on halt, as I do not have a recent copy of the current working version of the application
+- (4:08) After considering my options, decided that the application definitely needs to be restructured to make the flow of activities flow more logically. Will now work on making the flow of the application match the sketch I put together
 - (2:41) Determined that the application will potentially need some restructuring in order to add a login option, as well as a "begin trip" option
 - (11:50) Some more testing revealed that different camera apps encoded the DateTime in different parts of the EXIF object; bug should be fixed and now all photos uploaded should be properly read
 - (10:50) After some debugging, now writing the original, meaning when the image was first created, date-time of the photo to the output file.
