@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/1/2016
+- (2:52) Forgot to start taking notes in the morning, but I continued work on the login screen for the new version of the application. As of now, the application successfully presents the user with a login screen, with the login and cancel button both functioning as desired, although the login button will currently accept any combination of username and password
+
 Notes for 6/30/2016
 - (5:04) Completed a very basic login page; ideally, tomorrow will comprise of finishing constructing the remaining activities needed for a more complete Smart Camera application
 - (4:08) After considering my options, decided that the application definitely needs to be restructured to make the flow of activities flow more logically. Will now work on making the flow of the application match the sketch I put together
