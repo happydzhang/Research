@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/1/2016
+- (4:22) Because of the desired "Trip" feature, the camera-side of the application will need to be changed slightly; instead of including the upload button inside the photo taking/selection part of the application, it will exist inside the "Trip Tracker" or something similar, and an "Add Photo to Trip" button will be added to the photo taking/selection section of the application
 - (2:52) Forgot to start taking notes in the morning, but I continued work on the login screen for the new version of the application. As of now, the application successfully presents the user with a login screen, with the login and cancel button both functioning as desired, although the login button will currently accept any combination of username and password
 
 Notes for 6/30/2016
