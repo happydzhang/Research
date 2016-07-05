@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/5/2016
+- (5:29) Forgot to take notes throughout the day, but I resumed work following the holiday weekend. Made significant progress on the Smart Camera app; login screen remains very primitive, accepting any combination of username and password, but I plan to implement a proper user registration system later this week. Camera Activity now allows user to add each photo the user takes or selects to the trip. The upload button then uploads each photo added to the trip to the server. Ran into an issue where the application couldn't connect to the server unless the phone was connected to ND Secure. Probably somewhere in the config files where I can adjust what connections the server will accept. Tomorrow, I'm hoping to do some more testing on the modified upload, as well as to improve the functionality of each trip
+
 Notes for 7/1/2016
 - (4:52) Began preliminary work on the next activity needed for the application
 - (4:22) Because of the desired "Trip" feature, the camera-side of the application will need to be changed slightly; instead of including the upload button inside the photo taking/selection part of the application, it will exist inside the "Trip Tracker" or something similar, and an "Add Photo to Trip" button will be added to the photo taking/selection section of the application
