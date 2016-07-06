@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/6/2016
+- (1:57) Additional testing gives me the confidence to say that the upload funciton is now working properly. Currently, the Smart Camera app runs as follows: Presents the user with a login screen, where they can login if they have already registered, or register a new account; however, login procedure has not yet been implemented, and I believe that is the next mini-project that needs to be compeleted. After the user "logs in," they are taken to a page that will, in the future, display all of their logged trips, where they can review the photos from each trip, or start a new one; because I have not implemented the user system yet, trips are not stored for later viewing, so the only action that can be taken on this page is to start a new trip. The user is then directed to the original camera application, where they can either take new photos with location tagging, or select old photos with the option of estimating the location. Once the user has added the desired number of photos, they can then upload all of them at once to the server. I definitely think the next part of the application that should be completed is the proper implementation of a user login system
 - (12:23) Tentatively will say that the upload function now works at uploading multiple functions at once. Need to do some more testing to be sure
 
 Notes for 7/5/2016
