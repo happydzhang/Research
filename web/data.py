@@ -2,6 +2,9 @@
 # data.py
 # 6/14/2016
 
+# This file contains all of the classes and functions to handle the users requests
+# The functions in this file is how the server obtains all of the data from the various social media sites
+
 import cherrypy, requests
 import re, json
 import webbrowser, urllib2, time, datetime, tweepy

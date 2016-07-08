@@ -1,6 +1,9 @@
 # Brian Mann
 # 5/24/2016
 
+# This file contains the necessary to code to setup a basic server, using classes defined in data.py to properly handle all requests
+
+
 import cherrypy
 from data import FoursquareController
 from data import TwitterController
