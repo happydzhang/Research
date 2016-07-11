@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/11/2016
+- (5:25) I think that I have gotten everything done, from an interface standpoint, on logging in and registering with the application. I spent the second half of the afternoon familiarizing myself with SQL, which is part of the WAMP server package, as a means of setting up the user database. I think I have made some good progress on that end, and hope to continue that work throughout tomorrow so that I can get the registration and login stages of the application completed
 - (12:09) Worked on the Smart Camera app during most of the morning, debugging some of the basic functions of the register button. I'm hoping to implement the server side functionality of registering/logging in after lunch so that I can begin work on tracking trips, etc.
 
 Notes for 7/8/2016
