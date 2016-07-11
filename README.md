@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/11/2016
+- (12:09) Worked on the Smart Camera app during most of the morning, debugging some of the basic functions of the register button. I'm hoping to implement the server side functionality of registering/logging in after lunch so that I can begin work on tracking trips, etc.
+
 Notes for 7/8/2016
 - (5:15) Spent the day working on the Smart Camera Application; made good progress on implementing the proper functionality to the register button. Pressing the register button now takes the user to a new screen where they can select a username and password that they will use to store their trips; currently, no server-side implementation has taken place, but I plan to work on that on Monday; I hope to have a very early version of registration working by the end of Monday
 
