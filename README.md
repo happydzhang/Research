@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/12/2016
+- (4:47) Successfully tested the register feature of the application. Simple changes need to be made to that code to allow for login, which I anticipate I will complete very shortly
 - (12:26) Resumed work on implementing the server side aspects of registering and logging in; got a late start this morning due to problems with my alarm, so I'm going to work later into the evening. Currently attempting to ensure that the same username cannot be registered twice, but other than that, I do believe that registering and logging in should work on the server side. Next step is to add the necessary components to the mobile app side
 
 Notes for 7/11/2016
