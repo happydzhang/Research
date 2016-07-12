@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/12/2016
+- (5:59) Tutorial I came across for password encryption only focused on encrypting the password inside the database, which I do not necessarily see as entirely beneficial, as the password should be encrypted when it is sent to the server for either registration or logging in, meaning that encryption should occur on the client side; will explore this in more detail tomorrow
 - (5:34) Both logging in and registering should function as desired. I have cleared and reset the table so that registration can begin with userid 1. Also, will begin work on password encryption, as that's a very important aspect of all secure applications
 - (4:47) Successfully tested the register feature of the application. Simple changes need to be made to that code to allow for login, which I anticipate I will complete very shortly
 - (12:26) Resumed work on implementing the server side aspects of registering and logging in; got a late start this morning due to problems with my alarm, so I'm going to work later into the evening. Currently attempting to ensure that the same username cannot be registered twice, but other than that, I do believe that registering and logging in should work on the server side. Next step is to add the necessary components to the mobile app side
