@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/12/2016
+- (12:26) Resumed work on implementing the server side aspects of registering and logging in; got a late start this morning due to problems with my alarm, so I'm going to work later into the evening. Currently attempting to ensure that the same username cannot be registered twice, but other than that, I do believe that registering and logging in should work on the server side. Next step is to add the necessary components to the mobile app side
+
 Notes for 7/11/2016
 - (5:25) I think that I have gotten everything done, from an interface standpoint, on logging in and registering with the application. I spent the second half of the afternoon familiarizing myself with SQL, which is part of the WAMP server package, as a means of setting up the user database. I think I have made some good progress on that end, and hope to continue that work throughout tomorrow so that I can get the registration and login stages of the application completed
 - (12:09) Worked on the Smart Camera app during most of the morning, debugging some of the basic functions of the register button. I'm hoping to implement the server side functionality of registering/logging in after lunch so that I can begin work on tracking trips, etc.
