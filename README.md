@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/13/2016
+- (12:13) I think that password encryption should be possible in the following order: the user enters a password during registration; the application salts that string with a per-user, randomly generated string; the new string is then hashed and sent to the database to be stored as the user password; using KeyStore, the randomly generated salt string will be stored in the phone for subsequent logins to check against the database. I think those are the steps needed to ensure a significantly secure authentication service
 - (11:30) Fixed a minor bug with the login function. Have been exploring different ways to encrypt the user's password during registration and logging in; basic encryption techniques, like MD5 hash, appear to be inadequate according to many forums on effective user authentication. Need to explore more advanced methods of encryption to ensure proper security
 
 Notes for 7/12/2016
