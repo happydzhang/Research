@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/13/2016
+- (11:30) Fixed a minor bug with the login function. Have been exploring different ways to encrypt the user's password during registration and logging in; basic encryption techniques, like MD5 hash, appear to be inadequate according to many forums on effective user authentication. Need to explore more advanced methods of encryption to ensure proper security
+
 Notes for 7/12/2016
 - (5:59) Tutorial I came across for password encryption only focused on encrypting the password inside the database, which I do not necessarily see as entirely beneficial, as the password should be encrypted when it is sent to the server for either registration or logging in, meaning that encryption should occur on the client side; will explore this in more detail tomorrow
 - (5:34) Both logging in and registering should function as desired. I have cleared and reset the table so that registration can begin with userid 1. Also, will begin work on password encryption, as that's a very important aspect of all secure applications
