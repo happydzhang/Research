@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/14/2016
+- (10:36) Implementing a Keystore seems to be unnecessarily complicated; I plan on implmenting a slightly simpler method to encrypt the passwords that should still be significantly secure
+
 Notes for 7/13/2016
 - (5:09) Added the guest button during our meeting. Also discussed the research questions a little more in depth with Fanjie. Continued to explore methods of encrypting the user-given password for better storage
 - (12:13) I think that password encryption should be possible in the following order: the user enters a password during registration; the application salts that string with a per-user, randomly generated string; the new string is then hashed and sent to the database to be stored as the user password; using KeyStore, the randomly generated salt string will be stored in the phone for subsequent logins to check against the database. I think those are the steps needed to ensure a significantly secure authentication service
