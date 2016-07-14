@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/14/2016
+- (5:02) Successfully encrypt the user's password during registration and while attempting to login. Next, I plan to make some quality of life updates before working on the trip feature; specifically, preventing the user from using the "back" button on the phone to go to previous "activities"
 - (10:36) Implementing a Keystore seems to be unnecessarily complicated; I plan on implmenting a slightly simpler method to encrypt the passwords that should still be significantly secure
 
 Notes for 7/13/2016
