@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/15/2016
+- (6:01) Spent the entire day working on some of the desired changes to the Smart Camera app. Successfully migrated the previous method of storing the photo's metadata to an SQL database (previously was in a .txt document). Also now display the desired data underneath the photo inside the app. Planning on implementing trip_id features on Monday
+
 Notes for 7/14/2016
 - (5:02) Successfully encrypt the user's password during registration and while attempting to login. Next, I plan to make some quality of life updates before working on the trip feature; specifically, preventing the user from using the "back" button on the phone to go to previous "activities"
 - (10:36) Implementing a Keystore seems to be unnecessarily complicated; I plan on implmenting a slightly simpler method to encrypt the passwords that should still be significantly secure
