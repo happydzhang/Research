@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/18/2016
+- (5:35) Worked for the entire day on implementing better file management; in essence, each time the user uses the camera portion of the app by starting a new trip or logging in as a guest, the application creates a new folder titled "tripx" where x is the number of trips the phone has saved. This makes viewing past trips much easier, as all of the relevent photos will be in one folder, as opposed to wherever the phone had them saved originally
+
 Notes for 7/15/2016
 - (6:01) Spent the entire day working on some of the desired changes to the Smart Camera app. Successfully migrated the previous method of storing the photo's metadata to an SQL database (previously was in a .txt document). Also now display the desired data underneath the photo inside the app. Planning on implementing trip_id features on Monday
 
