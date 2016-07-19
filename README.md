@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/19/2016
+- (4:11) Trip Activity now includes a ListView which will display all of the user's recorded trips that are stored on that phone. Need to add the ability to open the folder should the user click on one of the trips
 - (11:49) Tentatively will claim that most of the desired features of the application are now working: The user can register with the application or sign in as a guest; each "Trip" is tracked locally on the phone by creating a folder for all of the photos from that trip; the user can then upload all of the photos to a server, which currently is run on my laptop. The few features left to implement include improving the Trip Activity for logged in users, and, most importantly, adding userid and tripid data to the upload function so that the uploaded photos can be properly associated
 
 Notes for 7/18/2016
