@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/19/2016
+- (11:49) Tentatively will claim that most of the desired features of the application are now working: The user can register with the application or sign in as a guest; each "Trip" is tracked locally on the phone by creating a folder for all of the photos from that trip; the user can then upload all of the photos to a server, which currently is run on my laptop. The few features left to implement include improving the Trip Activity for logged in users, and, most importantly, adding userid and tripid data to the upload function so that the uploaded photos can be properly associated
+
 Notes for 7/18/2016
 - (5:35) Worked for the entire day on implementing better file management; in essence, each time the user uses the camera portion of the app by starting a new trip or logging in as a guest, the application creates a new folder titled "tripx" where x is the number of trips the phone has saved. This makes viewing past trips much easier, as all of the relevent photos will be in one folder, as opposed to wherever the phone had them saved originally
 
