@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/20/2016
+- (4:58) Made more improvements to the Smart Camera app. Tomorrow, hoping to implement all of the things discussed in the meeting today
+
 Notes for 7/19/2016
 - (5:00) Ran into some bugs while trying to implement the Trip Viewing feature. Will explore ListView in more depth tomorrow to resolve these issues
 - (4:11) Trip Activity now includes a ListView which will display all of the user's recorded trips that are stored on that phone. Need to add the ability to open the folder should the user click on one of the trips
