@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/21/2016
+- (9:00) Have continued to work on the Smart Camera app. I feel confident that the program is quickly approaching full fuctionality. I am fairly optimistic I will have it working by tomorrow's meeting
 - (5:00) Worked on the Smart Camera app, fixing a bug with the location aspect, and working towards finishing all the features outlined on the GoogleDoc
 
 Notes for 7/20/2016
