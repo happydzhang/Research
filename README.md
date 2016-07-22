@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/22/2016
+- (3:44) Most of the desired features are working as desired: user registration and logging in, entering as a guest in offline mode, most of trip management, and taking and selecting photos mostly works. That being said, there seems to be a significant bug with the location aspect of either the server or the mobile side of the application, as upload does not consistently work. All images are uploaded to the server; however, not all of the image data is put into the SQL Database, which is problematic. This leads me to believe I have a slight error with how I am encoding the GPS data into the image. In particular, an incomplete upload occurs when taking a new photo without the built-in GPS tagging feature. Other than that, it seems the image is fully uploaded. I will need to run more tests to be sure, though
+
 Notes for 7/21/2016
 - (9:00) Have continued to work on the Smart Camera app. I feel confident that the program is quickly approaching full fuctionality. I am fairly optimistic I will have it working by tomorrow's meeting
 - (5:00) Worked on the Smart Camera app, fixing a bug with the location aspect, and working towards finishing all the features outlined on the GoogleDoc
