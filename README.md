@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/25/2016
+- (5:55) Tentatively will claim the photo viewing aspect of the application is now working. Will continue to make small improvements around 7:00 tonight
 - (12:20) Have continued work on the features discussed in the Friday meeting. Hoping to have the image viewing feature completed by the end of the day
 
 Notes for 7/22/2016
