@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/25/2016
+- (12:20) Have continued work on the features discussed in the Friday meeting. Hoping to have the image viewing feature completed by the end of the day
+
 Notes for 7/22/2016
 - (3:44) Most of the desired features are working as desired: user registration and logging in, entering as a guest in offline mode, most of trip management, and taking and selecting photos mostly works. That being said, there seems to be a significant bug with the location aspect of either the server or the mobile side of the application, as upload does not consistently work. All images are uploaded to the server; however, not all of the image data is put into the SQL Database, which is problematic. This leads me to believe I have a slight error with how I am encoding the GPS data into the image. In particular, an incomplete upload occurs when taking a new photo without the built-in GPS tagging feature. Other than that, it seems the image is fully uploaded. I will need to run more tests to be sure, though
 
