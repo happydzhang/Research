@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/26/2016
+- (4:49) Further testing of the application reveals that only a few aspects need to be implemented: the ability to delete a trip from within the app, remove select photos from within the app (although that might be a more complicated endeavour), and finish debugging the upload functionality, which I believe should be a simple fix
 - (11:45) Fully implemented image viewing inside of a trip. Planning on running more tests to be sure, but at the moment, it appears to work as desired
 
 Notes for 7/25/2016
