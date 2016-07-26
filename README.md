@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/26/2016
+- (11:45) Fully implemented image viewing inside of a trip. Planning on running more tests to be sure, but at the moment, it appears to work as desired
+
 Notes for 7/25/2016
 - (10:07) Attempted to implement new photo viewing aspect inside Trip Mode but was experiencing issues; reset everything to how it was before and will resume tomorrow
 - (5:55) Tentatively will claim the photo viewing aspect of the application is now working. Will continue to make small improvements around 7:00 tonight
