@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/27/2016
+- (11:08) Userid and tripid successfully included in the upload function; will run several tests on every aspect of the app to ensure everything functions as desired, but I do believe that all desired features have been implemented
+
 Notes for 7/26/2016
 - (8:25) I will tentatively claim that the application is now fully operating as desired; demo during tomorrow's meeting will reveal any potential bugs, etc., but I think any remaining issues could certainly be ironed out in a day or so
 - (5:10) I believe I caught the bug causing only some photos to be fully uploaded to the server: I was copying the file to the new folder before modifying the EXIF data, if necessary, and then uploading the unmodified version of the file, causing the PHP script to fail on the server side. I will do testing around 7:00 to be sure
