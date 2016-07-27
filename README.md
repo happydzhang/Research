@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/26/2016
+- (8:25) I will tentatively claim that the application is now fully operating as desired; demo during tomorrow's meeting will reveal any potential bugs, etc., but I think any remaining issues could certainly be ironed out in a day or so
 - (5:10) I believe I caught the bug causing only some photos to be fully uploaded to the server: I was copying the file to the new folder before modifying the EXIF data, if necessary, and then uploading the unmodified version of the file, causing the PHP script to fail on the server side. I will do testing around 7:00 to be sure
 - (4:49) Further testing of the application reveals that only a few aspects need to be implemented: the ability to delete a trip from within the app, remove select photos from within the app (although that might be a more complicated endeavour), and finish debugging the upload functionality, which I believe should be a simple fix
 - (11:45) Fully implemented image viewing inside of a trip. Planning on running more tests to be sure, but at the moment, it appears to work as desired
