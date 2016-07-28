@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/28/2016
+- (10:41) Fixed the photo swiping bug, both the speed at which photos are switched, and the EXIF data that is displayed
+
 Notes for 7/27/2016
 - (4:42) Spent the rest of the afternoon discussing the desired changes with Steve for Computer Networks in the Fall. Will resume work this evening on the Smart Camera app
 - (11:08) Userid and tripid successfully included in the upload function; will run several tests on every aspect of the app to ensure everything functions as desired, but I do believe that all desired features have been implemented
