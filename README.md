@@ -2,6 +2,7 @@
 My Undergraduate Research with Professor Dong Wang
 
 Notes for 7/29/2016
+- (3:26) Minor changes made to some of the activities, but I think most, if not all, of the desired features have been fully implemented. Moving forward (i.e. during the Fall semester), I plan to move the server code from my laptop to the apollo server so that the IP address is constant and reliable
 - (12:17) Made a small bug fix and added a display for all existing folders by a specific user. Need to make some visual changes to it first, but that should entail all of the desired features
 
 Notes for 7/28/2016
