@@ -1,6 +1,9 @@
 # Research
 My Undergraduate Research with Professor Dong Wang
 
+Notes for 7/29/2016
+- (12:17) Made a small bug fix and added a display for all existing folders by a specific user. Need to make some visual changes to it first, but that should entail all of the desired features
+
 Notes for 7/28/2016
 - (5:17) Made some changes to image storage; specifically, modified folder saving system to prevent confusion of local storage. Considering moving created folders into private storage if the user is logged in. Guest folder's would remain in public storage for obvious reasons. Last fix is Trip Review system: must search the phone for existing trips instead of relying on user rememebering what trips exist
 - (10:41) Fixed the photo swiping bug, both the speed at which photos are switched, and the EXIF data that is displayed
